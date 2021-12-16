@@ -141,13 +141,17 @@ console.log(shoppingListSum);
 // changeEnough(0.75, [0,0,20,5]) => returns true
 let sum1 = 0;
 function changeEnough(itemPrice, amountOfChange) {
-  for (let change of amountOfChange) {
-    sum1 = sum1 + change;
+  const detailedMoney = [0.25, 0.1, 0.05, 0.01];
+
+  for (let i = 0; i < amountOfChange.length; i++) {
+    const moneyWorth = amountOfChange[i] * detailedMoney[i];
+    sum1 += moneyWorth;
   }
+  console.log(sum1);
   if (sum1 >= itemPrice) return true;
   else return false;
 }
-const result = changeEnough(12, [15, 15, 15, 15]);
+const result = changeEnough(5, [25, 20, 5, 0]);
 console.log(result);
 
 // exe. 6
@@ -219,10 +223,6 @@ function rentalCarCost() {
 // Example : The car cost: $x, the hotel cost: $y, the plane tickets cost: $z.
 // Hint: You have to call the functions hotelCost(), planeRideCost() and rentalCarCost() inside the function totalVacationCost().
 function totalVacationCost() {
-  //   console
-  //     .log
-  //     // `The car costs ${rentalCarCost()}, the plane tickts are ${planeRideCost()}, the hotel reservation is ${hotelCost}`
-  //     ();
   const totalCost = rentalCarCost() + planeRideCost() + hotelCost();
   return totalCost;
 }
