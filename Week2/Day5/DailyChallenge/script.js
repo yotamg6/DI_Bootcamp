@@ -13,8 +13,7 @@
 //4.Note : Make sure you get the grammar correct.
 // For 1 bottle, you pass “it” around.
 // For more than one bottle, you pass “them” around.
-
-let beerBottles = 99;
+let beerBottles = prompt("how many bottles you have?");
 function dropBottles(substractor) {
   beerBottles -= substractor;
   return beerBottles;
@@ -27,11 +26,13 @@ function logSong() {
         ${beerBottles} bottles of beer
         Take ${i} down, pass it around
         ${dropBottles(i)} bottles of beer on the wall`);
-    } else if (beerBottles > 0) {
+      console.log("\n");
+    } else if (beerBottles > 0 && beerBottles > i) {
       console.log(`${beerBottles} bottles of beer on the wall
     ${beerBottles} bottles of beer
     Take ${i} down, pass them around
     ${dropBottles(i)} bottles of beer on the wall`);
+      console.log("\n");
     } else {
       console.log("no bottles of beer on the wall");
       return;
