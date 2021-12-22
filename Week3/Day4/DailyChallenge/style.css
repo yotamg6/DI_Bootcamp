@@ -1,0 +1,66 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(182, 67, 67);
+  text-align: center;
+  align-items: center;
+}
+h1 {
+  color: white;
+}
+form {
+  width: 300px;
+  position: relative;
+}
+.listTasks {
+  display: inline-block;
+  align-content: center;
+  width: 300px;
+  height: 400px;
+  margin-top: 20px;
+  background-color: whitesmoke;
+}
+label {
+  font-size: 20px;
+}
+.check {
+  margin-left: 20px;
+}
+i {
+  background-color: white;
+  color: red;
+  margin-left: 20px;
+}
+.container {
+  display: flex;
+  align-items: baseline;
+  border-bottom: 2px solid lightblue;
+}
+
+#inputField {
+  color: rgb(168, 166, 166);
+  font-size: 15px;
+  margin: 0px;
+  padding: 25px;
+  width: 300px;
+  outline: none;
+  height: 30px;
+}
+
+button {
+  font-size: 20px;
+  top: 0;
+  position: absolute;
+  z-index: 2;
+  border: none;
+  top: 15px;
+  right: 10px;
+  height: 5px;
+  cursor: pointer;
+  background-color: white;
+  color: white;
+  color: #1e90ff;
+}
