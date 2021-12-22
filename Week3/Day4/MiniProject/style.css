@@ -1,0 +1,40 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  background-color: grey;
+  display: flex;
+}
+.pallet {
+  width: 25%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  grid-column-gap: 5px;
+  grid-row-gap: 5px;
+  padding: 5px;
+  padding-left: 2px;
+}
+.canvas {
+  width: 75%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(60, 1fr);
+  grid-template-rows: repeat(24, 1fr);
+  grid-column-gap: 2px;
+  grid-row-gap: 2px;
+  padding-top: 5px;
+}
+.clear {
+  grid-column: span 3;
+  font-size: 20px;
+  color: black;
+}
+.whiteBox {
+  border: 1px solid white;
+  background-color: white;
+}
+.colorBox {
+  border: 1px solid white;
+}
