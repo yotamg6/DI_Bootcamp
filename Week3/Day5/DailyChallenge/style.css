@@ -1,0 +1,25 @@
+body {
+  display: grid;
+
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: repeat(7, 1fr);
+  justify-content: stretch;
+  width: 100vw;
+  height: 100vh;
+}
+.star {
+  text-align: center;
+  background-color: black;
+  font-size: 60px;
+  color: brown;
+  border: 1px solid white;
+}
+/* .columns {
+  display: flex;
+  flex-direction: column;
+  justify-content: stretch;
+} */
+.square {
+  background-color: black;
+  border: 1px solid white;
+}
