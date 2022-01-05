@@ -85,7 +85,6 @@ let morse = `{
 function toJs(morse) {
   let strToObj = new Promise(function (resolve, reject) {
     const morseJS = JSON.parse(morse);
-    // console.log(morseJS);
     if (morseJS === {}) reject("error. Empty object", morseJS);
     else {
       resolve(morseJS);
@@ -93,18 +92,23 @@ function toJs(morse) {
   });
   return strToObj;
 }
-let isChar;
+
 function toMorse(morseJS) {
   let transMorse = new Promise(function (resolve, reject) {
     const userPromptAnswer = prompt("please type-in a word or a sentence");
-    for (let [key, value] of Object.entries(morseJS)) {
-      const answerArr = userPromptAnswer.split("");
-      isChar = answerArr.some((letter) => letter === key);
-      if (isChar) break;
-    }
-    if (isChar)
-      resolve(userPromptAnswer.split("").map((char) => (char = morseJS[char])));
-    else reject("not a valid character");
+    const morseJsKeys = Object.keys(morseJS);
+    const answerArr = userPromptAnswer
+      .toLowerCase()
+      .replaceAll(" ", "")
+      .split("");
+    // console.log(answerArr);
+    const morseIncludes = answerArr.every((letter) =>
+      morseJsKeys.includes(letter)
+    );
+    // console.log(morseIncludes);
+    morseIncludes
+      ? resolve(answerArr.map((char) => (char = morseJS[char])))
+      : reject("not a valid character");
   });
   return transMorse;
 }
