@@ -15,16 +15,10 @@
   ).json();
   const currenCodes = currenFetched.currencies;
 
-  //   froForm.addEventListener("submit", convert);
-  //   const toForm = document.querySelector("#toForm");
-  //   toForm.addEventListener("submit", convert);
   const convForm = document.querySelector("#convert");
   convForm.addEventListener("submit", convert);
   displayCurrencies(currenCodes);
   const froForm = document.querySelector("#froForm");
-  //   const froValue = froForm.elements[0].value;
-  //   console.log(froValue);
-  //   return [froForm, toForm, convForm];
 })();
 
 async function displayCurrencies(codes) {
@@ -57,12 +51,12 @@ async function convert(e) {
   console.log("from:", fromExchangeRate, "to:", toExchangeRate);
   const result = `${toExchangeRate / fromExchangeRate} ${slicedTo}`;
   console.log(result);
+  displayResult(result);
 }
-// return [selectFrom, selectTo];
 
-// fetchCurrencies();
-
-function getFromCur() {}
-
-function getToCur() {}
-function displayResult() {}
+function displayResult(result) {
+  const resultDiv = document.createElement("div");
+  const text = document.createTextNode(result);
+  resultDiv.append(text);
+  document.body.appendChild(resultDiv);
+}
