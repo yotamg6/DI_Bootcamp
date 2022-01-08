@@ -1,0 +1,53 @@
+body {
+  background-image: url("https://media.istockphoto.com/photos/stack-of-one-hundred-dollars-notes-picture-id1008861200?k=20&m=1008861200&s=612x612&w=0&h=T_1z_SNKVyLeKnaRa5LVnPVFIAmXCLFl658N0Fk0Stw=");
+  background-repeat: no-repeat;
+  background-size: cover;
+  text-align: center;
+  display: flex;
+
+  justify-content: center;
+}
+#froForm {
+  position: absolute;
+  top: 20%;
+}
+#toForm {
+  position: absolute;
+  top: 40%;
+}
+#convert {
+  position: absolute;
+  top: 65%;
+}
+
+.labFro {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  color: rgb(85, 113, 214);
+  font-size: 40px;
+  font-weight: bolder;
+}
+.labTo {
+  position: absolute;
+  bottom: 50px;
+  left: 100px;
+  color: rgb(85, 113, 214);
+  font-size: 40px;
+  font-weight: bolder;
+}
+.labAmount {
+  position: absolute;
+  bottom: 50px;
+  left: 60px;
+  color: rgb(85, 113, 214);
+  font-size: 40px;
+  font-weight: bolder;
+}
+
+.res {
+  position: absolute;
+  bottom: 50px;
+  font-size: 40px;
+  font-weight: bolder;
+}

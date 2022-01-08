@@ -7,7 +7,7 @@
 // 4.You can use the Rest Countries API to get information about countries via a RESTful API. This API will let you know in which countries you can use the currency that you just converted. Check out the currency part of the documentation
 // For this part of the challenge, check out the list of Currency codes ISO 4217
 
-(async function retrieveElements() {
+(async function () {
   const currenFetched = await (
     await fetch(
       "http://api.currencylayer.com/list?access_key=6b543e9294a71d26a6606f5449cf71a6"
@@ -18,7 +18,7 @@
   const convForm = document.querySelector("#convert");
   convForm.addEventListener("submit", convert);
   displayCurrencies(currenCodes);
-  const froForm = document.querySelector("#froForm");
+  //   const froForm = document.querySelector("#froForm");
 })();
 
 async function displayCurrencies(codes) {
@@ -36,7 +36,7 @@ async function displayCurrencies(codes) {
 
 async function convert(e) {
   e.preventDefault();
-  const amountValue = e.target.elements[0].value;
+  const amountVal = e.target.elements[0].value;
   const froCur = document.forms[0].elements[0].value;
   const toCur = document.forms[1].elements[0].value;
   const slicedFro = froCur.slice(0, 3);
@@ -49,14 +49,20 @@ async function convert(e) {
   const fromExchangeRate = liveParsed["quotes"][`USD${slicedFro}`];
   const toExchangeRate = liveParsed["quotes"][`USD${slicedTo}`];
   console.log("from:", fromExchangeRate, "to:", toExchangeRate);
-  const result = `${toExchangeRate / fromExchangeRate} ${slicedTo}`;
+  const result = `${
+    (toExchangeRate * amountVal) / fromExchangeRate
+  } ${slicedTo}`;
   console.log(result);
   displayResult(result);
 }
 
 function displayResult(result) {
   const resultDiv = document.createElement("div");
+  resultDiv.setAttribute("class", "res");
+  document.body.childElementCount > 3
+    ? document.body.removeChild(document.body.lastChild)
+    : document.body;
   const text = document.createTextNode(result);
-  resultDiv.append(text);
+  resultDiv.appendChild(text);
   document.body.appendChild(resultDiv);
 }
