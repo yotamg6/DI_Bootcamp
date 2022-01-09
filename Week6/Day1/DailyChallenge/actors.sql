@@ -16,3 +16,5 @@
 -- SELECT * FROM actors WHERE actor_id <=4 ORDER BY last_name DESC; 
 -- SELECT * FROM actors WHERE last_name LIKE '%e%';
 -- SELECT * FROM actors WHERE number_oscars>=6;
+SELECT count(*) AS exact_count FROM actors;
+
