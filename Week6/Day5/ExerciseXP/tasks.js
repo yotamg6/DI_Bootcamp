@@ -1,12 +1,11 @@
 let isCompleted = false;
 function displayItems() {
-  //   e.preventDefault();
   const getItems = JSON.parse(localStorage.getItem("taskList"));
   console.log(getItems);
 
   getItems.forEach((obj) => {
     const paraTitle = document.createElement("p");
-    const titleText = document.createTextNode(`Title: ${obj.name}`);
+    const titleText = document.createTextNode(`Title: ${obj.title}`);
     paraTitle.appendChild(titleText);
     const paraStartDate = document.createElement("p");
     const startText = document.createTextNode(`Starting date:${obj.startDate}`);
@@ -18,7 +17,7 @@ function displayItems() {
       60 /
       60 /
       24;
-    console.log(calcDaysLeft);
+    // console.log(calcDaysLeft);
     const daysLeftText = document.createTextNode(
       `${calcDaysLeft}
       days left to complete the task`
@@ -32,20 +31,25 @@ function displayItems() {
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     input.setAttribute("class", "inputCheck");
-
-    taskBox.append(paraTitle, paraStartDate, paraDaysLeft, input);
+    const xBtn = document.createElement("span");
+    xBtn.innerHTML = '<i class="fas fa-window-close"></i>';
+    // const i = document.createElement("i");
+    // i.innerHTML = 'class="fas fa-window-close';
+    taskBox.append(paraTitle, paraStartDate, paraDaysLeft, input, xBtn);
     document.body.append(taskBox);
-
     new Date(obj.endDate) < new Date()
       ? (taskBox.style.backgroundColor = "pink")
       : taskBox;
+    input.addEventListener("click", isCompleteFun);
+    xBtn.addEventListener("click", function () {
+      deleteTask(obj, getItems, taskBox);
+    });
     taskBox.addEventListener("click", function () {
       taskBox.appendChild(descriptionPara);
       descriptionPara.style.display === "block"
         ? (descriptionPara.style.display = "none")
         : (descriptionPara.style.display = "block");
     });
-    input.addEventListener("click", isCompleteFun);
   });
 }
 function isCompleteFun(e) {
@@ -58,6 +62,21 @@ function isCompleteFun(e) {
     isCompleted = true;
   }
 }
+
+function deleteTask(task, tasksArr, taskBox) {
+  const userDecision = confirm(
+    `Are you sure you wish to remove the ${task.title} task?`
+  );
+  if (userDecision) {
+    taskBox.remove();
+    const taskIndex = tasksArr.findIndex((obj) => obj.title === task.title);
+    tasksArr.splice(taskIndex, 1);
+    localStorage.setItem("taskList", JSON.stringify(tasksArr));
+  }
+}
+
 displayItems();
 
+//edit
+//add time?
 // function displayDescription() {}
