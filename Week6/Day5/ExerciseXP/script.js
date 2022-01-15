@@ -25,6 +25,4 @@ function setData(e) {
 }
 
 ///clear the form fields
-////see when to clear the local sotrage
 /////prevent user from typing inccorect data type
-// mark boxes checked when clicked

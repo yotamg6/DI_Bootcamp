@@ -1,8 +1,15 @@
 let isCompleted = false;
-function displayItems() {
+
+function displayItems(isEdited) {
+  const container = document.querySelector(".container");
+  if (isEdited) {
+    while (container.firstChild) {
+      container.removeChild(container.firstChild);
+    }
+  }
+
   const getItems = JSON.parse(localStorage.getItem("taskList"));
   console.log(getItems);
-
   getItems.forEach((obj) => {
     const paraTitle = document.createElement("p");
     const titleText = document.createTextNode(`Title: ${obj.title}`);
@@ -17,7 +24,6 @@ function displayItems() {
       60 /
       60 /
       24;
-    // console.log(calcDaysLeft);
     const daysLeftText = document.createTextNode(
       `${calcDaysLeft}
       days left to complete the task`
@@ -26,21 +32,35 @@ function displayItems() {
     const descriptionPara = document.createElement("p");
     const descriptionText = document.createTextNode(obj.description);
     descriptionPara.append(descriptionText);
+
     const taskBox = document.createElement("div");
+
     taskBox.setAttribute("class", "taskBox");
     const input = document.createElement("input");
     input.setAttribute("type", "checkbox");
     input.setAttribute("class", "inputCheck");
     const xBtn = document.createElement("span");
     xBtn.innerHTML = '<i class="fas fa-window-close"></i>';
-    // const i = document.createElement("i");
-    // i.innerHTML = 'class="fas fa-window-close';
-    taskBox.append(paraTitle, paraStartDate, paraDaysLeft, input, xBtn);
-    document.body.append(taskBox);
+    const editBtn = document.createElement("button");
+    editBtn.setAttribute("class", "editBtn");
+    editBtn.textContent = "EDIT TASK";
+
+    taskBox.append(
+      paraTitle,
+      paraStartDate,
+      paraDaysLeft,
+      input,
+      xBtn,
+      editBtn
+    );
+    container.append(taskBox);
     new Date(obj.endDate) < new Date()
       ? (taskBox.style.backgroundColor = "pink")
       : taskBox;
-    input.addEventListener("click", isCompleteFun);
+    input.addEventListener("click", completed);
+    editBtn.addEventListener("click", function (e) {
+      showHiddenFields(e, obj, getItems, taskBox);
+    });
     xBtn.addEventListener("click", function () {
       deleteTask(obj, getItems, taskBox);
     });
@@ -52,7 +72,7 @@ function displayItems() {
     });
   });
 }
-function isCompleteFun(e) {
+function completed(e) {
   e.preventDefault();
   if (isCompleted) {
     e.target.parentElement.style.backgroundColor = "red";
@@ -75,8 +95,41 @@ function deleteTask(task, tasksArr, taskBox) {
   }
 }
 
+function showHiddenFields(e, task, tasksArr, taskBox) {
+  e.preventDefault();
+  const editForm = document.getElementById("todo");
+  editForm.style.display = "block";
+  editForm.addEventListener("submit", function (e) {
+    editTask(e, task, tasksArr, editForm, taskBox);
+  });
+}
+
+function editTask(e, task, tasksArr, editForm, taskBox) {
+  e.preventDefault();
+  taskBox.remove();
+
+  const editTitle = editForm.elements[0].value;
+  const editDesc = editForm.elements[1].value;
+  const editStartDate = editForm.elements[2].value;
+  const editEndDate = editForm.elements[3].value;
+
+  const newTask = {};
+  newTask.title = editTitle;
+  newTask.description = editDesc;
+  newTask.startDate = editStartDate;
+  newTask.endDate = editEndDate;
+
+  const oldTaskIndex = tasksArr.findIndex((obj) => obj.title === task.title);
+  tasksArr.splice(oldTaskIndex, 1, newTask);
+  tasksArr.sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+  localStorage.setItem("taskList", JSON.stringify(tasksArr));
+  let isEdited = true;
+  displayItems(isEdited);
+  editForm.style.display = "none";
+}
 displayItems();
 
-//edit
+//checkbox not checking?
+// clear the fields
 //add time?
-// function displayDescription() {}
