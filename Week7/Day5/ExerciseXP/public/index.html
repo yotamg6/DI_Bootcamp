@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>My Shopping List</h1>
+    <form action="http://localhost:5002/list" method="GET" id="shopForm">
+      <label for="shoItem">Shopping Item</label>
+      <input type="text" name="shoItem" id="shoItem" />
+      <label for="amount">Amount</label>
+      <input type="text" name="amount" id="amount" />
+      <a href="http://localhost:5002/my-shopping">
+        <button id="subBtn">Submit</button></a
+      >
+    </form>
+    <script src="script.js"></script>
+  </body>
+</html>
