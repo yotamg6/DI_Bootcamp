@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>posts</h1>
+    <div>
+      <% posts.forEach(post=> { %>
+      <li> <a href=" <%=post.link%>"><%=post.title%></a></li>  
+    <li>Publication Date:<%=post.pubDate%></li>
+    <li>Creator:<%=post.creator%></li>
+    <li>categories:</li>
+    <ul>
+      <% post.categories.forEach(cate => { %>
+      <li><%=cate%></li>
+      <% }) %>
+  </ul>
+    <li>Content:<%=post.content%></li>
+  
+  
+  </br> 
+<% }) %>
+
+    </div>
+  </body>
+</html>
+
+<!-- see if I can splice the content, to have it without the whole css part  -->

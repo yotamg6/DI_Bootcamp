@@ -1,0 +1,9 @@
+a link that redirects the user to the specific post in the website https://www.thefactsite.com/
+the publication date, creator, category and content of the post
+In the pages folder, create two ejs files:
+
+search.ejs :
+It should include the files head.ejs, header.ejs, posts.ejs and footer.ejs.
+It should contain two forms, to search a post by title and by category (with options).
+index.ejs is the home page displaying all the posts.
+It should include the files head.ejs, header.ejs, posts.ejs and footer.ejs.
