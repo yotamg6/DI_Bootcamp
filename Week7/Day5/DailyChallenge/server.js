@@ -15,28 +15,46 @@ app.use("/", exp.static(__dirname + "/public"));
 // const path = require("path");
 // app.use("/static", exp.static(path.join(__dirname, "public/login.html")));
 
+const data = fs.readFileSync("./data.json");
+const userArr = JSON.parse(data);
+
 app.post("/register", (req, res) => {
-  console.log(req.body.fname);
-  fs.readFile("./data.json", (err, data) => {
-    if (err) {
-      console.log(err);
-    } else {
-      if (
-        data.toString().includes(req.body.userName) ||
-        data.toString().includes(req.body.password)
-      ) {
-        res.send("User allready exists");
-        console.log("User allready exists");
-      } else {
-        res.send("Hello! your account is now created");
-        fs.appendFile("./data.json", JSON.stringify(req.body), (err) => {
-          if (err) console.log(err);
-          else console.log("all good");
-        });
-      }
-    }
-  });
+  if (userExist(req.body.userName)) {
+    res.json({ message: "User allready exists" });
+  } else {
+    userArr.push(req.body);
+    fs.writeFile("./data.json", JSON.stringify(userArr), (err) => {
+      res.json({ message: "Hello! your account is now created" });
+    });
+  }
 });
+
+const userExist = (username) => {
+  return userArr.find((item) => item.userName == username);
+};
+
+// app.post("/register", (req, res) => {
+//   console.log(req.body.fname);
+//   fs.readFile("./data.json", (err, data) => {
+//     if (err) {
+//       console.log(err);
+//     } else {
+//       if (
+//         data.toString().includes(req.body.userName) ||
+//         data.toString().includes(req.body.password)
+//       ) {
+//         res.send("User allready exists");
+//         console.log("User allready exists");
+//       } else {
+//         res.send("Hello! your account is now created");
+//         fs.appendFile("./data.json", JSON.stringify(req.body), (err) => {
+//           if (err) console.log(err);
+//           else console.log("all good");
+//         });
+//       }
+//     }
+//   });
+// });
 
 app.post("/login", (req, res) => {
   console.log("received request");
