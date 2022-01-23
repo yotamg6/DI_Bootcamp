@@ -1,0 +1,9 @@
+Create 2 HTML files: one for the Login form and the other for the Register form (when the inputs are empty the submit button should be disabled).
+
+Create a server with Node.js and express.
+
+Write the users data to a JSON file.
+
+In a script.js file, set up all the server functionalities and the fetches for the corresponding forms.
+
+The Register form should have five inputs: Name, Last Name, Email, Username and Password. And it should register a user with a message as follows:
