@@ -93,6 +93,10 @@ class Form extends React.Component {
         <br />
         **Nuts free: {this.props.inputVal.nuts}
         <br />
+        **Lactose free: {this.props.inputVal.lactose}
+        <br />
+        **Vegan: {this.props.inputVal.vegan}
+        <br />
       </>
     );
   }

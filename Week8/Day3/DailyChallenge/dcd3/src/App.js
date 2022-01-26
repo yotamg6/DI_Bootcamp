@@ -11,11 +11,7 @@ class App extends Component {
       age: "",
       male: "",
       female: "",
-      armenia: "",
-      belgium: "",
-      canada: "",
-      denmark: "",
-      england: "",
+      destination: "",
       nuts: "",
       lactose: "",
       vegan: "",
@@ -23,8 +19,7 @@ class App extends Component {
   }
   handleChange = (e) => {
     const name = e.target.name;
-    const value =
-      e.target.type === "checkbox" ? e.target.checked : e.target.value;
+    const value = e.target.type === "checkbox" ? "yes" : e.target.value;
     this.setState({ [name]: value });
   };
 
