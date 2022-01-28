@@ -5,7 +5,6 @@ class Todo extends React.Component {
     super();
     this.state = {
       todoArr: [],
-      hover: true,
     };
   }
   handleSubmit = (e) => {
@@ -17,22 +16,18 @@ class Todo extends React.Component {
     }
   };
   deleteTask = (index) => {
-    const newArr = this.state.todoArr.filter(
-      (item, i, arr) => item[i] != arr[index]
-    );
-
+    const newArr = this.state.todoArr.filter((item, i, arr) => i !== index);
     this.setState({ todoArr: newArr });
   };
   strikeThrough = (e) => {
-    e.target.style.textDecorationLine = this.state.hover
-      ? "line-through"
-      : "none";
-    this.setState({ hover: !this.state.hover });
+    e.target.style.textDecorationLine =
+      e.type == "mouseenter" ? "line-through" : "none";
   };
 
   render() {
     return (
       <div>
+        <h1>Todo's</h1>
         <input
           type="text"
           name="add"
