@@ -1,0 +1,17 @@
+n the src folder, create a subfolder named reducers that contains an index.js file.
+
+The store should have an initialState containing the attribute count. By default count should be equal to zero.
+Note: Reducer is the brain of a Redux app. It takes away the state from the individual component and manages the entire state of the app in a single place (note that there could be multiple reducers for complex app). The reducer is a pure function that takes an action(payload). The reason that the reducer must be a pure function is that the reducer is not supposed to change any object outside of the function.
+
+Import the store in the App.js file
+Note: By importing createStore, you will be able to access the Redux store. The store can be perceived as the object that brings the reducers and the actions together.
+
+In the src folder, create a subfolder named actions, containing an index.js file.
+This file contains two actions for increasing and decreasing the counter : INCREASE_COUNT and DECREASE_COUNT.
+Store the strings for the action types as key/value pairs, and import the action types in the reducers/index.js file.
+Note: In their essence, actions are JavaScript objects. Therefore, actions should be familiar in their structure to anyone who used ES6. Actions are payloads of information. Actions send data from our application to our store.
+
+In the src folder, create a subfolder named components, containing a Counter.js file (ie. Counter Class Component).
+The Counter component will get the count state property from the Redux store.
+The Counter component will import INCREASE_COUNT and DECREASE_COUNT from ../actions.
+The INCREASE_COUNT action is activated onClick of the + button and the DECREASE_COUNT action is activated onClick of the - button.
