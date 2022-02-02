@@ -1,0 +1,5 @@
+Use the shouldComponentUpdate() method and set it to return true.
+
+When the button is clicked on, the value of the favoriteColor property should change to “pink”.
+
+If you set the return of the shouldComponentUpdate() method to false, you won’t be able to change the value of the favoriteColor property to “blue”, (even after clicking on the button)

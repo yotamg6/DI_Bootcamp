@@ -1,0 +1,18 @@
+1. Create Express Nodejs server that listen on port 8000;
+2. Create a public folder with index.html file, go to => localhost:8000
+3. Create '/about' route that will send the about.html
+file from public folder -> sendFile(...)
+4. Create '/welcome' route that will redirect you to '/home' route
+that will send you the indxe.html file
+5. Create an API, get all customers from dvdrental database,
+-> customer_id, first_name, last_name, email
+route should be '/customers'
+use module db.js
+use .env for all database connection parameters
+6. fetch your customer api from index.html+script.js and show all customers in
+a select option
+7. Create a get route '/customer' that will get customerid from a get query
+and show this customer first_name,last_name,email, customer_id
+8. index.html. input + button -> fetch the customer api with the customer id
+that you pu in the input 
+9. customer address (join). new api with address

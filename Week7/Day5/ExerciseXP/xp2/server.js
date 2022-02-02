@@ -15,21 +15,23 @@ env.config();
 
 app.set("view engine", "ejs");
 
-(async () => {
+const rss = async () => {
   let feed = await parser.parseURL("https://www.thefactsite.com/feed/");
   //   console.log("website title:", feed.title);
   //   console.log("items:", feed.items);
   feed.items.forEach((item) => {
     console.log(item.title + ":" + item.link);
   });
-  const items = feed.items;
-  app.get("/posts", (req, res) => {
-    res.render("partials/posts", { posts: items });
-  });
-  app.get("/search", (req, res) => {
-    res.render("pages/search", { posts: items });
-  });
-})();
+  return feed;
+};
+rss().then((data) => console.log(data));
+const items = feed.items;
+app.get("/posts", (req, res) => {
+  res.render("partials/posts", { posts: items });
+});
+app.get("/search", (req, res) => {
+  res.render("pages/search", { posts: items });
+});
 
 app.get("/home", (req, res) => {
   res.render("pages/index");

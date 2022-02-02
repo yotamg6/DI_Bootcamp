@@ -10,8 +10,9 @@ const sentenceArr = sentence.replaceAll(",", " ").split(" ");
 console.log(sentenceArr);
 
 const wordNot = sentenceArr.indexOf("not");
-
+console.log(wordNot);
 const wordBad = sentenceArr.indexOf("bad");
+console.log(wordBad);
 
 if (wordBad > wordNot) {
   const spanDelete = wordBad - wordNot + 1;

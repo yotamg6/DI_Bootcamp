@@ -194,14 +194,20 @@
 -- ON film.film_id=inventory.film_id
 -- WHERE inventory.inventory_id = (
 
--- SELECT inventory_id
--- FROM rental
--- INNER JOIN payment 
--- ON payment.rental_id=rental.rental_id
--- INNER JOIN customer
--- ON rental.customer_id = customer.customer_id
--- WHERE payment.amount>4.00 AND rental.customer_id=(SELECT customer_id FROM customer WHERE last_name='Mahan')
--- -- 	);
+-- -- SELECT film.title
+-- -- FROM rental
+-- -- INNER JOIN payment 
+-- -- ON payment.rental_id=rental.rental_id
+-- -- INNER JOIN customer
+-- -- ON rental.customer_id = customer.customer_id
+-- -- INNER JOIN inventory
+-- -- ON rental.inventory_id=inventory.inventory_id
+-- -- INNER JOIN film
+-- -- ON inventory.film_id=film.film_id 
+-- -- WHERE payment.amount>4.00 AND rental.return_date < '2005-08-01'
+-- -- AND rental.return_date > '2005-07-28'
+-- -- AND rental.customer_id=(SELECT customer_id FROM customer WHERE last_name='Mahan')
+-- -- 	;
 
 -- The 4th film : His friend Matthew Mahan watched this film, as well.
 -- It had the word “boat” in the title or description, and it looked like it was a very expensive DVD to replace.

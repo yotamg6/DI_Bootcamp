@@ -1,0 +1,10 @@
+In the src folder, create a subfolder named components. Add a TransactionForm.js file which will have a state with the properties : accountNumber, FSC, name and amount.
+Render a form with four inputs and a submit button.
+
+Use handleInputChange and handleSubmit functions for the form functionality.
+
+Use mapStateToProps to return the state.list(ie. the list of transations) and the state.currentIndex (ie. the current transaction).
+
+Use mapDispatchToProps for the actions.insert and actions.update actions.
+
+Use the connect() function from redux.

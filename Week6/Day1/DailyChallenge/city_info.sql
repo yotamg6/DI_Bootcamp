@@ -26,7 +26,7 @@
 
 -- 9. Select only the info of the cities that start with an "S" (uppercase or lowercase). - Look at the DISTINCT constraint.
 
--- SELECT * FROM city_info WHERE city LIKE 'S%';
+-- SELECT DISTINCT(city) FROM city_info WHERE city ILIKE 'S%';
 
 -- 10. Add to the table, todays information in Israel - of this very hour. 
 -- (timestamp,city,temperature,light,airquality_raw,sound,humidity,dust)

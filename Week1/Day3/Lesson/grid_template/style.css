@@ -1,0 +1,198 @@
+/* /////lesson
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  height: 100vh;
+  display: grid;
+  grid-gap: 5px;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    "header header header"
+    "sidebar content content"
+    "footer footer footer";
+}
+header {
+  grid-area: header;
+  border: 1px solid #000;
+  background-color: red;
+  padding: 25px;
+}
+article {
+  grid-area: content;
+  border: 1px solid #000;
+  background-color: yellow;
+  padding: 50px;
+}
+aside {
+  grid-area: sidebar;
+  border: 1px solid #000;
+  background-color: green;
+  padding: 50px;
+}
+footer {
+  grid-area: footer;
+  border: 1px solid #000;
+  background-color: #000;
+  padding: 10px;
+} */
+/* /////exe 1
+* {
+  margin: 0;
+  padding: 0;
+}
+.outer_div {
+  display: flex;
+  border: 1px solid #000;
+  height: 100vh;
+  flex-direction: column;
+  /* padding: 10px 10px 10px 10px; */
+/* }
+.inner_div {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  /* grid-column-gap: 10px; */
+/* grid-row-gap: 10px;
+  padding: 10px 10px; */
+/* }
+.box1 {
+  background-color: pink;
+  border: 1px solid #000; */
+/* } */
+/* .box2 { */
+/* background-color: blue; */
+/* border: 1px solid #000; */
+/* } */
+/* .box3 { */
+/* background-color: pink; */
+/* border: 1px solid #000; */
+/* } */
+/* .box4 { */
+/* background-color: blue; */
+/* border: 1px solid #000; */
+/* } */
+/* .box5 { */
+/* height: 50%;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+  background-color: orange;
+  border: 1px solid #000;
+} */
+/*/////exe 2 
+* {
+  margin: 0;
+  padding: 0;
+}
+.wrapper {
+  text-align: center;
+  height: 100vh;
+  color: white;
+  width: 50%;
+  margin: auto;
+  display: grid;
+  grid-gap: 5px;
+  /* grid-template-rows: 1fr 5fr 7fr 3fr 1fr; */
+/* grid-template-areas:
+    "header header header header header header header"
+    "hero hero hero MC MC MC MC"
+    "hero hero hero MC MC MC MC"
+    "hero hero hero MC MC MC MC"
+    "hero hero hero MC MC MC MC"
+    "sidebar sidebar sidebar MC MC MC MC"
+    "sidebar sidebar sidebar MC MC MC MC"
+    "sidebar sidebar sidebar EC EC EC EC"
+    "sidebar sidebar sidebar EC EC EC EC"
+    "sidebar sidebar sidebar EC EC EC EC"
+    "images images images images images post post"
+    "images images images images images post post"
+    "footer footer footer footer footer footer footer"; */
+/* }
+header {
+  grid-area: header;
+  background-color: rgb(14, 147, 209);
+}
+hero {
+  grid-area: hero;
+  background-color: rgb(188, 101, 199);
+}
+article {
+  grid-area: MC;
+  background-color: rgb(238, 223, 12);
+}
+extracontent { */
+/* grid-area: EC;
+  background-color: grey;
+}
+aside {
+  grid-area: sidebar;
+  background-color: rgb(63, 128, 85);
+}
+images {
+  grid-area: images;
+  background-color: green;
+  text-align: center;
+}
+post {
+  grid-area: post;
+  background-color: hotpink; */
+/* font-size: 40px;
+}
+footer {
+  grid-area: footer;
+  background-color: orange;
+} */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.wrapper {
+  display: grid;
+  text-align: center;
+  height: 100vh;
+  color: white;
+  font-size: 60px;
+  grid-gap: 5px;
+  grid-template-areas:
+    "header header header header header header"
+    "main main article article aside aside"
+    "main main area area area area"
+    "nav nav nav nav section section"
+    "footer footer footer footer footer footer";
+}
+header {
+  background-color: rgb(250, 63, 150);
+  grid-area: header;
+}
+main {
+  background-color: rgb(85, 0, 243);
+  grid-area: main;
+  padding: 100px;
+}
+article {
+  background-color: rgb(128, 63, 250);
+  grid-area: article;
+}
+aside {
+  background-color: rgb(54, 92, 153);
+  grid-area: aside;
+}
+.area {
+  background-color: rgb(172, 63, 250);
+  grid-area: area;
+}
+nav {
+  background-color: rgb(250, 63, 150);
+  grid-area: nav;
+}
+section {
+  background-color: rgb(85, 0, 243);
+  grid-area: section;
+}
+footer {
+  background-color: rgb(128, 63, 250);
+  grid-area: footer;
+}

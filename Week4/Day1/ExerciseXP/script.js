@@ -85,13 +85,15 @@ let ordinal = ["th", "st", "nd", "rd"];
 // Write a JavaScript program that displays the colors in the following order : “1st choice is Blue .” “2nd choice is Green.” “3rd choice is Red.” ect…
 // Hint : Use the array methods taught in class.
 const [d, a, b, c] = ordinal;
-let newArr = [];
-newArr = [a, b, c, d];
+// let newArr = [];
+let newArr = [a, b, c, d];
+console.log(newArr);
 
 color.forEach((col, i) => {
   newArr.push(d);
   console.log(`${i + 1}${newArr[i]} choice is ${col}`);
 });
+console.log(newArr);
 // Exercise 5 : Is It A String ?
 // Instructions
 // Write a JavaScript function that checks whether the value of an input is a string or not.

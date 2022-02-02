@@ -8,12 +8,6 @@ app.use(exp.json());
 app.listen(5010, () => console.log("listening on 5010"));
 
 app.use("/", exp.static(__dirname + "/public"));
-// app.use("/login", (req, res) => {
-//   res.sendFile("./login");
-// });
-
-// const path = require("path");
-// app.use("/static", exp.static(path.join(__dirname, "public/login.html")));
 
 const data = fs.readFileSync("./data.json");
 const userArr = JSON.parse(data);

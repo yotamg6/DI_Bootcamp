@@ -17,5 +17,5 @@ console.log(fruits);
 //exe. 2
 //Access and then console.log “Oranges”.
 let moreFruits = ["Banana", ["Apples", ["Oranges"], "Blueberries"]];
-const nestedArr = moreFruits[1][1];
+const nestedArr = moreFruits[1][1][0];
 console.log(nestedArr);

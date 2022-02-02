@@ -1,0 +1,13 @@
+body {
+  display: flex;
+  justify-content: space-around;
+  align-items: stretch;
+}
+body > div {
+  width: 150px;
+  height: 150px;
+  border: 1px solid black;
+  background: grey;
+}
+.fade {
+}

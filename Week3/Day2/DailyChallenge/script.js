@@ -15,14 +15,15 @@ let allInputs = document.querySelectorAll("input");
 let storyArr = [];
 btnLib.addEventListener("click", getInputs);
 
-function getInputs() {
+function getInputs(e) {
+  console.log(e.target.previousElementSibling);
   for (let input of allInputs) {
     const inputValue = input.value;
     if (inputValue) {
       storyArr.push(inputValue);
     } else alert("please submit all fields");
   }
-  console.log(storyArr);
+
   const temp = storyArr[0];
   storyArr[0] = storyArr[1];
   storyArr[1] = temp;
@@ -43,6 +44,7 @@ function getInputs() {
     storyShuffled(storyPara, storyId);
   });
 }
+console.log(storyArr);
 
 function storyShuffled(para, storyid) {
   const randomStart = Math.round(Math.random() * 8);

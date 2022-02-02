@@ -17,13 +17,10 @@ class App extends React.Component {
     let currentIndex = superheroes.length,
       randomIndex;
 
-    // While there remain elements to shuffle...
     while (currentIndex != 0) {
-      // Pick a remaining element...
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex--;
 
-      // And swap it with the current element.
       [superheroes[currentIndex], superheroes[randomIndex]] = [
         superheroes[randomIndex],
         superheroes[currentIndex],
@@ -48,7 +45,6 @@ class App extends React.Component {
   };
 
   render() {
-    console.log("length:", this.state.highestScores.size);
     const shuffled = this.shuffle();
     return (
       <div className="App">

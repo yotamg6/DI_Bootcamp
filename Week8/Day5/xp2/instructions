@@ -1,0 +1,7 @@
+The todo form has an input text. When the user will enter the task, it will be added to the todos list. The todos list is an array of object.
+
+The user can cross out and delete a todo’s when clicking on one of them.
+
+Bonus: Use a database instead of an an array of objects.
+Good luck!
+

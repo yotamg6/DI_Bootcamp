@@ -16,10 +16,9 @@ const solarPlanets = [
   "uranus",
   "neptune",
 ];
-let planetDiv;
+
 for (let planet of solarPlanets) {
-  console.log(planet);
-  planetDiv = document.createElement("div");
+  let planetDiv = document.createElement("div");
   const planetText = document.createTextNode(planet);
   planetDiv.appendChild(planetText);
   planetDiv.classList.add("planet");
