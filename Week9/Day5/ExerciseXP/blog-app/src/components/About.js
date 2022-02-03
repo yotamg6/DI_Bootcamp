@@ -3,7 +3,7 @@ const About = () => {
     <>
       <h1>About</h1>
 
-      <p></p>
+      <p>blablabla</p>
     </>
   );
 };
