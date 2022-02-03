@@ -1,0 +1,22 @@
+Create a React app blog
+
+In the src folder, create a style.css file, and copy this code
+
+Download this blog.png for the posts
+
+Add the following line of code, in the head of the public/index.html file:
+
+
+In the src folder, create a subfolder named components. Create 5 Javascript files:
+Create a Class component named Home.js:
+Import the blog image. We will use it for our posts.
+Render a title and a paragraph
+Create a function component named About.js that renders a title and a paragraph
+
+Create a function component named Contact.js that renders a title and a paragraph
+
+Create a function component named Navbar.js:
+Use some classes of Materialize to create a styled navbar. Check out the documentation
+Use React Router, Link and Navlink. Don’t forget to install npm install react-router-dom.
+Add a Link that points to the logo.
+Add three Navlink, pointing to /,/about and /contact

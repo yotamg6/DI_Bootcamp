@@ -3,8 +3,10 @@ const app = exp();
 const knex = require("knex");
 const cList = require("./modules/db");
 const env = require("dotenv");
+const cors = require("cors");
 
 env.config();
+app.use(cors());
 
 const db = knex({
   client: "pg",

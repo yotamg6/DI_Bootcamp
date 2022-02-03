@@ -1,0 +1,2 @@
+create a react app that will fetch your api (countries and cities) and will present it as select boxes. 
+for the fetch, remember to use componentDidMount
