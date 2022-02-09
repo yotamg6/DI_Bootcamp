@@ -1,12 +1,16 @@
 import "./App.css";
 import Landing from "./components/Landing";
-
+import Navbar from "./components/Navbar";
+import Favorites from "./components/Favorites";
+import { Routes, Route } from "react-router-dom";
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <Landing />
-      </header>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route path="/favorites" element={<Favorites />} />
+      </Routes>
     </div>
   );
 }

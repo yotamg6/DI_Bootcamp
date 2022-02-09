@@ -10,9 +10,15 @@ class City extends React.Component {
     const arr = this.state.favorites;
     arr.push(city);
     this.setState({ favorites: arr });
+    localStorage.setItem(
+      `favoriteCities`,
+      JSON.stringify(this.state.favorites)
+    );
   };
   render() {
     console.log(this.state.favorites);
+    // console.log(JSON.parse(localStorage.Berlin.main));
+
     const data = this.props.data;
 
     if (Object.keys(data).length > 0) {
