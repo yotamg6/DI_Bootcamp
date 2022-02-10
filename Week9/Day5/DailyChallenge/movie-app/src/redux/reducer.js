@@ -13,10 +13,17 @@ export const reducer = (state = initState, action = {}) => {
         text: action.payload,
       };
     case "FETCH_MOVIES":
+      console.log("fetchmovies:", action.payloadLoading);
       return {
         ...state,
         movies: action.payload,
-        loading: true,
+        loading: action.payloadLoading,
+      };
+    case "LOADING_MOVIE":
+      console.log("loadingMovie:", action.payload);
+      return {
+        ...state,
+        loading: action.payload,
       };
     case "FETCH_MOVIE":
       return {

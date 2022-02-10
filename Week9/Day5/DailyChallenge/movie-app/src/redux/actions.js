@@ -6,11 +6,15 @@ export const searchMovies = (value) => {
 };
 
 export const fetchMovies = (search) => (dispatch) => {
+  dispatch({ type: "LOADING_MOVIE", payload: true });
   fetch(`http://www.omdbapi.com/?s=${search}&apikey=7208f76a
   `)
     .then((resp) => resp.json())
     // .then((data) => console.log(data))
-    .then((data) => dispatch({ type: "FETCH_MOVIES", payload: data }))
+    .then((data) => {
+      console.log("fetchMoviesdata:", data);
+      dispatch({ type: "FETCH_MOVIES", payloadLoading: false, payload: data });
+    })
     .catch((e) => console.log("error:", e));
 };
 
