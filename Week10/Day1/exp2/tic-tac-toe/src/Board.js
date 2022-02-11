@@ -150,48 +150,63 @@ class Board extends React.Component {
     }
     return (
       <>
-        {winner ? <p>{winner} wins!</p> : null}
-        {draw ? <p>It is a draw!</p> : null}
-        {turn ? <p>It's {turn}'s turn</p> : null}
-        {this.state.gameOver ? (
-          <p>The game is over, press reset to start a new game</p>
-        ) : null}
-        {arr.map((row, i) => {
-          return (
-            <>
-              <div key={i} className="boardRow">
-                {row.map((elem, z) => {
-                  return (
-                    <button
-                      key={z}
-                      className="square"
-                      onClick={() => this.handleClick(i, z)}
-                    >
-                      {arr[i][z]}
-                    </button>
-                  );
-                })}
-              </div>
-            </>
-          );
-        })}
-        <button onClick={this.resetGame}>Reset game</button>
-        <button
-          onClick={() => {
-            this.resetGame();
-            this.setState({ modeAi: true });
-          }}
-        >
-          Versus AI
-        </button>
-        <button
-          onClick={() => {
-            this.resetGame();
-            this.setState({ modeAi: false });
-          }}
-        >
-          2 players
-        </button>
+        <div className="container">
+          <h1>Tic-Tac-Toe</h1>
+          {this.state.modeAi ? (
+            <h2>AI Game Mode</h2>
+          ) : (
+            <h2>2 Players Game Mode</h2>
+          )}
+
+          {winner ? <p>{winner} wins!</p> : null}
+          {draw ? <p>It is a draw!</p> : null}
+          {turn ? <p>It's {turn}'s turn</p> : null}
+          {this.state.gameOver ? (
+            <p>The game is over, press reset to start a new game</p>
+          ) : null}
+          {arr.map((row, i) => {
+            return (
+              <>
+                <div key={i} className="boardRow">
+                  {row.map((elem, z) => {
+                    return (
+                      <button
+                        key={z}
+                        className="square"
+                        onClick={() => this.handleClick(i, z)}
+                      >
+                        {arr[i][z]}
+                      </button>
+                    );
+                  })}
+                </div>
+              </>
+            );
+          })}
+          <div className="btnsCont">
+            <button onClick={this.resetGame} className="btns">
+              Reset
+            </button>
+            <button
+              className="btns"
+              onClick={() => {
+                this.resetGame();
+                this.setState({ modeAi: true });
+              }}
+            >
+              Versus AI
+            </button>
+            <button
+              className="btns"
+              onClick={() => {
+                this.resetGame();
+                this.setState({ modeAi: false });
+              }}
+            >
+              2 players
+            </button>
+          </div>
+        </div>
       </>
     );
   }
