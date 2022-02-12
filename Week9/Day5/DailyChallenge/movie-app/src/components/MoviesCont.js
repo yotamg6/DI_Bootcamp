@@ -22,12 +22,20 @@ const MoviesCont = (props) => {
         <>
           {Search.map((movie, i) => {
             return (
-              <div className="containerMovie" key={i}>
-                <img src={movie.Poster}></img>
-                {movie.Title} - {movie.Year}
-                <Link variant="primary" to={`movie/${movie.imdbID}`}>
-                  Movie Details{" "}
-                </Link>
+              <div className="elem">
+                <div className="containerMovie" key={i}>
+                  <img src={movie.Poster}></img>
+                  <div className="textCont">
+                    <p className="title">{movie.Title} </p>
+                    <p className="year"> {movie.Year}</p>
+                    <Link
+                      style={{ color: "blue" }}
+                      to={`movie/${movie.imdbID}`}
+                    >
+                      Movie Details{" "}
+                    </Link>
+                  </div>
+                </div>
               </div>
             );
           })}

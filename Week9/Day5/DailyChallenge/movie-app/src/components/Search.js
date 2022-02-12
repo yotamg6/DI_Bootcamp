@@ -1,23 +1,27 @@
 import { connect } from "react-redux";
 import { searchMovies, fetchMovies } from "../redux/actions";
 import Card from "react-bootstrap/Card";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import "./landStyle.css";
 
 const Search = (props) => {
   return (
     <>
       <Card
         className="container"
-        style={{ width: "80rem", height: "20rem", backgroundColor: "grey" }}
+        style={{
+          width: "80rem",
+          height: "10rem",
+          backgroundColor: "lightgrey",
+        }}
       >
         <Card.Body>
-          <Card.Title>Search for a Movie/TV Series</Card.Title>
-          <input
-            style={{ width: "20rem", height: "4rem" }}
-            type="text"
-            onChange={props.handleChange}
-          ></input>
+          <Card.Title>Search for a Movie/TV Series...</Card.Title>
+          <FontAwesomeIcon icon={faMagnifyingGlass} size="3x" />
+          <input type="text" onChange={props.handleChange}></input>
           <button
-            style={{ color: "white", backgroundColor: "blue" }}
+            className="btnSearch"
             onClick={() => props.handleClick(props.text.toLowerCase())}
           >
             Search
@@ -42,3 +46,34 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
+
+{
+  /* <Card
+className="container"
+style={{ width: "80rem", height: "20rem", backgroundColor: "grey" }}
+>
+  <Card.Body>
+    <Card.Title>Search for a Movie/TV Series</Card.Title>
+    <input type="text" onChange={props.handleChange}></input>
+    <button
+      className="btnSearch"
+      onClick={() => props.handleClick(props.text.toLowerCase())}
+    >
+      Search
+    </button>
+  </Card.Body>
+</Card> */
+}
+
+{
+  /* <div className="searchContainer">
+        <h1>Search for a Movie/TV Series</h1>
+        <input type="text" onChange={props.handleChange}></input>
+        <button
+          className="btnSearch"
+          onClick={() => props.handleClick(props.text.toLowerCase())}
+        >
+          Search
+        </button>
+      </div> */
+}
