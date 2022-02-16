@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
-const { setTemperText } = useContext(AppContext);
+import { AppContext } from "../App";
 const TemperSearch = () => {
+  const { setTemperText } = useContext(AppContext);
   const handleChange = (e) => {
     setTemperText(e.target.value);
   };

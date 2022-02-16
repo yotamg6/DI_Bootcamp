@@ -1,7 +1,15 @@
 import React, { useState, useEffect, useContext } from "react";
-const { heightText, weightText, temperText, setHeight, setWeight, setTemper } =
-  useContext(AppContext);
+import { AppContext } from "../App";
+
 const BtnSubmit = () => {
+  const {
+    heightText,
+    weightText,
+    temperText,
+    setHeight,
+    setWeight,
+    setTemper,
+  } = useContext(AppContext);
   const handleClick = () => {
     setHeight(heightText);
     setWeight(weightText);
@@ -9,7 +17,7 @@ const BtnSubmit = () => {
   };
   return (
     <>
-      <button onClick={handleClick}></button>
+      <button onClick={handleClick}>Get a match!</button>
     </>
   );
 };

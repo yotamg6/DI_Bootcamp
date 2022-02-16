@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
-const { setHeightText } = useContext(AppContext);
+import { AppContext } from "../App";
+
 const HeightSearch = () => {
+  const { setHeightText } = useContext(AppContext);
   const handleChange = (e) => {
     setHeightText(e.target.value);
   };
