@@ -6,10 +6,11 @@ import WeightSearch from "./components/WeightSearch";
 import TemperSearch from "./components/TemperSearch";
 import BtnSubmit from "./components/BtnSubmit";
 import SearchResults from "./components/SearchResults";
+import UploadFile from "./components/UploadFile";
 
 export const AppContext = createContext(null);
 const App = () => {
-  const [heightText, setHeightText] = useState("");
+  const [heightText, setHeightText] = useState();
   const [weightText, setWeightText] = useState("");
   const [temperText, setTemperText] = useState("");
   const [height, setHeight] = useState("");
@@ -33,6 +34,7 @@ const App = () => {
         <WeightSearch />
         <TemperSearch />
         <BtnSubmit />
+        <UploadFile />
         <SearchResults />
       </div>
     </AppContext.Provider>

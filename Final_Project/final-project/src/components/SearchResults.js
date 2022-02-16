@@ -60,7 +60,15 @@ const SearchResults = () => {
     );
   }
 
-  return <></>;
+  return (
+    <>
+      {foundMatchIndex && foundMatchIndex.length > 0
+        ? foundMatchIndex.map((index) => {
+            return <div key={index}>{breeds[index].name}</div>;
+          })
+        : null}
+    </>
+  );
 };
 
 export default SearchResults;

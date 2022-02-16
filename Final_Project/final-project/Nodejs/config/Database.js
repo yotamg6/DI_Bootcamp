@@ -1,4 +1,7 @@
 import axios from "axios";
+import { Sequelize } from "sequelize";
+import dotenv from "dotenv";
+dotenv.config();
 export const getAllBreeds = async () => {
   try {
     const response = await axios.request({
@@ -13,3 +16,13 @@ export const getAllBreeds = async () => {
     throw new Error(error);
   }
 };
+
+export const db = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASS,
+  {
+    host: "localhost",
+    dialect: "postgres",
+  }
+);
