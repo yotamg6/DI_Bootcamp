@@ -1,12 +1,12 @@
 import React, { useState, useEffect, createContext } from "react";
 import "./App.css";
-// import TempSearch from "./components/TempSearch";
-import HeightSearch from "./components/HeightSearch";
-import WeightSearch from "./components/WeightSearch";
-import TemperSearch from "./components/TemperSearch";
-import BtnSubmit from "./components/BtnSubmit";
+import { Routes, Route } from "react-router-dom";
+import Home from "./components/Home";
+import LoginRegister from "./components/LoginRegister";
+import MyDogProfile from "./components/MyDogProfile";
+import SearchFields from "./components/SearchFields";
 import SearchResults from "./components/SearchResults";
-import UploadFile from "./components/UploadFile";
+import Nav from "./components/Nav";
 
 export const AppContext = createContext(null);
 const App = () => {
@@ -16,26 +16,42 @@ const App = () => {
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [temper, setTemper] = useState("");
-  const [breeds, setBreeds] = useState("");
+  const [breeds, setBreeds] = useState([]);
+  const [matchIndexes, setMatchIndexes] = useState([]);
   return (
     <AppContext.Provider
-      value={
-        ({ heightText, setHeightText },
-        { weightText, setWeightText },
-        { temperText, setTemperText },
-        { height, setHeight },
-        { weight, setWeight },
-        { temper, setTemper },
-        { breeds, setBreeds })
-      }
+      value={{
+        heightText,
+        setHeightText,
+        weightText,
+        setWeightText,
+        temperText,
+        setTemperText,
+        height,
+        setHeight,
+        weight,
+        setWeight,
+        temper,
+        setTemper,
+        breeds,
+        setBreeds,
+        matchIndexes,
+        setMatchIndexes,
+      }}
     >
       <div className="App">
-        <HeightSearch />
-        <WeightSearch />
-        <TemperSearch />
-        <BtnSubmit />
-        <UploadFile />
-        <SearchResults />
+        <Nav />
+        <Routes>
+          <Route path="/login" element={<LoginRegister title={"Login"} />} />
+          <Route
+            path="/register"
+            element={<LoginRegister title={"Register"} />}
+          />
+          <Route path="" element={<Home />} />
+          <Route path="/my-dog" element={<MyDogProfile />} />
+          <Route path="/dog-search" element={<SearchFields />} />
+          <Route path="/search-results" element={<SearchResults />} />
+        </Routes>
       </div>
     </AppContext.Provider>
   );

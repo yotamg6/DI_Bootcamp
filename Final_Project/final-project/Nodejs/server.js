@@ -5,12 +5,24 @@ import dotenv from "dotenv";
 import multer from "multer";
 import path from "path";
 import { getAllBreeds } from "./config/Database.js";
+import { db } from "./config/Database.js";
+import Uploads from "./models/UserModel.js";
+import router from "./routes/index.js";
 
 dotenv.config();
 const app = express();
 
+try {
+  await db.authenticate();
+  console.log("Database Connected");
+} catch (e) {
+  console.log(e);
+}
+
 app.use(cors());
 app.use(express.json());
+
+app.use(router);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -38,15 +50,40 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-app.post("/api/uploads", upload.single("dog_pic"), (req, res) => {
-  res.json(req.file);
+app.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
+  //   res.json(req.file.filename);
+  const fileName = req.file
+    ? req.file.filename
+    : res.json({ msg: "No file to upload" });
+  const fileType = req.file ? req.file.mimetype : null;
+
+  try {
+    const ret = await Uploads.create({
+      filename: fileName,
+      filetype: fileType,
+    });
+    console.log(ret);
+    res.json({ filedata: ret.dataValues });
+  } catch (e) {
+    console.log(e);
+    res.json({ msg: "cannot upload file" });
+  }
 });
 
-app.get("/api/breeds", (req, res) => {
-  getAllBreeds()
-    .then((result) => res.json(result))
-    .catch((e) => console.log("error from server get", e));
+app.get("/api/images", async (req, res) => {
+  const images = await Uploads.findAll({
+    where: {
+      filetype: "image/jpeg",
+    },
+  });
+  res.json(images);
 });
+
+// app.get("/api/breeds", (req, res) => {
+//   getAllBreeds()
+//     .then((result) => res.json(result))
+//     .catch((e) => console.log("error from server get", e));
+// });
 
 const __dirname = path.resolve();
 app.use("/images", express.static(path.join(__dirname, "/uploads")));
