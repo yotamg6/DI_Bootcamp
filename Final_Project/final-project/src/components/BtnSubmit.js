@@ -20,7 +20,7 @@ const BtnSubmit = (props) => {
     setTemper(temperText);
     props.filterMatches();
     navigate("/search-results");
-    // if (matchIndexes.length > 0) navigate("search-results");
+    //should I add async-await here? it doesnt always get everything on the first time
   };
   return (
     <>

@@ -1,16 +1,58 @@
 import React, { useState } from "react";
 import { Button, Box, TextField } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const LoginRegister = ({ title }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [msg, setMsg] = useState("");
   const [userName, setUserName] = useState("");
-  const handleAction = (id) => {
+  const handleAction = async (id) => {
     console.log(id);
     if (id == "Register") {
+      try {
+        let response = await axios.post(
+          "http://localhost:5000/register",
+          {
+            userName,
+            email,
+            password,
+          },
+          {
+            withCredentials: true,
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("register:", response.data);
+      } catch (e) {
+        console.log("register:", e);
+      }
     } else if (id == "Login") {
+      try {
+        let response = await axios.post(
+          "http://localhost:5000/login",
+          {
+            userName,
+            email,
+            password,
+          },
+          {
+            withCredentials: true,
+            headers: {
+              "Access-Control-Allow-Origin": "*",
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("login:", response);
+      } catch (e) {
+        console.log("from login:", e);
+        setMsg(e.response.data.msg);
+      }
     }
   };
   return (

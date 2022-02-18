@@ -1,5 +1,5 @@
 import axios from "axios";
-export const getAllBreeds = async () => {
+const GetAllBreeds = async () => {
   try {
     const response = await axios.request({
       url: "https://api.TheDogAPI.com/v1/breeds",
@@ -13,4 +13,4 @@ export const getAllBreeds = async () => {
     throw new Error(error);
   }
 };
-export default getAllBreeds;
+export default GetAllBreeds;

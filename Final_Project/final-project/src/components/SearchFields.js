@@ -6,7 +6,7 @@ import HeightSearch from "./HeightSearch";
 import WeightSearch from "./WeightSearch";
 import TemperSearch from "./TemperSearch";
 const SearchFields = () => {
-  let navigate = useNavigate();
+  //   let navigate = useNavigate();
   const {
     breeds,
     setBreeds,

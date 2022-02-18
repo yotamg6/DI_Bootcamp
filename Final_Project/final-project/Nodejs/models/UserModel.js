@@ -20,24 +20,28 @@ export const Uploads = db.define("files", {
   },
 });
 
-export const Authentication = db.define("authentication", {
-  username: {
-    type: DataTypes.STRING,
+export const Authentication = db.define(
+  "authentication",
+  {
+    username: {
+      type: DataTypes.STRING,
+    },
+    email: {
+      type: DataTypes.STRING,
+    },
+    password: {
+      type: DataTypes.STRING,
+    },
+    createdAt: {
+      field: "createdat",
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      field: "updatedat",
+      type: DataTypes.DATE,
+    },
   },
-  email: {
-    type: DataTypes.STRING,
-  },
-  password: {
-    type: DataTypes.STRING,
-  },
-  createdAt: {
-    field: "createdat",
-    type: DataTypes.DATE,
-  },
-  updatedAt: {
-    field: "updatedat",
-    type: DataTypes.DATE,
+  {
+    freezeTableName: true,
   }
-}, {
-    freezeTableName=true
-});
+);
