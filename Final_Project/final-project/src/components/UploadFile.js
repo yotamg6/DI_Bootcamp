@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
+import { AppContext } from "../App";
 
 const UploadFile = () => {
+  const { userName } = useContext(AppContext);
   const [imgValue, setImgValue] = useState("");
   const [fileData, setFileData] = useState({});
   const [imagesData, setImagesData] = useState([]);
@@ -22,7 +24,10 @@ const UploadFile = () => {
     try {
       const data = await axios.post(
         "http://localhost:5000/api/uploads",
-        formData
+        formData,
+        {
+          userName,
+        }
       );
       console.log(data.data);
       setFileData(data.data.filedata);

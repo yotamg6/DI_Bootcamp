@@ -5,10 +5,15 @@ const router = express.Router();
 import GetAllBreeds from "../controllers/GetAllBreeds.js";
 import { Uploads } from "../models/UserModel.js";
 import { Register, Login } from "../controllers/Users.js";
+import { VerifyToken } from "../middleware/VerifyToken.js";
 
 router.post("/register", Register);
 router.post("/login", Login);
+router.get("/token", VerifyToken, (req, res) => {
+  res.status(200).json({ msg: "accessToken" });
+});
 
+//move to the controllers?
 router.get("/api/breeds", (req, res) => {
   GetAllBreeds()
     .then((result) => res.json(result))
@@ -47,6 +52,7 @@ router.post(
   upload.single("dog_pic"),
   async (req, res) => {
     //   res.json(req.file.filename);
+    console.log("username:", req.body.userName);
     const fileName = req.file
       ? req.file.filename
       : res.json({ msg: "No file to upload" });
@@ -56,6 +62,8 @@ router.post(
       const ret = await Uploads.create({
         filename: fileName,
         filetype: fileType,
+        username: req.body.userName,
+        // find a way to insert the userName from the login
       });
       console.log(ret);
       res.json({ filedata: ret.dataValues });

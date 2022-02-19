@@ -18,6 +18,9 @@ export const Uploads = db.define("files", {
     field: "updatedat",
     type: DataTypes.DATE,
   },
+  username: {
+    type: DataTypes.STRING,
+  },
 });
 
 export const Authentication = db.define(
