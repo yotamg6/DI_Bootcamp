@@ -4,7 +4,14 @@ import path from "path";
 const router = express.Router();
 import GetAllBreeds from "../controllers/GetAllBreeds.js";
 import { Uploads } from "../models/UserModel.js";
-import { Register, Login } from "../controllers/Users.js";
+import {
+  Register,
+  Login,
+  getCurUser,
+  getAllOtherUsers,
+  addToFavs,
+  getMyFavs,
+} from "../controllers/Users.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
 
 router.post("/register", Register);
@@ -46,42 +53,52 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-router.post(
-  "/api/uploads",
+router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
+  //   res.json(req.file.filename);
+  // console.log("userName?:", req.body.userName);
+  const fileName = req.file
+    ? req.file.filename
+    : res.json({ msg: "No file to upload" });
+  const fileType = req.file ? req.file.mimetype : null;
 
-  upload.single("dog_pic"),
-  async (req, res) => {
-    //   res.json(req.file.filename);
-    console.log("username:", req.body.userName);
-    const fileName = req.file
-      ? req.file.filename
-      : res.json({ msg: "No file to upload" });
-    const fileType = req.file ? req.file.mimetype : null;
-
-    try {
-      const ret = await Uploads.create({
-        filename: fileName,
-        filetype: fileType,
-        username: req.body.userName,
-        // find a way to insert the userName from the login
-      });
-      console.log(ret);
-      res.json({ filedata: ret.dataValues });
-    } catch (e) {
-      console.log(e);
-      res.json({ msg: "cannot upload file" });
-    }
+  try {
+    const ret = await Uploads.create({
+      username: req.body.userName,
+      filename: fileName,
+      filetype: fileType,
+    });
+    console.log(ret);
+    res.json({ filedata: ret.dataValues });
+  } catch (e) {
+    console.log(e);
+    res.json({ msg: "cannot upload file" });
   }
-);
-
-router.get("/api/images", async (req, res) => {
-  const images = await Uploads.findAll({
-    where: {
-      filetype: "image/jpeg",
-    },
-  });
-  res.json(images);
 });
+
+router.post("/api/my-images", getCurUser);
+router.post("/api/others-images", getAllOtherUsers);
+router.post("/favs", addToFavs);
+router.post("/my-favs", getMyFavs);
+
+// router.post("/api/images", async (req, res) => {
+//   const images = await Uploads.findAll({
+//     where: {
+//       filetype: "image/jpeg",
+//       username: !req.body.userName,
+//     },
+//   });
+//   res.json(images);
+// });
+
+// router.get("/api/images", async (req, res) => {
+//   const images = await Uploads.findAll({
+//     where: {
+//       filetype: "image/jpeg",
+//     },
+//   });
+//   res.json(images);
+//   //in the request I'll send the username. add "where" username!userName
+// });
 
 export default router;
 

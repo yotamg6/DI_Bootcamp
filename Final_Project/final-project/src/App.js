@@ -10,6 +10,8 @@ import SearchFields from "./components/SearchFields";
 import SearchResults from "./components/SearchResults";
 import Nav from "./components/Nav";
 import { Auth } from "./auth/Auth";
+import SeeAllOtherDogs from "./components/SeeAllOtherDogs";
+import UserDogFavs from "./components/UserDogFavs";
 
 export const AppContext = createContext(null);
 const App = () => {
@@ -22,6 +24,7 @@ const App = () => {
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
+  // const [selectedUser, setSelectedUser] = useState(null);
   const [accessToken, setAccessToken] = useState();
   const [redirect, setRedirect] = useState(null);
   return (
@@ -49,6 +52,8 @@ const App = () => {
         setRedirect,
         userName,
         setUserName,
+        // selectedUser,
+        // setSelectedUser,
       }}
     >
       <div className="App">
@@ -71,11 +76,15 @@ const App = () => {
           />
           <Route path="/dog-search" element={<SearchFields />} />
           <Route path="/search-results" element={<SearchResults />} />
+          <Route path="find-match" element={<SeeAllOtherDogs />} />
+          <Route path="favorites" element={<UserDogFavs />} />
         </Routes>
       </div>
     </AppContext.Provider>
   );
 };
+
+//userdog will be nested in favs, together with fav breeds. this is only a test
 
 export default App;
 

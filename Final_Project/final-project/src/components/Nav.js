@@ -19,7 +19,13 @@ const Nav = () => {
           My Dog Profile
         </Button>
         <Button variant="outlined" component={Link} to="dog-search">
-          Dog search
+          Breed search
+        </Button>
+        <Button variant="outlined" component={Link} to="find-match">
+          Find a match
+        </Button>
+        <Button variant="outlined" component={Link} to="favorites">
+          My-Favorites
         </Button>
       </Stack>
     </>

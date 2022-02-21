@@ -3,28 +3,34 @@ import { db } from "../config/Database.js";
 
 const { DataTypes } = Sequelize;
 
-export const Uploads = db.define("files", {
-  filename: {
-    type: DataTypes.STRING,
+export const Uploads = db.define(
+  "uploads",
+  {
+    username: {
+      type: DataTypes.STRING,
+    },
+    filename: {
+      type: DataTypes.STRING,
+    },
+    filetype: {
+      type: DataTypes.STRING,
+    },
+    createdAt: {
+      field: "createdat",
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      field: "updatedat",
+      type: DataTypes.DATE,
+    },
   },
-  filetype: {
-    type: DataTypes.STRING,
-  },
-  createdAt: {
-    field: "createdat",
-    type: DataTypes.DATE,
-  },
-  updatedAt: {
-    field: "updatedat",
-    type: DataTypes.DATE,
-  },
-  username: {
-    type: DataTypes.STRING,
-  },
-});
+  {
+    freezeTableName: true,
+  }
+);
 
-export const Authentication = db.define(
-  "authentication",
+export const Users = db.define(
+  "users",
   {
     username: {
       type: DataTypes.STRING,
@@ -44,6 +50,34 @@ export const Authentication = db.define(
       type: DataTypes.DATE,
     },
   },
+  {
+    freezeTableName: true,
+  }
+);
+
+export const Favs = db.define(
+  "favs",
+  {
+    username: {
+      type: DataTypes.STRING,
+    },
+    selecteduser: {
+      type: DataTypes.STRING,
+    },
+    // uploadId: {
+    //   field: "uploadid",
+    //   type: DataTypes.INTEGER,
+    // },
+    createdAt: {
+      field: "createdat",
+      type: DataTypes.DATE,
+    },
+    updatedAt: {
+      field: "updatedat",
+      type: DataTypes.DATE,
+    },
+  },
+
   {
     freezeTableName: true,
   }

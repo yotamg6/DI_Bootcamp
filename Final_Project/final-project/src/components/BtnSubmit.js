@@ -24,7 +24,7 @@ const BtnSubmit = (props) => {
   };
   return (
     <>
-      <button onClick={handleClick}>Get a match!</button>
+      <button onClick={handleClick}>Find your breed</button>
     </>
   );
 };

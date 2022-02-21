@@ -7,7 +7,7 @@ import { AppContext } from "../App";
 const MyDogProfile = () => {
   const [expiration, setExpiration] = useState("");
 
-  const { accessToken } = useContext(AppContext);
+  const { accessToken, userName } = useContext(AppContext);
 
   let navigate = useNavigate();
 
@@ -24,7 +24,7 @@ const MyDogProfile = () => {
   return (
     <>
       <div>
-        <h1>My Dog</h1>
+        <h1>Welcome {userName}</h1>
       </div>
       <div>
         <UploadFile />

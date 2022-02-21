@@ -6,13 +6,15 @@ const UploadFile = () => {
   const { userName } = useContext(AppContext);
   const [imgValue, setImgValue] = useState("");
   const [fileData, setFileData] = useState({});
-  const [imagesData, setImagesData] = useState([]);
+  const [myImagesData, setMyImagesData] = useState([]);
 
   useEffect(async () => {
     try {
-      const images = await axios.get("http://localhost:5000/api/images");
-      console.log(images);
-      setImagesData(images.data);
+      const images = await axios.post("http://localhost:5000/api/my-images", {
+        userName,
+      });
+      console.log(images.data);
+      setMyImagesData(images.data);
     } catch (e) {
       console.log(e);
     }
@@ -21,16 +23,14 @@ const UploadFile = () => {
   const uploadImage = async () => {
     const formData = new FormData();
     formData.append("dog_pic", imgValue);
+    formData.append("userName", userName);
     try {
       const data = await axios.post(
         "http://localhost:5000/api/uploads",
-        formData,
-        {
-          userName,
-        }
+        formData
       );
-      console.log(data.data);
-      setFileData(data.data.filedata);
+      console.log("username:", data.data.filedata.username);
+      setFileData(data.data);
     } catch (e) {
       console.log(e);
     }
@@ -44,9 +44,9 @@ const UploadFile = () => {
           accept=".jpg,.png"
           onChange={(e) => setImgValue(e.target.files[0])}
         />
-        <button onClick={uploadImage}>Submit</button>
+        <button onClick={uploadImage}>Upload</button>
       </div>
-      {imagesData.map((img, i) => {
+      {myImagesData.map((img, i) => {
         return (
           <div key={i} style={{ width: "80%" }}>
             <div
@@ -59,7 +59,7 @@ const UploadFile = () => {
             >
               <img
                 style={{ height: "auto", maxWidth: "100%" }}
-                src={`http://localhost:5000/images/${img.filename}`}
+                src={`http://localhost:5000/images/${img.filename}`} //not entirely sure why it works, simply because of app.use and express static?
               />
             </div>
           </div>
@@ -70,3 +70,13 @@ const UploadFile = () => {
 };
 
 export default UploadFile;
+
+// useEffect(async () => {
+//   try {
+//     const images = await axios.get("http://localhost:5000/api/images");
+//     console.log(images);
+//     setImagesData(images.data);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }, [fileData]);
