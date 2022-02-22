@@ -16,7 +16,7 @@ const UserDogFavs = () => {
     } catch (e) {
       console.log("error from addtofavs:", e);
     }
-  });
+  }, []);
 
   return (
     <>

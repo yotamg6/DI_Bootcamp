@@ -18,16 +18,16 @@ const SearchFields = () => {
   } = useContext(AppContext);
 
   //   const [matchIndexes, setMatchIndexes] = useState([]);
-  useEffect(async () => {
-    try {
-      const response = await fetch("http://localhost:5000/api/breeds");
-      const data = await response.json();
-      console.log("data in usefect:", data);
-      await setBreeds(data);
-    } catch (e) {
-      throw new Error(e);
-    }
-  }, []);
+  // useEffect(async () => {
+  //   try {
+  //     const response = await fetch("http://localhost:5000/api/breeds");
+  //     const data = await response.json();
+  //     console.log("data in usefect:", data);
+  //     await setBreeds(data);
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
+  // }, []);
 
   //   console.log(
   //     "height:",

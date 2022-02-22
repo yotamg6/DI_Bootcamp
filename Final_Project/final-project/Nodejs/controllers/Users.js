@@ -59,15 +59,15 @@ export const Login = async (req, res) => {
 
 export const getCurUser = async (req, res) => {
   try {
-    const myImages = await Uploads.findAll({
+    const myUploads = await Uploads.findAll({
       where: {
         filetype: {
-          [Op.or]: ["image/jpeg", "image/png"],
+          [Op.or]: ["image/jpeg", "image/png"], //maybe I should take this off?
         },
         username: req.body.userName,
       },
     });
-    res.json(myImages);
+    res.json(myUploads);
   } catch (e) {
     console.log("in getCurUser:", e);
   }
@@ -94,7 +94,7 @@ export const getAllOtherUsers = async (req, res) => {
 
 export const addToFavs = async (req, res) => {
   try {
-    const [results, metadata] = await db.query(
+    const stam = await db.query(
       `INSERT into favs (username,selecteduser) 
         SELECT '${req.body.userName}','${req.body.selectedUser}'
         WHERE   NOT EXISTS 
@@ -102,8 +102,11 @@ export const addToFavs = async (req, res) => {
                     FROM    favs 
                     WHERE   username = '${req.body.userName}' 
                     AND     selecteduser = '${req.body.selectedUser}'
-                );`
+                );`,
+      { type: db.QueryTypes.INSERT }
     );
+    console.log("stam", stam);
+    // console.log("meta", metadata);
     res.json({ msg: "image added to favorites" });
   } catch (e) {
     console.log("error from add to favs", e);

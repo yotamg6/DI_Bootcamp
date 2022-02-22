@@ -24,7 +24,8 @@ const App = () => {
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
-  // const [selectedUser, setSelectedUser] = useState(null);
+  const [userBreed, setUserBreed] = useState(null);
+  const [userDogName, setUserDogName] = useState(null);
   const [accessToken, setAccessToken] = useState();
   const [redirect, setRedirect] = useState(null);
   return (
@@ -52,8 +53,10 @@ const App = () => {
         setRedirect,
         userName,
         setUserName,
-        // selectedUser,
-        // setSelectedUser,
+        userBreed,
+        setUserBreed,
+        userDogName,
+        setUserDogName,
       }}
     >
       <div className="App">

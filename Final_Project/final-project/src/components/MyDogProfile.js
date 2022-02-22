@@ -20,7 +20,7 @@ const MyDogProfile = () => {
       navigate("/login"); //is it suppose to navigate to login, 60s from the moment we are in the page? doesnt work, I think maybe because new Date is static?
     }
     //   // setExpiration();
-  }, []);
+  });
   return (
     <>
       <div>

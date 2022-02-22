@@ -56,6 +56,8 @@ const upload = multer({ storage: storage, fileFilter: fileFilter });
 router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
   //   res.json(req.file.filename);
   // console.log("userName?:", req.body.userName);
+  const breed = req.body.userBreed ? req.body.userBreed : null;
+  const dogName = req.body.userDogName ? req.body.userDogName : null;
   const fileName = req.file
     ? req.file.filename
     : res.json({ msg: "No file to upload" });
@@ -64,6 +66,8 @@ router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
   try {
     const ret = await Uploads.create({
       username: req.body.userName,
+      breed: breed,
+      dogname: dogName,
       filename: fileName,
       filetype: fileType,
     });

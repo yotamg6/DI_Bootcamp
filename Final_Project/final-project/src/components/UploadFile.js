@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+import AboutMyDog from "./AboutMyDog";
 
 const UploadFile = () => {
-  const { userName } = useContext(AppContext);
+  const { userName, userBreed, userDogName } = useContext(AppContext);
   const [imgValue, setImgValue] = useState("");
   const [fileData, setFileData] = useState({});
-  const [myImagesData, setMyImagesData] = useState([]);
+  const [myUploads, setMyUploads] = useState([]);
 
   useEffect(async () => {
     try {
@@ -14,16 +15,18 @@ const UploadFile = () => {
         userName,
       });
       console.log(images.data);
-      setMyImagesData(images.data);
+      setMyUploads(images.data);
     } catch (e) {
       console.log(e);
     }
   }, [fileData]);
 
-  const uploadImage = async () => {
+  const uploadFile = async () => {
     const formData = new FormData();
     formData.append("dog_pic", imgValue);
     formData.append("userName", userName);
+    formData.append("userBreed", userBreed);
+    formData.append("userDogName", userDogName);
     try {
       const data = await axios.post(
         "http://localhost:5000/api/uploads",
@@ -44,9 +47,10 @@ const UploadFile = () => {
           accept=".jpg,.png"
           onChange={(e) => setImgValue(e.target.files[0])}
         />
-        <button onClick={uploadImage}>Upload</button>
+        <AboutMyDog />
+        <button onClick={uploadFile}>Upload</button>
       </div>
-      {myImagesData.map((img, i) => {
+      {myUploads.map((data, i) => {
         return (
           <div key={i} style={{ width: "80%" }}>
             <div
@@ -59,8 +63,10 @@ const UploadFile = () => {
             >
               <img
                 style={{ height: "auto", maxWidth: "100%" }}
-                src={`http://localhost:5000/images/${img.filename}`} //not entirely sure why it works, simply because of app.use and express static?
+                src={`http://localhost:5000/images/${data.filename}`} //not entirely sure why it works, simply because of app.use and express static?
               />
+              <p>Dog breed: {data.breed}</p>
+              <p>Dog name: {data.dogname}</p>
             </div>
           </div>
         );

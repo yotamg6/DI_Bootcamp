@@ -9,6 +9,12 @@ export const Uploads = db.define(
     username: {
       type: DataTypes.STRING,
     },
+    breed: {
+      type: DataTypes.STRING,
+    },
+    dogname: {
+      type: DataTypes.STRING,
+    },
     filename: {
       type: DataTypes.STRING,
     },
