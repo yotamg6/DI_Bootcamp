@@ -11,6 +11,7 @@ import {
   getAllOtherUsers,
   addToFavs,
   getMyFavs,
+  addToBreedFavs,
 } from "../controllers/Users.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
 
@@ -83,6 +84,7 @@ router.post("/api/my-images", getCurUser);
 router.post("/api/others-images", getAllOtherUsers);
 router.post("/favs", addToFavs);
 router.post("/my-favs", getMyFavs);
+router.post("/breed-favs", addToBreedFavs);
 
 // router.post("/api/images", async (req, res) => {
 //   const images = await Uploads.findAll({

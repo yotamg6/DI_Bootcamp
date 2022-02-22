@@ -20,7 +20,7 @@ const App = () => {
   const [temperText, setTemperText] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [temper, setTemper] = useState("");
+  const [temper, setTemper] = useState("change?");
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");

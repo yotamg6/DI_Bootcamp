@@ -94,7 +94,7 @@ export const getAllOtherUsers = async (req, res) => {
 
 export const addToFavs = async (req, res) => {
   try {
-    const stam = await db.query(
+    const [results, metadata] = await db.query(
       `INSERT into favs (username,selecteduser) 
         SELECT '${req.body.userName}','${req.body.selectedUser}'
         WHERE   NOT EXISTS 
@@ -105,14 +105,14 @@ export const addToFavs = async (req, res) => {
                 );`,
       { type: db.QueryTypes.INSERT }
     );
-    console.log("stam", stam);
+    // console.log("stam", stam);
     // console.log("meta", metadata);
     res.json({ msg: "image added to favorites" });
   } catch (e) {
     console.log("error from add to favs", e);
   }
 };
-///it works, but I'm not raising an error
+///it works, but I'm not raising an error - use metadata, it returns 0 or 1
 
 export const getMyFavs = async (req, res) => {
   try {
@@ -123,6 +123,25 @@ export const getMyFavs = async (req, res) => {
     res.json(results);
   } catch (e) {
     console.log("cannot get favs");
+  }
+};
+
+export const addToBreedFavs = async (req, res) => {
+  try {
+    const [results, metadata] = await db.query(
+      `INSERT into breed_favs (username, breed_index) 
+        SELECT '${req.body.userName}',${req.body.index}
+        WHERE   NOT EXISTS 
+                (   SELECT  1
+                    FROM    breed_favs 
+                    WHERE   username = '${req.body.userName}' 
+                    AND     breed_index = ${req.body.index}
+                );`,
+      { type: db.QueryTypes.INSERT }
+    );
+    res.json({ msg: "breed added to favs" });
+  } catch (e) {
+    console.log("error from backend addtobreedfavs", e);
   }
 };
 

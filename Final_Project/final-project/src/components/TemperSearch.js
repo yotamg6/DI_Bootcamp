@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../App";
 const TemperSearch = () => {
-  const { setTemperText } = useContext(AppContext);
-  const handleChange = (e) => {
-    setTemperText(e.target.value);
-  };
+  const { setTemper } = useContext(AppContext);
+
   return (
     <>
       <div>
@@ -12,7 +10,7 @@ const TemperSearch = () => {
           name="temperText"
           type="text"
           placeholder="Desired temperament"
-          onChange={handleChange}
+          onChange={(e) => setTemper(e.target.value)}
         ></input>
       </div>
     </>

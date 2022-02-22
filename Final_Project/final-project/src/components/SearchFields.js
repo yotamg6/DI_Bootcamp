@@ -1,48 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { AppContext } from "../App";
-import BtnSubmit from "./BtnSubmit";
 import HeightSearch from "./HeightSearch";
 import WeightSearch from "./WeightSearch";
 import TemperSearch from "./TemperSearch";
 const SearchFields = () => {
-  //   let navigate = useNavigate();
-  const {
-    breeds,
-    setBreeds,
-    height,
-    weight,
-    temper,
-    matchIndexes,
-    setMatchIndexes,
-  } = useContext(AppContext);
+  let navigate = useNavigate();
+  const { breeds, height, weight, temper, setMatchIndexes } =
+    useContext(AppContext);
 
-  //   const [matchIndexes, setMatchIndexes] = useState([]);
-  // useEffect(async () => {
-  //   try {
-  //     const response = await fetch("http://localhost:5000/api/breeds");
-  //     const data = await response.json();
-  //     console.log("data in usefect:", data);
-  //     await setBreeds(data);
-  //   } catch (e) {
-  //     throw new Error(e);
-  //   }
-  // }, []);
-
-  //   console.log(
-  //     "height:",
-  //     height,
-  //     "weight:",
-  //     weight,
-  //     "temper:",
-  //     temper,
-  //     "allbreeds:",
-  //     breeds
-  //   );
   const calcFilters = () => {
     if (breeds.length > 0) {
-      console.log("breeds inside filters", breeds);
-      //   let foundMatchIndex = [];
+      console.log("temper inside filters", temper);
+
       const arrOfTemperIndexes = [];
       const arrOfHeightIndexes = [];
       const arrOfWeightIndexes = [];
@@ -91,16 +61,15 @@ const SearchFields = () => {
         }
       });
       if (arrOfTemperIndexes.length > 0 && weightnHeightMatches.length > 0) {
-        const foundMatchIndexes = arrOfTemperIndexes.filter(
-          (tempInd) => weightnHeightMatches.includes(tempInd)
-          // foundMatchIndex.push(foundMatch)
+        const foundMatchIndexes = arrOfTemperIndexes.filter((tempInd) =>
+          weightnHeightMatches.includes(tempInd)
         );
-        if (foundMatchIndexes) {
-          console.log("all filters:", foundMatchIndexes);
+        if (foundMatchIndexes.length > 0) {
+          // console.log("all filters:", foundMatchIndexes);
           setMatchIndexes(foundMatchIndexes);
-          //   navigate("search-results");
         }
       }
+      navigate("/search-results");
     }
   };
   return (
@@ -114,7 +83,7 @@ const SearchFields = () => {
       <div>
         <TemperSearch />
       </div>
-      <BtnSubmit filterMatches={calcFilters} />
+      <button onClick={calcFilters}>Find your breed</button>
     </>
   );
 };

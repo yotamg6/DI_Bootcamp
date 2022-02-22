@@ -77,3 +77,20 @@ export const Favs = db.define(
     freezeTableName: true,
   }
 );
+
+export const breedFavs = db.define(
+  "breed_favs",
+  {
+    username: {
+      type: DataTypes.STRING,
+    },
+    breed_index: {
+      type: DataTypes.SMALLINT,
+    },
+    createdAt: false,
+    updatedAt: false,
+  },
+  {
+    freezeTableName: true,
+  }
+); // I MIGHT NOT USE IT

@@ -1,10 +1,8 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../App";
 const WeightSearch = () => {
-  const { setWeightText } = useContext(AppContext);
-  const handleChange = (e) => {
-    setWeightText(e.target.value);
-  };
+  const { setWeight } = useContext(AppContext);
+
   return (
     <>
       <div>
@@ -12,7 +10,7 @@ const WeightSearch = () => {
           name="weightTxt"
           type="text"
           placeholder="Desired weight"
-          onChange={handleChange}
+          onChange={(e) => setWeight(e.target.value)}
         ></input>
       </div>
     </>
