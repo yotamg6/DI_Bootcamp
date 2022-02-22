@@ -5,17 +5,19 @@ import { AppContext } from "../App";
 const SeeAllOtherDogs = () => {
   const { userName } = useContext(AppContext);
   const [othersFiles, setOthersFiles] = useState([]);
+
   // const [selectedUser, setSelectedUser] = useState("test");
 
   const addToFavs = async (index) => {
     const selectedUser = othersFiles[index].username;
-    // const fileName = othersFiles[index].filename;
+    const fileName = othersFiles[index].filename;
     // const uploadId = othersFiles[index].id;
     // console.log("uploadId:", uploadId);
     try {
       const response = await axios.post("http://localhost:5000/favs", {
         userName,
         selectedUser,
+        fileName,
       });
       console.log("response in add to favs:", response.data);
     } catch (e) {

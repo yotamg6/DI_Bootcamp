@@ -93,46 +93,23 @@ export const getAllOtherUsers = async (req, res) => {
 };
 
 export const addToFavs = async (req, res) => {
-  console.log("selected user in addtofavs backend:", req.body.selectedUser);
-  console.log("username in addtofavs backend:", req.body.userName);
-  console.log("uploadId in addtofavs backend:", req.body.uploadId);
   try {
-    await Favs.create({
-      username: req.body.userName,
-      selecteduser: req.body.selectedUser,
-      uploadid: req.body.uploadId,
-    }),
-      res.json({ msg: "image added to favorites" });
+    const [results, metadata] = await db.query(
+      `INSERT into favs (username,selecteduser) 
+        SELECT '${req.body.userName}','${req.body.selectedUser}'
+        WHERE   NOT EXISTS 
+                (   SELECT  1
+                    FROM    favs 
+                    WHERE   username = '${req.body.userName}' 
+                    AND     selecteduser = '${req.body.selectedUser}'
+                );`
+    );
+    res.json({ msg: "image added to favorites" });
   } catch (e) {
-    console.log("error from addtofavs:", e);
-    res.json({ msg: "failed to add image" });
+    console.log("error from add to favs", e);
   }
-
-  //how to prevent user from uploading same photo several times?
 };
-
-// export const getMyFavs = async (req, res) => {
-//   Uploads.hasOne(Favs);
-//   Favs.belongsTo(Uploads);
-//   try {
-//     const myFavs = await Uploads.findAll({
-//       where: { username: req.body.userName },
-//       include: [
-//         {
-//           model: Favs,
-//           required: true,
-//           where: {
-//             selecteduser: req.body.userName,
-//           },
-//         },
-//       ],
-//     });
-//     console.log("my favs:", myFavs);
-//     res.json(myFavs);
-//   } catch (e) {
-//     console.log("in getMyFavs:", e);
-//   }
-// };
+///it works, but I'm not raising an error
 
 export const getMyFavs = async (req, res) => {
   try {
@@ -154,3 +131,36 @@ export const getMyFavs = async (req, res) => {
 // -- SELECT filename from uploads where username in (
 // -- 	SELECT selecteduser from favs where username='yot'
 // -- )
+
+// Uploads.hasMany(Favs, {
+//     foreignKey: {
+//       name: 'username'
+//     }
+//   });
+//   Favs.belongsTo(Uploads, {
+//     foreignKey: {
+//       name: 'username'
+//     }
+//   });
+
+// export const addToFavs = async (req, res) => {
+//   console.log("selected user in addtofavs backend:", req.body.selectedUser);
+//   console.log("username in addtofavs backend:", req.body.userName);
+//   try {
+//     await Favs.create({
+//       username: req.body.userName,
+//       selecteduser: req.body.selectedUser,
+//       where: {
+//         filename: {
+//           [Op.ne]: req.body.fileName,
+//         },
+//       },
+//     }),
+//       res.json({ msg: "image added to favorites" });
+//   } catch (e) {
+//     console.log("error from addtofavs:", e);
+//     res.json({ msg: "failed to add image" });
+//   }
+
+//   // how to prevent user from uploading same photo several times?
+// };

@@ -64,20 +64,9 @@ export const Favs = db.define(
     selecteduser: {
       type: DataTypes.STRING,
     },
-    // uploadId: {
-    //   field: "uploadid",
-    //   type: DataTypes.INTEGER,
-    // },
-    createdAt: {
-      field: "createdat",
-      type: DataTypes.DATE,
-    },
-    updatedAt: {
-      field: "updatedat",
-      type: DataTypes.DATE,
-    },
+    createdAt: false,
+    updatedAt: false,
   },
-
   {
     freezeTableName: true,
   }
