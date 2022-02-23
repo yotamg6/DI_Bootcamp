@@ -25,6 +25,7 @@ export const Register = async (req, res) => {
 };
 
 export const Login = async (req, res) => {
+  // console.log("username from Login in BE control", req.body.userName);
   try {
     const user = await Users.findAll({
       where: {
@@ -53,7 +54,8 @@ export const Login = async (req, res) => {
     res.status(404).json({ msg: "User not found" });
   }
 };
-//should I add username error?
+// a cookie with the accesstoken is now inserted to the session? It's there in every request until the session is over?
+//should I add username error? get it from lines 11-12 in the verify token?
 
 export const getCurUser = async (req, res) => {
   try {
@@ -124,6 +126,12 @@ export const getMyFavs = async (req, res) => {
   }
 };
 
-
-
-
+export const Logout = (req, res) => {
+  const accessToken =
+    req.cookies.accessToken ||
+    req.headers["x-access-token"] ||
+    req.headers["authorization"];
+  if (!accessToken) return res.sendStatus(204);
+  res.clearCookie("accessToken");
+  return res.sendStatus(200);
+};

@@ -6,21 +6,31 @@ import { toast } from "react-toastify";
 import { AppContext } from "../App";
 
 const LoginRegister = ({ title }) => {
-  const { setAccessToken, redirect, userName, setUserName } =
+  const { setAccessToken, userName, setUserName, timerMsg } =
     useContext(AppContext);
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [msg, setMsg] = useState("");
-  // const [userName, setUserName] = useState("");
+  // const [msg, setMsg] = useState("");
+  // const [value, setValue] = useState("");
+  // const [userNameTxt, setUserNameTxt] = useState("");
+  // const [emailTxt, setEmailTxt] = useState("");
+  // const [passTxt, setPassTxt] = useState("");
 
-  // useEffect(() => {
-  //   if (redirect == "rejected")
-  //     toast.error("please login to enter your personal dog profile");
-  // }, []);
+  useEffect(() => {
+    if (timerMsg) {
+      toast.error(timerMsg);
+    }
+  }, []);
 
   const handleAction = async (id) => {
-    // console.log(id);
+    // setUserName(userNameTxt);
+    // setUserNameTxt("");
+    // setEmail(emailTxt);
+    // setEmailTxt("");
+    // setPassword(passTxt);
+    // setPassTxt("");
+
     if (id === "Register") {
       try {
         let response = await axios.post(
@@ -43,10 +53,11 @@ const LoginRegister = ({ title }) => {
         navigate("/login");
       } catch (e) {
         console.log("register:", e.response.data);
-        setMsg(e.response.data.msg);
+        // setMsg(e.response.data.msg);
         toast.error(e.response.data.msg);
       }
     } else if (id === "Login") {
+      console.log(userName);
       try {
         let response = await axios.post(
           "http://localhost:5000/login",
@@ -69,24 +80,38 @@ const LoginRegister = ({ title }) => {
         navigate("/my-dog");
       } catch (e) {
         console.log("error from login:", e.response); //what is response?every e in catch has response?
-        //the server crashes if the password is wrong, solve it
-        setMsg(e.response.data.msg);
+
+        // setMsg(e.response.data.msg);
         toast.error(e.response.data.msg);
       }
     }
   };
   return (
     <div>
+      <h1>Woof Cupid </h1>
+      <h3>The place to introduce your dog to their new love</h3>
       <div>
-        <div>
-          <h2> {title}</h2>
-        </div>
+        {title === "Register" ? (
+          <div>
+            <p>Please register to start and meet new dogs</p>
+          </div>
+        ) : (
+          <div>
+            <div>Please login</div>
+          </div>
+        )}
+      </div>
+
+      <div>
+        <div>{/* <h2> {title}</h2> */}</div>
         <Box component="form" sx={{ m: 1 }} noValidate autoComplete="off">
           <TextField
             sx={{ m: 1 }}
             id="username"
-            label="enter user-name"
+            label="enter username"
             variant="outlined"
+            // value={userNameTxt}
+            // onChange={(e) => setUserNameTxt(e.target.value)}
             onChange={(e) => setUserName(e.target.value)}
           />
           <TextField
@@ -95,6 +120,8 @@ const LoginRegister = ({ title }) => {
             label="enter your email"
             variant="outlined"
             onChange={(e) => setEmail(e.target.value)}
+            // value={emailTxt}
+            // onChange={(e) => setEmailTxt(e.target.value)}
           />
           <TextField
             sx={{ m: 1 }}
@@ -102,6 +129,8 @@ const LoginRegister = ({ title }) => {
             label="enter password"
             variant="outlined"
             onChange={(e) => setPassword(e.target.value)}
+            // value={passTxt}
+            // onChange={(e) => setPassTxt(e.target.value)}
           />
         </Box>
         <Button variant="contained" onClick={() => handleAction(title)}>
@@ -112,9 +141,15 @@ const LoginRegister = ({ title }) => {
 
       <div>
         {title === "Register" ? (
-          <Link to="/login">Login</Link>
+          <div>
+            <p>Allready registered? please login</p>
+            <Link to="/login">Login</Link>
+          </div>
         ) : (
-          <Link to="/register">Register</Link>
+          <div>
+            <p>Can't login? please make sure to be registered first </p>
+            <Link to="/register">Register</Link>
+          </div>
         )}
       </div>
     </div>
@@ -122,3 +157,5 @@ const LoginRegister = ({ title }) => {
 };
 
 export default LoginRegister;
+
+// don't know how to clear the search fields

@@ -11,6 +11,7 @@ import {
   getAllOtherUsers,
   addToFavs,
   getMyFavs,
+  Logout,
 } from "../controllers/Users.js";
 import { addToBreedFavs, getBreedFavs } from "../controllers/Breeds.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
@@ -88,7 +89,5 @@ router.post("/favs", addToFavs);
 router.post("/my-favs", getMyFavs);
 router.post("/breed-favs", addToBreedFavs);
 router.post("/mybreed-favs", getBreedFavs);
-
+router.get("logout", Logout);
 export default router;
-
-//should I move the multer and the entire content of the router.post with Uploads to the controllers (UploadFiles)?

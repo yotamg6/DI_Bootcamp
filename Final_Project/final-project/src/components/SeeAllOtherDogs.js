@@ -33,7 +33,7 @@ const SeeAllOtherDogs = () => {
           userName,
         }
       );
-      // console.log("files from useEffect seeAllDogs:", response.data);
+      console.log("files from useEffect seeAllDogs:", response.data);
       setOthersFiles(response.data);
     } catch (e) {
       console.log(e);
@@ -57,6 +57,11 @@ const SeeAllOtherDogs = () => {
                 style={{ height: "auto", maxWidth: "100%" }}
                 src={`http://localhost:5000/images/${file.filename}`}
               />
+              <div>
+                <p>Dog name: {file.dogname}</p>
+                <p>Breed: {file.breed}</p>
+                <p>Temperament: {file.about_dog}</p>
+              </div>
 
               <button onClick={() => addToFavs(i)}>Add to favorites</button>
             </div>

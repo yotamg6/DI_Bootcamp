@@ -2,11 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import axios from "axios";
-import { AppContext } from "../App";
 
 export const Auth = (props) => {
-  //   const [redirect, setRedirect] = useState(null);
-  const { redirect, setRedirect } = useContext(AppContext);
+  const [redirect, setRedirect] = useState(null);
+
   let navigate = useNavigate();
 
   useEffect(async () => {
@@ -28,7 +27,6 @@ export const Auth = (props) => {
   if (redirect) {
     return props.children;
   } else {
-    // setRedirect("rejected");//doesnt work
     return null;
-  } //set message: please login to enter your personal dog profile
+  }
 };

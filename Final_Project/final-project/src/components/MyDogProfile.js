@@ -3,11 +3,12 @@ import { useNavigate } from "react-router-dom";
 import jwt_decode from "jwt-decode";
 import UploadFile from "./UploadFile";
 import { AppContext } from "../App";
+import axios from "axios";
 
 const MyDogProfile = () => {
   const [expiration, setExpiration] = useState("");
 
-  const { accessToken, userName } = useContext(AppContext);
+  const { accessToken, userName, setTimerMsg } = useContext(AppContext);
 
   let navigate = useNavigate();
 
@@ -16,10 +17,11 @@ const MyDogProfile = () => {
     const tokenExp = decoded.exp;
     // console.log(new Date((tokenExp - 60) * 1000));
     if (tokenExp * 1000 < new Date().getTime()) {
-      console.log("time is over");
-      navigate("/login"); //is it suppose to navigate to login, 60s from the moment we are in the page? doesnt work, I think maybe because new Date is static?
+      // console.log("time is over");
+      setTimerMsg("your session is now expired. please login again");
+      navigate("/login");
+      //I should set a timer to be redirected. after the required time (now 60) I could call the verify token, or just navigate
     }
-    //   // setExpiration();
   });
   return (
     <>

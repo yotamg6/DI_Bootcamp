@@ -20,10 +20,10 @@ const UserBreedFavs = () => {
   return (
     <>
       <div>
+        <h3>My favorite breeds</h3>
         {myBreedFavs.length > 0
           ? myBreedFavs.map((indexObj) => {
               const index = indexObj.breed_index;
-
               return (
                 <div key={index}>
                   <div
@@ -34,7 +34,6 @@ const UserBreedFavs = () => {
                       margin: "10px",
                     }}
                   >
-                    <h3>My favorite breeds</h3>
                     <p>{breeds[index].name}</p>
                     <img
                       style={{ height: "auto", maxWidth: "100%" }}

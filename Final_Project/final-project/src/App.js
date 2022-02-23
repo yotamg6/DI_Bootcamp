@@ -20,15 +20,16 @@ const App = () => {
   const [temperText, setTemperText] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [temper, setTemper] = useState("change?");
+  const [temper, setTemper] = useState("");
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
   const [userBreed, setUserBreed] = useState("");
   const [userDogName, setUserDogName] = useState(null);
   const [aboutTextArea, setAboutTextArea] = useState("");
+  const [timerMsg, setTimerMsg] = useState(null);
   const [accessToken, setAccessToken] = useState();
-  const [redirect, setRedirect] = useState(null);
+
   return (
     <AppContext.Provider
       value={{
@@ -48,10 +49,10 @@ const App = () => {
         setBreeds,
         matchIndexes,
         setMatchIndexes,
+        timerMsg,
+        setTimerMsg,
         accessToken,
         setAccessToken,
-        redirect,
-        setRedirect,
         userName,
         setUserName,
         userBreed,
@@ -64,6 +65,7 @@ const App = () => {
     >
       <div className="App">
         <Nav />
+
         <ToastContainer />
         <Routes>
           <Route path="/login" element={<LoginRegister title={"Login"} />} />

@@ -20,28 +20,31 @@ const UserDogFavs = () => {
 
   return (
     <>
-      {myFavs.map((file, i) => {
-        return (
-          <div key={i} style={{ width: "80%" }}>
-            <div
-              style={{
-                display: "inline-block",
-                width: "300px",
-                height: "200px",
-                margin: "10px",
-              }}
-            >
-              <h3>My Favorite dogs</h3>
-              <img
-                style={{ height: "auto", maxWidth: "100%" }}
-                src={`http://localhost:5000/images/${file.filename}`}
-              />
-              <p>dog breed:{file.breed}</p>
-              <p>dog name:{file.dogname}</p>
+      <div>
+        <h3>My Favorite dogs</h3>
+        {myFavs.map((file, i) => {
+          return (
+            <div key={i} style={{ width: "80%" }}>
+              <div
+                style={{
+                  display: "inline-block",
+                  width: "300px",
+                  height: "200px",
+                  margin: "10px",
+                }}
+              >
+                <img
+                  style={{ height: "auto", maxWidth: "100%" }}
+                  src={`http://localhost:5000/images/${file.filename}`}
+                />
+                <p>dog breed:{file.breed}</p>
+                <p>dog name:{file.dogname}</p>
+                <p>Temperament: {file.about_dog}</p>
+              </div>
             </div>
-          </div>
-        );
-      })}
+          );
+        })}
+      </div>
     </>
   );
 };
