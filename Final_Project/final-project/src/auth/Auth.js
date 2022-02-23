@@ -18,7 +18,7 @@ export const Auth = (props) => {
           "Content-Type": "application/json",
         },
       });
-      console.log("auth response", response);
+      // console.log("auth response", response);
       setRedirect(1);
     } catch (e) {
       console.log(e);

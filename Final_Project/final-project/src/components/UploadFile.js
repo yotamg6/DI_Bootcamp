@@ -4,7 +4,8 @@ import { AppContext } from "../App";
 import AboutMyDog from "./AboutMyDog";
 
 const UploadFile = () => {
-  const { userName, userBreed, userDogName } = useContext(AppContext);
+  const { userName, userBreed, userDogName, aboutTextArea } =
+    useContext(AppContext);
   const [imgValue, setImgValue] = useState("");
   const [fileData, setFileData] = useState({});
   const [myUploads, setMyUploads] = useState([]);
@@ -27,6 +28,7 @@ const UploadFile = () => {
     formData.append("userName", userName);
     formData.append("userBreed", userBreed);
     formData.append("userDogName", userDogName);
+    formData.append("aboutTextArea", aboutTextArea);
     try {
       const data = await axios.post(
         "http://localhost:5000/api/uploads",
@@ -67,6 +69,7 @@ const UploadFile = () => {
               />
               <p>Dog breed: {data.breed}</p>
               <p>Dog name: {data.dogname}</p>
+              <p>About my dog: {data.about_dog}</p>
             </div>
           </div>
         );

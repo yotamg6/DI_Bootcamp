@@ -321,3 +321,65 @@ from btnSubmit
 
 // export default BtnSubmit;
 
+// -- SELECT f.username, f.selecteduser, u.filename
+// -- from uploads u, favs f
+// -- where f.selecteduser = u.username
+// -- and f.username='yot'
+
+// -- SELECT filename from uploads where username in (
+// -- 	SELECT selecteduser from favs where username='yot'
+// -- )
+
+// Uploads.hasMany(Favs, {
+//     foreignKey: {
+//       name: 'username'
+//     }
+//   });
+//   Favs.belongsTo(Uploads, {
+//     foreignKey: {
+//       name: 'username'
+//     }
+//   });
+
+from controllers/users
+
+// export const addToFavs = async (req, res) => {
+//   console.log("selected user in addtofavs backend:", req.body.selectedUser);
+//   console.log("username in addtofavs backend:", req.body.userName);
+//   try {
+//     await Favs.create({
+//       username: req.body.userName,
+//       selecteduser: req.body.selectedUser,
+//       where: {
+//         filename: {
+//           [Op.ne]: req.body.fileName,
+//         },
+//       },
+//     }),
+//       res.json({ msg: "image added to favorites" });
+//   } catch (e) {
+//     console.log("error from addtofavs:", e);
+//     res.json({ msg: "failed to add image" });
+//   }
+
+from routes/index
+// router.post("/api/images", async (req, res) => {
+//   const images = await Uploads.findAll({
+//     where: {
+//       filetype: "image/jpeg",
+//       username: !req.body.userName,
+//     },
+//   });
+//   res.json(images);
+// });
+
+// router.get("/api/images", async (req, res) => {
+//   const images = await Uploads.findAll({
+//     where: {
+//       filetype: "image/jpeg",
+//     },
+//   });
+//   res.json(images);
+//   //in the request I'll send the username. add "where" username!userName
+// });
+

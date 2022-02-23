@@ -20,7 +20,7 @@ const LoginRegister = ({ title }) => {
   // }, []);
 
   const handleAction = async (id) => {
-    console.log(id);
+    // console.log(id);
     if (id === "Register") {
       try {
         let response = await axios.post(
@@ -63,7 +63,7 @@ const LoginRegister = ({ title }) => {
             },
           }
         );
-        console.log("login:", response);
+        // console.log("login:", response);
         toast.success("Login successful!");
         setAccessToken(response.data);
         navigate("/my-dog");

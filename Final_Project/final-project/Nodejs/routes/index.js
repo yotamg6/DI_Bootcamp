@@ -11,8 +11,8 @@ import {
   getAllOtherUsers,
   addToFavs,
   getMyFavs,
-  addToBreedFavs,
 } from "../controllers/Users.js";
+import { addToBreedFavs, getBreedFavs } from "../controllers/Breeds.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
 
 router.post("/register", Register);
@@ -59,6 +59,7 @@ router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
   // console.log("userName?:", req.body.userName);
   const breed = req.body.userBreed ? req.body.userBreed : null;
   const dogName = req.body.userDogName ? req.body.userDogName : null;
+  const aboutDog = req.body.aboutTextArea ? req.body.aboutTextArea : null;
   const fileName = req.file
     ? req.file.filename
     : res.json({ msg: "No file to upload" });
@@ -69,6 +70,7 @@ router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
       username: req.body.userName,
       breed: breed,
       dogname: dogName,
+      about_dog: aboutDog,
       filename: fileName,
       filetype: fileType,
     });
@@ -85,26 +87,7 @@ router.post("/api/others-images", getAllOtherUsers);
 router.post("/favs", addToFavs);
 router.post("/my-favs", getMyFavs);
 router.post("/breed-favs", addToBreedFavs);
-
-// router.post("/api/images", async (req, res) => {
-//   const images = await Uploads.findAll({
-//     where: {
-//       filetype: "image/jpeg",
-//       username: !req.body.userName,
-//     },
-//   });
-//   res.json(images);
-// });
-
-// router.get("/api/images", async (req, res) => {
-//   const images = await Uploads.findAll({
-//     where: {
-//       filetype: "image/jpeg",
-//     },
-//   });
-//   res.json(images);
-//   //in the request I'll send the username. add "where" username!userName
-// });
+router.post("/mybreed-favs", getBreedFavs);
 
 export default router;
 

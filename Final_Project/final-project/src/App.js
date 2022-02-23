@@ -11,7 +11,7 @@ import SearchResults from "./components/SearchResults";
 import Nav from "./components/Nav";
 import { Auth } from "./auth/Auth";
 import SeeAllOtherDogs from "./components/SeeAllOtherDogs";
-import UserDogFavs from "./components/UserDogFavs";
+import Favorites from "./components/Favorites";
 
 export const AppContext = createContext(null);
 const App = () => {
@@ -24,8 +24,9 @@ const App = () => {
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
-  const [userBreed, setUserBreed] = useState(null);
+  const [userBreed, setUserBreed] = useState("");
   const [userDogName, setUserDogName] = useState(null);
+  const [aboutTextArea, setAboutTextArea] = useState("");
   const [accessToken, setAccessToken] = useState();
   const [redirect, setRedirect] = useState(null);
   return (
@@ -57,6 +58,8 @@ const App = () => {
         setUserBreed,
         userDogName,
         setUserDogName,
+        aboutTextArea,
+        setAboutTextArea,
       }}
     >
       <div className="App">
@@ -80,7 +83,7 @@ const App = () => {
           <Route path="/dog-search" element={<SearchFields />} />
           <Route path="/search-results" element={<SearchResults />} />
           <Route path="find-match" element={<SeeAllOtherDogs />} />
-          <Route path="favorites" element={<UserDogFavs />} />
+          <Route path="favorites" element={<Favorites />} />
         </Routes>
       </div>
     </AppContext.Provider>

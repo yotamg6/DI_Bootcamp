@@ -11,7 +11,7 @@ const UserDogFavs = () => {
       const response = await axios.post("http://localhost:5000/my-favs", {
         userName,
       });
-      //   console.log("response in userDogFavs:", response.data);
+      console.log("response in userDogFavs:", response.data);
       setMyFavs(response.data);
     } catch (e) {
       console.log("error from addtofavs:", e);
@@ -31,10 +31,13 @@ const UserDogFavs = () => {
                 margin: "10px",
               }}
             >
+              <h3>My Favorite dogs</h3>
               <img
                 style={{ height: "auto", maxWidth: "100%" }}
                 src={`http://localhost:5000/images/${file.filename}`}
               />
+              <p>dog breed:{file.breed}</p>
+              <p>dog name:{file.dogname}</p>
             </div>
           </div>
         );
