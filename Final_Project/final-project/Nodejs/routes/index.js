@@ -2,7 +2,7 @@ import express from "express";
 import multer from "multer";
 import path from "path";
 const router = express.Router();
-import GetAllBreeds from "../controllers/GetAllBreeds.js";
+import { GetAllBreeds } from "../controllers/GetAllBreeds.js";
 import { Uploads } from "../models/UserModel.js";
 import {
   Register,
@@ -21,13 +21,7 @@ router.post("/login", Login);
 router.get("/token", VerifyToken, (req, res) => {
   res.status(200).json({ msg: "accessToken" });
 });
-
-//move to the controllers?
-router.get("/api/breeds", (req, res) => {
-  GetAllBreeds()
-    .then((result) => res.json(result))
-    .catch((e) => console.log("error from router get", e));
-});
+router.get("/api/breeds", GetAllBreeds);
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {

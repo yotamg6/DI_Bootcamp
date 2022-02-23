@@ -1,6 +1,7 @@
 import React, { useState, useContext, useEffect } from "react";
 import { AppContext } from "../App";
 import { TextField, Box, MenuItem } from "@mui/material";
+import axios from "axios";
 
 const AboutMyDog = () => {
   const {
@@ -15,13 +16,25 @@ const AboutMyDog = () => {
 
   const [value, setValue] = useState("");
 
+  // useEffect(async () => {
+  //   setAboutTextArea("");
+  //   try {
+  //     const response = await fetch("http://localhost:5000/api/breeds");
+  //     const data = await response.json();
+  //     // console.log("data in usefect:", data);
+  //     await setBreeds(data);
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
+  // }, []);
+
   useEffect(async () => {
     setAboutTextArea("");
     try {
-      const response = await fetch("http://localhost:5000/api/breeds");
-      const data = await response.json();
-      // console.log("data in usefect:", data);
-      await setBreeds(data);
+      const response = await axios.get("http://localhost:5000/api/breeds");
+
+      // console.log("data in usefect:", response.data);
+      await setBreeds(response.data);
     } catch (e) {
       throw new Error(e);
     }

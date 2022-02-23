@@ -2,11 +2,12 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
 import AboutMyDog from "./AboutMyDog";
+import { toast } from "react-toastify";
 
 const UploadFile = () => {
   const { userName, userBreed, userDogName, aboutTextArea } =
     useContext(AppContext);
-  const [imgValue, setImgValue] = useState("");
+  const [imgValue, setImgValue] = useState(null);
   const [fileData, setFileData] = useState({});
   const [myUploads, setMyUploads] = useState([]);
 
@@ -23,6 +24,7 @@ const UploadFile = () => {
   }, [fileData]);
 
   const uploadFile = async () => {
+    if (!imgValue) return toast.error(`please upload your dog's picture`);
     const formData = new FormData();
     formData.append("dog_pic", imgValue);
     formData.append("userName", userName);
@@ -34,7 +36,7 @@ const UploadFile = () => {
         "http://localhost:5000/api/uploads",
         formData
       );
-      console.log("username:", data.data.filedata.username);
+      // console.log("username:", data.data.filedata.username);
       setFileData(data.data);
     } catch (e) {
       console.log(e);

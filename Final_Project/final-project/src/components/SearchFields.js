@@ -11,7 +11,7 @@ const SearchFields = () => {
 
   const calcFilters = () => {
     if (breeds.length > 0) {
-      console.log("temper inside filters", temper);
+      // console.log("temper inside filters", temper);
 
       const arrOfTemperIndexes = [];
       const arrOfHeightIndexes = [];
