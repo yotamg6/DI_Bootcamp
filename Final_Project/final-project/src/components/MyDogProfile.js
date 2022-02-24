@@ -17,8 +17,8 @@ const MyDogProfile = () => {
     const tokenExp = decoded.exp;
     // console.log(new Date((tokenExp - 60) * 1000));
     if (tokenExp * 1000 < new Date().getTime()) {
-      // console.log("time is over");
-      setTimerMsg("your session is now expired. please login again");
+      console.log("time is over");
+      // setTimerMsg("your session is now expired. please login again");
       navigate("/login");
       //I should set a timer to be redirected. after the required time (now 60) I could call the verify token, or just navigate
     }

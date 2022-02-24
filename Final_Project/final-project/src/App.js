@@ -28,7 +28,7 @@ const App = () => {
   const [userDogName, setUserDogName] = useState(null);
   const [aboutTextArea, setAboutTextArea] = useState("");
   const [timerMsg, setTimerMsg] = useState(null);
-  const [accessToken, setAccessToken] = useState();
+  const [accessToken, setAccessToken] = useState(null);
 
   return (
     <AppContext.Provider
@@ -73,7 +73,15 @@ const App = () => {
             path="/register"
             element={<LoginRegister title={"Register"} />}
           />
-          <Route path="" element={<Home />} />
+          <Route path="/" element={<LoginRegister title={"Register"} />} />
+          <Route
+            path="/home"
+            element={
+              <Auth>
+                <Home />
+              </Auth>
+            }
+          />
           <Route
             path="/my-dog"
             element={
@@ -82,10 +90,38 @@ const App = () => {
               </Auth>
             }
           />
-          <Route path="/dog-search" element={<SearchFields />} />
-          <Route path="/search-results" element={<SearchResults />} />
-          <Route path="find-match" element={<SeeAllOtherDogs />} />
-          <Route path="favorites" element={<Favorites />} />
+          <Route
+            path="/dog-search"
+            element={
+              <Auth>
+                <SearchFields />
+              </Auth>
+            }
+          />
+          <Route
+            path="/search-results"
+            element={
+              <Auth>
+                <SearchResults />
+              </Auth>
+            }
+          />
+          <Route
+            path="find-match"
+            element={
+              <Auth>
+                <SeeAllOtherDogs />
+              </Auth>
+            }
+          />
+          <Route
+            path="favorites"
+            element={
+              <Auth>
+                <Favorites />
+              </Auth>
+            }
+          />
         </Routes>
       </div>
     </AppContext.Provider>

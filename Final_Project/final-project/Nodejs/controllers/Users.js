@@ -37,7 +37,7 @@ export const Login = async (req, res) => {
 
     if (!match)
       return res.status(404).json({ msg: "Wrong password, please try again" });
-
+    console.log("accestokenSECERET", process.env.ACCESS_TOKEN_SECRET);
     const userName = user[0].username;
     const email = user[0].email;
     const accessToken = jwt.sign(
@@ -54,8 +54,6 @@ export const Login = async (req, res) => {
     res.status(404).json({ msg: "User not found" });
   }
 };
-// a cookie with the accesstoken is now inserted to the session? It's there in every request until the session is over?
-//should I add username error? get it from lines 11-12 in the verify token?
 
 export const getCurUser = async (req, res) => {
   try {

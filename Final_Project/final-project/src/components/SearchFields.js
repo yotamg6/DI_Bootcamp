@@ -50,6 +50,7 @@ const SearchFields = () => {
           return breed.temperament.replaceAll(" ", "").toLowerCase().split(",");
         }
       });
+      //// perhaps add all tempers to a table, to that table add more keywords.
       const userTemperLength = userTemperArr.length;
       const matchTemp = allTemps.filter((breedTempArr, i) => {
         if (breedTempArr) {

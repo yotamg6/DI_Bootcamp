@@ -76,7 +76,7 @@ const LoginRegister = ({ title }) => {
         );
         // console.log("login:", response);
         toast.success("Login successful!");
-        setAccessToken(response.data);
+        await setAccessToken(response.data);
         navigate("/my-dog");
       } catch (e) {
         console.log("error from login:", e.response); //what is response?every e in catch has response?
