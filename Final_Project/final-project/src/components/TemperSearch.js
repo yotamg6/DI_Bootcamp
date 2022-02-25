@@ -58,7 +58,7 @@ const TemperSearch = () => {
             <TextField
               id="outlined-select"
               select
-              label="Select"
+              label="Temperament"
               value={value}
               onChange={handleChange}
               helperText="Please select a desired temperament"

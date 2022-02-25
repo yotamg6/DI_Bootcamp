@@ -16,9 +16,10 @@ import Favorites from "./components/Favorites";
 export const AppContext = createContext(null);
 const App = () => {
   const [temperMatchIndexes, setTemperMatchIndexes] = useState([]);
+  const [heightMatchIndexes, setHeightMatchIndexes] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  // const [temper, setTemper] = useState("");
+
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
@@ -41,6 +42,8 @@ const App = () => {
         setBreeds,
         temperMatchIndexes,
         setTemperMatchIndexes,
+        heightMatchIndexes,
+        setHeightMatchIndexes,
         matchIndexes,
         setMatchIndexes,
         timerMsg,
