@@ -17,11 +17,11 @@ const Nav = () => {
     checkExp();
   });
   const checkExp = () => {
-    console.log("accesstoken  12345", accessToken);
+    // console.log("accesstoken  12345", accessToken);
     if (accessToken) {
       const decoded = jwt_decode(accessToken.accessToken);
       const usernameCookie = decoded.userName;
-      console.log("usernamecookie", usernameCookie);
+      // console.log("usernamecookie", usernameCookie);
       const tokenExp = decoded.exp;
       // console.log(new Date((tokenExp - 60) * 1000));
       if (tokenExp * 1000 < new Date().getTime()) {
@@ -47,7 +47,7 @@ const Nav = () => {
           "x-access-token": accessToken,
         },
       });
-      console.log(response);
+      // console.log(response);
       navigate("/login");
     } catch (e) {
       console.log(e);

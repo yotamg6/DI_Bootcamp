@@ -407,3 +407,61 @@ from GetAllBreeds// const GetAllBreeds = async () => {
 // };
 // export default GetAllBreeds;
 
+from TemperSearch (version where user types in)
+return (
+    <>
+      <div>
+        <input
+          name="temperText"
+          type="text"
+          placeholder="Desired temperament"
+          onChange={(e) => setTemper(e.target.value)}
+        ></input>
+      </div>
+    </>
+  );
+
+  from searchFields (version where user types in) 
+  const userTemperArr = temper
+        .replaceAll(",", "")
+        .replaceAll("  ", " ")
+        .toLowerCase()
+        .split(" ");
+      const allTemps = breeds.map((breed) => {
+        if (breed.temperament) {
+          return breed.temperament.replaceAll(" ", "").toLowerCase().split(",");
+        }
+      });
+
+      const userTemperLength = userTemperArr.length;
+      const matchTemp = allTemps.filter((breedTempArr, i) => {
+        if (breedTempArr) {
+          const x =
+            breedTempArr.filter((temp) => {
+              return userTemperArr.includes(temp);
+            }).length === userTemperLength;
+          if (x) arrOfTemperIndexes.push(i);
+        }
+      });
+
+      //from about my dog
+       // useEffect(async () => {
+  //   setAboutTextArea("");
+  //   try {
+  //     const response = await fetch("http://localhost:5000/api/breeds");
+  //     const data = await response.json();
+  //     // console.log("data in usefect:", data);
+  //     await setBreeds(data);
+  //   } catch (e) {
+  //     throw new Error(e);
+  //   }
+  // }, []);
+
+//from HeightSearch (when user types in heights)
+          <input
+          name="heightTxt"
+          type="text"
+          placeholder="Desired height"
+          onChange={(e) => setHeight(e.target.value)}
+        ></input>
+

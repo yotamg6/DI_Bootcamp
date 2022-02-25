@@ -6,14 +6,14 @@ import WeightSearch from "./WeightSearch";
 import TemperSearch from "./TemperSearch";
 const SearchFields = () => {
   let navigate = useNavigate();
-  const { breeds, height, weight, temper, setMatchIndexes } =
+  const { breeds, height, weight, temperMatchIndexes, setMatchIndexes } =
     useContext(AppContext);
 
   const calcFilters = () => {
     if (breeds.length > 0) {
       // console.log("temper inside filters", temper);
 
-      const arrOfTemperIndexes = [];
+      // const arrOfTemperIndexes = [];
       const arrOfHeightIndexes = [];
       const arrOfWeightIndexes = [];
 
@@ -40,29 +40,9 @@ const SearchFields = () => {
         arrOfWeightIndexes.includes(height)
       );
       console.log("weightnheight:", weightnHeightMatches);
-      const userTemperArr = temper
-        .replaceAll(",", "")
-        .replaceAll("  ", " ")
-        .toLowerCase()
-        .split(" ");
-      const allTemps = breeds.map((breed) => {
-        if (breed.temperament) {
-          return breed.temperament.replaceAll(" ", "").toLowerCase().split(",");
-        }
-      });
-      //// perhaps add all tempers to a table, to that table add more keywords.
-      const userTemperLength = userTemperArr.length;
-      const matchTemp = allTemps.filter((breedTempArr, i) => {
-        if (breedTempArr) {
-          const x =
-            breedTempArr.filter((temp) => {
-              return userTemperArr.includes(temp);
-            }).length === userTemperLength;
-          if (x) arrOfTemperIndexes.push(i);
-        }
-      });
-      if (arrOfTemperIndexes.length > 0 && weightnHeightMatches.length > 0) {
-        const foundMatchIndexes = arrOfTemperIndexes.filter((tempInd) =>
+
+      if (temperMatchIndexes.length > 0 && weightnHeightMatches.length > 0) {
+        const foundMatchIndexes = temperMatchIndexes.filter((tempInd) =>
           weightnHeightMatches.includes(tempInd)
         );
         if (foundMatchIndexes.length > 0) {

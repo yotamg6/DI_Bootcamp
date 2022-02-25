@@ -6,8 +6,6 @@ import { AppContext } from "../App";
 import axios from "axios";
 
 const MyDogProfile = () => {
-  const [expiration, setExpiration] = useState("");
-
   const { accessToken, userName, setTimerMsg } = useContext(AppContext);
 
   let navigate = useNavigate();

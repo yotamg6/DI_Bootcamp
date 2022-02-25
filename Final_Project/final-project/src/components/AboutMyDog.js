@@ -16,24 +16,12 @@ const AboutMyDog = () => {
 
   const [value, setValue] = useState("");
 
-  // useEffect(async () => {
-  //   setAboutTextArea("");
-  //   try {
-  //     const response = await fetch("http://localhost:5000/api/breeds");
-  //     const data = await response.json();
-  //     // console.log("data in usefect:", data);
-  //     await setBreeds(data);
-  //   } catch (e) {
-  //     throw new Error(e);
-  //   }
-  // }, []);
-
   useEffect(async () => {
     setAboutTextArea("");
     try {
       const response = await axios.get("http://localhost:5000/api/breeds");
 
-      // console.log("data in usefect:", response.data);
+      console.log("data in useffect aboutmydog:", response.data);
       await setBreeds(response.data);
     } catch (e) {
       throw new Error(e);
@@ -97,8 +85,6 @@ const AboutMyDog = () => {
 };
 
 export default AboutMyDog;
-
-// dog temper (textfield?), that will be displayed next to their dog pic and name
 
 {
   // const handleChange = (e) => {

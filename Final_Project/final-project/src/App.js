@@ -15,12 +15,10 @@ import Favorites from "./components/Favorites";
 
 export const AppContext = createContext(null);
 const App = () => {
-  const [heightText, setHeightText] = useState();
-  const [weightText, setWeightText] = useState("");
-  const [temperText, setTemperText] = useState("");
+  const [temperMatchIndexes, setTemperMatchIndexes] = useState([]);
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
-  const [temper, setTemper] = useState("");
+  // const [temper, setTemper] = useState("");
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
@@ -33,20 +31,16 @@ const App = () => {
   return (
     <AppContext.Provider
       value={{
-        heightText,
-        setHeightText,
-        weightText,
-        setWeightText,
-        temperText,
-        setTemperText,
         height,
         setHeight,
         weight,
         setWeight,
-        temper,
-        setTemper,
+        // temper,
+        // setTemper,
         breeds,
         setBreeds,
+        temperMatchIndexes,
+        setTemperMatchIndexes,
         matchIndexes,
         setMatchIndexes,
         timerMsg,
@@ -128,7 +122,16 @@ const App = () => {
   );
 };
 
-//userdog will be nested in favs, together with fav breeds. this is only a test
+// const [heightText, setHeightText] = useState();
+//   const [weightText, setWeightText] = useState("");
+//   const [temperText, setTemperText] = useState("");
+
+//   heightText,
+//         setHeightText,
+//         weightText,
+//         setWeightText,
+//         temperText,
+//         setTemperText,
 
 export default App;
 
