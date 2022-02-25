@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import { AppContext } from "../App";
 
 const LoginRegister = ({ title }) => {
-  const { setAccessToken, userName, setUserName, timerMsg } =
+  const { setAccessToken, userName, setUserName, timerMsg, setTimerMsg } =
     useContext(AppContext);
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -20,6 +20,7 @@ const LoginRegister = ({ title }) => {
   useEffect(() => {
     if (timerMsg) {
       toast.error(timerMsg);
+      setTimerMsg(null);
     }
   }, []);
 

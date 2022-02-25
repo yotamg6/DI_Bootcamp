@@ -3,12 +3,11 @@ import { AppContext } from "../App";
 import { TextField, Box, MenuItem } from "@mui/material";
 
 const HeightSearch = () => {
-  const { breeds } = useContext(AppContext);
+  const { breeds, setHeightMatchIndexes } = useContext(AppContext);
   const [breedHeights, setBreedHeights] = useState([]);
   const [heightSpans, setHeightSpans] = useState([]);
   const [value, setValue] = useState("");
   const [selectedHeights, setSelectedHeights] = useState();
-  const [heightMatchIndexes, setHeightMatchIndexes] = useState([]);
   const arrOfBreedHeights = [];
   const arrOfHeightSpans = [];
   const arrOfHeightIndexes = [];
@@ -21,15 +20,13 @@ const HeightSearch = () => {
   useEffect(() => {
     if (selectedHeights) {
       const splitted = selectedHeights.replaceAll(" ", "").split("-");
-      console.log(splitted);
+      // console.log(splitted);
       const parsedSelectedF = parseInt(splitted[0], 10);
       const parsedSelectedS = parseInt(splitted[1], 10);
       const sequence = [];
       for (let i = parsedSelectedF; i <= parsedSelectedS; i++) {
         sequence.push(i);
       }
-      // console.log("sequence", sequence);
-      // console.log("breeds", breeds);
 
       breeds.map((breed, index) => {
         if (breed.height) {
@@ -54,6 +51,7 @@ const HeightSearch = () => {
       const uniqueIndexesSet = new Set(arrOfHeightIndexes);
       const uniqueIndexes = [...uniqueIndexesSet];
       console.log("uniqueI", uniqueIndexes);
+      setHeightMatchIndexes(uniqueIndexes);
     }
   }, [selectedHeights]);
 
@@ -67,7 +65,7 @@ const HeightSearch = () => {
       }
     }
     setHeightSpans(arrOfHeightSpans);
-    console.log("heightSpans", arrOfHeightSpans);
+    // console.log("heightSpans", arrOfHeightSpans);
   }, [breedHeights]);
 
   useEffect(() => {

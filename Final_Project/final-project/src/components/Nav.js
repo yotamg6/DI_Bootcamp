@@ -10,9 +10,18 @@ const Nav = () => {
   const [showNav, setShowNav] = useState(true);
   const { setAccessToken, accessToken, setTimerMsg } = useContext(AppContext);
   let navigate = useNavigate();
-  // useEffect(() => {
-  //   checkExp();
-  // }, []);
+
+  useEffect(() => {
+    const goToPage = () => {
+      setShowNav(false); //doesnt work
+      setTimerMsg("your session is now expired. please login again");
+      // setAccessToken(null);
+
+      navigate("/login");
+    };
+    const timeOut = setTimeout(goToPage, 60000);
+  }, []);
+
   useEffect(() => {
     checkExp();
   });
@@ -23,7 +32,7 @@ const Nav = () => {
       const usernameCookie = decoded.userName;
       // console.log("usernamecookie", usernameCookie);
       const tokenExp = decoded.exp;
-      // console.log(new Date((tokenExp - 60) * 1000));
+
       if (tokenExp * 1000 < new Date().getTime()) {
         setTimerMsg("your session is now expired. please login again");
 
