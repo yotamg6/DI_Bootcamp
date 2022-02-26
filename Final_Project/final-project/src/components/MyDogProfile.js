@@ -11,15 +11,19 @@ const MyDogProfile = () => {
   let navigate = useNavigate();
 
   useEffect(() => {
-    const decoded = jwt_decode(accessToken.accessToken);
-    const tokenExp = decoded.exp;
-    // console.log(new Date((tokenExp - 60) * 1000));
-    if (tokenExp * 1000 < new Date().getTime()) {
-      // console.log("time is over");
-      setTimerMsg("your session is now expired. please login again");
-      navigate("/login");
-    }
-  });
+    const checkExp = () => {
+      const decoded = jwt_decode(accessToken.accessToken);
+      const tokenExp = decoded.exp;
+
+      if (tokenExp * 1000 < new Date().getTime()) {
+        clearInterval(inter);
+        setTimerMsg("your session is now expired. please login again");
+        navigate("/login");
+      }
+    };
+    const inter = setInterval(checkExp, 1000);
+  }, []);
+
   return (
     <>
       <div>

@@ -37,12 +37,12 @@ export const Login = async (req, res) => {
 
     if (!match)
       return res.status(404).json({ msg: "Wrong password, please try again" });
-    console.log("accestokenSECERET", process.env.ACCESS_TOKEN_SECRET);
+    // console.log("accestokenSECERET", process.env.ACCESS_TOKEN_SECRET);
     const userName = user[0].username;
     const email = user[0].email;
     const accessToken = jwt.sign(
       { userName, email },
-      process.env.ACCESS_TOKEN_SECRET, //how can we use .env? it's not imported here
+      process.env.ACCESS_TOKEN_SECRET,
       { expiresIn: "60s" }
     );
     res.cookie("accessToken", accessToken, {
@@ -121,6 +121,17 @@ export const getMyFavs = async (req, res) => {
     res.json(results);
   } catch (e) {
     console.log("cannot get favs");
+  }
+};
+
+export const deleteFromDogFavs = async (req, res) => {
+  try {
+    const [results, metadata] = await db.query(
+      `delete from favs f using uploads u where f.selecteduser=u.username and f.username='${req.body.userName}' and u.dogname='${req.body.dogName}'`
+    );
+    res.json({ msg: "favorite deleted successfully" });
+  } catch (e) {
+    console.log("backend deleteFromDogFav", e);
   }
 };
 

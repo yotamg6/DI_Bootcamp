@@ -9,8 +9,8 @@ export const VerifyToken = (req, res, next) => {
   if (accessToken == null) return res.sendStatus(401);
   jwt.verify(accessToken, process.env.ACCESS_TOKEN_SECRET, (err, decode) => {
     if (err) return res.sendStatus(403);
-    let email = decode.email;
-    let userName = decode.userName;
+    // let email = decode.email;
+    // let userName = decode.userName;
     next();
   });
 };

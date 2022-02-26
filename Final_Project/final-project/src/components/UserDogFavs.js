@@ -6,7 +6,24 @@ const UserDogFavs = () => {
   const { userName } = useContext(AppContext);
   const [myFavs, setMyFavs] = useState([]);
 
+  const deleteFromFavs = async (userName, dogName) => {
+    try {
+      const response = await axios.post("http://localhost:5000/delete-dogfav", {
+        userName,
+        dogName,
+      });
+      console.log("response in deleteFromFavs", response.data);
+      getMyFavs();
+    } catch (e) {
+      console.log("error from deleteDogFavs", e);
+    }
+  };
+
   useEffect(async () => {
+    getMyFavs();
+  }, []);
+
+  const getMyFavs = async () => {
     try {
       const response = await axios.post("http://localhost:5000/my-favs", {
         userName,
@@ -16,7 +33,7 @@ const UserDogFavs = () => {
     } catch (e) {
       console.log("error from addtofavs:", e);
     }
-  }, []);
+  };
 
   return (
     <>
@@ -40,6 +57,11 @@ const UserDogFavs = () => {
                 <p>dog breed:{file.breed}</p>
                 <p>dog name:{file.dogname}</p>
                 <p>Temperament: {file.about_dog}</p>
+                <button
+                  onClick={() => deleteFromFavs(file.username, file.dogname)}
+                >
+                  Remove dog from favorites
+                </button>
               </div>
             </div>
           );

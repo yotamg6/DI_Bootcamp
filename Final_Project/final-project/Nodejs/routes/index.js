@@ -10,7 +10,8 @@ import {
   getCurUser,
   getAllOtherUsers,
   addToFavs,
-  getMyFavs,
+  getMyFavs, //should I change their names to dogFav? or remove the Dog from 1 row down
+  deleteFromDogFavs,
   Logout,
 } from "../controllers/Users.js";
 import { addToBreedFavs, getBreedFavs } from "../controllers/Breeds.js";
@@ -83,5 +84,6 @@ router.post("/favs", addToFavs);
 router.post("/my-favs", getMyFavs);
 router.post("/breed-favs", addToBreedFavs);
 router.post("/mybreed-favs", getBreedFavs);
+router.post("/delete-dogfav", deleteFromDogFavs);
 router.get("logout", Logout);
 export default router;
