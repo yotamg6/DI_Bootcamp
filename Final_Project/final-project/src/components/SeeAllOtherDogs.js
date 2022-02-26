@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const SeeAllOtherDogs = () => {
   const { userName } = useContext(AppContext);
@@ -14,12 +16,17 @@ const SeeAllOtherDogs = () => {
     // const uploadId = othersFiles[index].id;
     // console.log("uploadId:", uploadId);
     try {
-      const response = await axios.post("http://localhost:5000/favs", {
+      const response = await axios.post("http://localhost:5000/dog-favs", {
         userName,
         selectedUser,
         fileName,
       });
-      console.log("response in add to favs:", response.data);
+      // console.log("response in add to favs:", response.data);
+      if (response.data) {
+        toast.info("dog added successfully to favorites");
+      } else {
+        toast.warn("dog is already in your favorites");
+      }
     } catch (e) {
       console.log("error from addtofavs:", e);
     }
@@ -63,7 +70,9 @@ const SeeAllOtherDogs = () => {
                 <p>Temperament: {file.about_dog}</p>
               </div>
 
-              <button onClick={() => addToFavs(i)}>Add to favorites</button>
+              <Button variant="contained" onClick={() => addToFavs(i)}>
+                Add to favorites
+              </Button>
             </div>
           </div>
         );

@@ -14,7 +14,8 @@ export const addToBreedFavs = async (req, res) => {
                   );`,
       { type: db.QueryTypes.INSERT }
     );
-    res.json({ msg: "breed added to favs" });
+    // console.log("meta", metadata);
+    res.json(metadata);
   } catch (e) {
     console.log("error from backend addtobreedfavs", e);
   }
@@ -29,5 +30,19 @@ export const getBreedFavs = async (req, res) => {
     res.json(myFavs);
   } catch (e) {
     console.log("error from getbreedfavs", e);
+  }
+};
+
+export const deleteFromBreedFavs = async (req, res) => {
+  try {
+    const response = await breedFavs.destroy({
+      where: {
+        username: req.body.userName,
+        breed_index: req.body.breedIndex,
+      },
+    });
+    res.json(response);
+  } catch (e) {
+    console.log("error from deleteFromBreedFavs", e);
   }
 };

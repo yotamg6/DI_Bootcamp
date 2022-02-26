@@ -14,7 +14,11 @@ import {
   deleteFromDogFavs,
   Logout,
 } from "../controllers/Users.js";
-import { addToBreedFavs, getBreedFavs } from "../controllers/Breeds.js";
+import {
+  addToBreedFavs,
+  getBreedFavs,
+  deleteFromBreedFavs,
+} from "../controllers/Breeds.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
 
 router.post("/register", Register);
@@ -80,10 +84,11 @@ router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
 
 router.post("/api/my-images", getCurUser);
 router.post("/api/others-images", getAllOtherUsers);
-router.post("/favs", addToFavs);
+router.post("/dog-favs", addToFavs);
 router.post("/my-favs", getMyFavs);
 router.post("/breed-favs", addToBreedFavs);
 router.post("/mybreed-favs", getBreedFavs);
 router.post("/delete-dogfav", deleteFromDogFavs);
+router.post("/delete-breedfav", deleteFromBreedFavs);
 router.get("logout", Logout);
 export default router;

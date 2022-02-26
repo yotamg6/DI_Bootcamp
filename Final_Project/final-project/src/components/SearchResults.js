@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { AppContext } from "../App";
 import axios from "axios";
+import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const SearchResults = () => {
   const { breeds, matchIndexes, userName } = useContext(AppContext);
@@ -12,7 +14,12 @@ const SearchResults = () => {
         userName,
         index,
       });
-      console.log("data from add to favbreeds", response.data);
+      // console.log("data from add to favbreeds", response.data);
+      if (response.data) {
+        toast.info("breed added successfully to favorites");
+      } else {
+        toast.warn("breed is already in your favorites");
+      }
     } catch (e) {
       console.log("error from add to breedfavs", e);
     }
@@ -44,9 +51,12 @@ const SearchResults = () => {
                     <strong>Temperament: </strong>
                     {breeds[index].temperament}
                   </p>
-                  <button onClick={() => addToBreedFavs(index)}>
+                  <Button
+                    variant="contained"
+                    onClick={() => addToBreedFavs(index)}
+                  >
                     Add breed to my favorites
-                  </button>
+                  </Button>
                 </div>
               </div>
             );

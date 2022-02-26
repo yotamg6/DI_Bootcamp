@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { Button } from "@mui/material";
 import { AppContext } from "../App";
 import HeightSearch from "./HeightSearch";
 import WeightSearch from "./WeightSearch";
@@ -49,7 +50,9 @@ const SearchFields = () => {
       <div>
         <TemperSearch />
       </div>
-      <button onClick={calcFilters}>Find your breed</button>
+      <Button variant="contained" onClick={calcFilters}>
+        Find your breed
+      </Button>
     </>
   );
 };

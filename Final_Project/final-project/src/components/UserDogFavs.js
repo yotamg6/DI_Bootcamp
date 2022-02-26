@@ -1,10 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
+import { toast } from "react-toastify";
+import { Button } from "@mui/material";
 
 const UserDogFavs = () => {
   const { userName } = useContext(AppContext);
   const [myFavs, setMyFavs] = useState([]);
+
+  useEffect(async () => {
+    getMyFavs();
+  }, []);
 
   const deleteFromFavs = async (userName, dogName) => {
     try {
@@ -12,16 +18,12 @@ const UserDogFavs = () => {
         userName,
         dogName,
       });
-      console.log("response in deleteFromFavs", response.data);
+      toast.success("favorite removed successfully");
       getMyFavs();
     } catch (e) {
       console.log("error from deleteDogFavs", e);
     }
   };
-
-  useEffect(async () => {
-    getMyFavs();
-  }, []);
 
   const getMyFavs = async () => {
     try {
@@ -57,11 +59,12 @@ const UserDogFavs = () => {
                 <p>dog breed:{file.breed}</p>
                 <p>dog name:{file.dogname}</p>
                 <p>Temperament: {file.about_dog}</p>
-                <button
+                <Button
+                  variant="contained"
                   onClick={() => deleteFromFavs(file.username, file.dogname)}
                 >
                   Remove dog from favorites
-                </button>
+                </Button>
               </div>
             </div>
           );

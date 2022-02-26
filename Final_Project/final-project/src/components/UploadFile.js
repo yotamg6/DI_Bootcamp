@@ -3,8 +3,14 @@ import axios from "axios";
 import { AppContext } from "../App";
 import AboutMyDog from "./AboutMyDog";
 import { toast } from "react-toastify";
+import { Button, IconButton, Input, Stack } from "@mui/material";
+import PhotoCamera from "@mui/icons-material/PhotoCamera"; //doesnt work, need to download?
+import { styled } from "@mui/material/styles";
 
 const UploadFile = () => {
+  const Input = styled("input")({
+    display: "none",
+  });
   const { userName, userBreed, userDogName, aboutTextArea } =
     useContext(AppContext);
   const [imgValue, setImgValue] = useState(null);
@@ -45,14 +51,27 @@ const UploadFile = () => {
   return (
     <>
       <div>
-        <input
-          type="file"
-          name="dog_pic"
-          accept=".jpg,.png"
-          onChange={(e) => setImgValue(e.target.files[0])}
-        />
+        <Stack direction="row" alignItems="center" spacing={2}>
+          <label htmlFor="icon-button-file">
+            <Input
+              accept=".jpg,.png"
+              id="dog_pic"
+              type="file"
+              onChange={(e) => setImgValue(e.target.files[0])}
+            />
+            <IconButton
+              color="primary"
+              aria-label="upload picture"
+              component="span"
+            >
+              <PhotoCamera />
+            </IconButton>
+          </label>
+        </Stack>
         <AboutMyDog />
-        <button onClick={uploadFile}>Upload</button>
+        <Button variant="contained" onClick={uploadFile}>
+          Upload
+        </Button>
       </div>
       {myUploads.map((data, i) => {
         return (
@@ -67,7 +86,7 @@ const UploadFile = () => {
             >
               <img
                 style={{ height: "auto", maxWidth: "100%" }}
-                src={`http://localhost:5000/images/${data.filename}`} //not entirely sure why it works, simply because of app.use and express static?
+                src={`http://localhost:5000/images/${data.filename}`}
               />
               <p>Dog breed: {data.breed}</p>
               <p>Dog name: {data.dogname}</p>
@@ -80,6 +99,18 @@ const UploadFile = () => {
   );
 };
 
+//   return (
+//     <Stack direction="row" alignItems="center" spacing={2}>
+//       <label htmlFor="icon-button-file">
+//         <Input accept=".jpg,.png" id="dog_pic" type="file" onChange={(e) => setImgValue(e.target.files[0])} />
+//         <IconButton color="primary" aria-label="upload picture" component="span">
+//           <PhotoCamera />
+//         </IconButton>
+//       </label>
+//     </Stack>
+//   );
+// } --- delete
+
 export default UploadFile;
 
 // useEffect(async () => {
@@ -91,3 +122,19 @@ export default UploadFile;
 //     console.log(e);
 //   }
 // }, [fileData]);
+
+{
+  /* <input
+          type="file"
+          name="dog_pic"
+          accept=".jpg,.png"
+          onChange={(e) => setImgValue(e.target.files[0])}
+        /> */
+}
+
+// import * as React from 'react';
+// import { styled } from '@mui/material/styles';
+// import Button from '@mui/material/Button';
+// import IconButton from '@mui/material/IconButton';
+// import PhotoCamera from '@mui/icons-material/PhotoCamera';
+// import Stack from '@mui/material/Stack';

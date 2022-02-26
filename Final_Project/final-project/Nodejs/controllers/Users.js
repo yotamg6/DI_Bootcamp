@@ -103,9 +103,9 @@ export const addToFavs = async (req, res) => {
                 );`,
       { type: db.QueryTypes.INSERT }
     );
-    // console.log("stam", stam);
+
     // console.log("meta", metadata);
-    res.json({ msg: "image added to favorites" });
+    res.json(metadata);
   } catch (e) {
     console.log("error from add to favs", e);
   }
@@ -117,7 +117,7 @@ export const getMyFavs = async (req, res) => {
     const [results, metadata] = await db.query(
       `select * from uploads u, favs f where f.selecteduser=u.username and f.username='${req.body.userName}'`
     );
-    console.log(results);
+    // console.log(results);
     res.json(results);
   } catch (e) {
     console.log("cannot get favs");
