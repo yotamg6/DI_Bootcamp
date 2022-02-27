@@ -67,7 +67,12 @@ const Nav = () => {
   if (showNav) {
     return (
       <>
-        <Stack spacing={2} direction="row">
+        <Stack
+          spacing={2}
+          direction="row"
+          justifyContent="center"
+          alignItems="center"
+        >
           <Button variant="outlined" component={Link} to="home">
             Home
           </Button>

@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Button, Stack } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
+import SendIcon from "@mui/icons-material/Send";
 
 import { styled } from "@mui/material/styles";
 
@@ -25,6 +26,7 @@ const UploadFile = () => {
   const [imgValue, setImgValue] = useState(null);
   const [fileData, setFileData] = useState({});
   const [myUploads, setMyUploads] = useState([]);
+  const [showInputFields, setShowInputFields] = useState(true);
 
   useEffect(async () => {
     try {
@@ -33,12 +35,15 @@ const UploadFile = () => {
       });
       console.log(images.data);
       setMyUploads(images.data);
+      if (images.data.length > 0) setShowInputFields(false);
+      else setShowInputFields(true);
     } catch (e) {
       console.log(e);
     }
   }, [fileData]);
 
   const deleteMyDog = async (username) => {
+    setShowInputFields(true);
     try {
       const response = await axios.post("http://localhost:5000/delete-mydog", {
         username,
@@ -64,11 +69,11 @@ const UploadFile = () => {
     formData.append("aboutTextArea", aboutTextArea);
     try {
       const data = await axios.post("http://localhost:5000/uploads", formData);
-      console.log("username:", data.data.filedata.username);
+      // console.log("username:", data.data.filedata.username);
       setFileData(data.data);
     } catch (e) {
       // console.log(e.response.data.msg);
-      toast.error(e.response.data.msg);
+      toast.error(e.response.data.msg); //don't need it if i dont show the inputfields. decide which of the two
     }
   };
 
@@ -102,33 +107,39 @@ const UploadFile = () => {
           </div>
         </div>
       ) : null}
-
-      <div>
-        <Stack direction="column" alignItems="center" spacing={2}>
-          <label htmlFor="contained-button-file">
-            <input
-              type="file"
-              name="dog_pic"
-              id="contained-button-file"
-              multiple
-              accept="image/*"
-              onChange={(e) => setImgValue(e.target.files[0])}
-              hidden
-            />
+      {showInputFields ? (
+        <div>
+          <Stack direction="column" alignItems="center" spacing={2}>
+            <h3>Please add details about your dog</h3>
+            <label htmlFor="contained-button-file">
+              <input
+                type="file"
+                name="dog_pic"
+                id="contained-button-file"
+                multiple
+                accept="image/*"
+                onChange={(e) => setImgValue(e.target.files[0])}
+                hidden
+              />
+              <Button
+                variant="contained"
+                component="span"
+                startIcon={<PhotoCamera />}
+              >
+                Upload image
+              </Button>
+            </label>
+            <AboutMyDog />
             <Button
               variant="contained"
-              component="span"
-              startIcon={<PhotoCamera />}
+              startIcon={<SendIcon />}
+              onClick={uploadFile}
             >
-              Upload image
+              Send
             </Button>
-          </label>
-          <AboutMyDog />
-          <Button variant="contained" onClick={uploadFile}>
-            Upload
-          </Button>
-        </Stack>
-      </div>
+          </Stack>
+        </div>
+      ) : null}
     </>
   );
 };

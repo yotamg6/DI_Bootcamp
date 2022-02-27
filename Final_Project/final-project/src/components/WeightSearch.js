@@ -108,7 +108,7 @@ const WeightSearch = () => {
               select
               value={value}
               onChange={handleChange}
-              label="Meteres"
+              label="Weight (m)"
               helperText="Please select a desired weight-span"
             >
               {weightSpans.map((span, i) => {

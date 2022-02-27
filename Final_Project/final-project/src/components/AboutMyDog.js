@@ -54,16 +54,17 @@ const AboutMyDog = () => {
           <div>
             <TextField
               id="outlined-multiline-flexible"
-              label="about my dog"
+              label="About my dog"
               multiline
               maxRows={4}
               value={aboutTextArea}
               onChange={(e) => setAboutTextArea(e.target.value)}
+              helperText="Please describe your dog briefly"
             />
           </div>
           <div>
             <TextField
-              label="enter dog name"
+              label="Enter dog name"
               maxRows={1}
               variant="outlined"
               value={nameValue}
@@ -72,7 +73,7 @@ const AboutMyDog = () => {
             <TextField
               id="outlined-select"
               select
-              label="Select"
+              label="Dog breed"
               value={selectValue}
               onChange={handleChange}
               helperText="Please select your dog's breed"
