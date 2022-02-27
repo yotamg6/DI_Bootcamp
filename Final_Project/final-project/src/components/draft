@@ -567,4 +567,32 @@ return (
 //I think I'm close. small adjustments and it's there. if there's time...
 ///////////////////////////////////////////////////////////////
 
+from upload file - before and during change to mui component
+
+// useEffect(async () => {
+//   try {
+//     const images = await axios.get("http://localhost:5000/api/images");
+//     console.log(images);
+//     setImagesData(images.data);
+//   } catch (e) {
+//     console.log(e);
+//   }
+// }, [fileData]);
+
+{
+  /* <input
+          type="file"
+          name="dog_pic"
+          accept=".jpg,.png"
+          onChange={(e) => setImgValue(e.target.files[0])}
+        /> */
+}
+
+ {/* <Input
+              accept="image/*"
+              id="dog_pic"
+              type="file"
+              onChange={(e) => setImgValue(e.target.files[0])}
+            /> */}
+
 

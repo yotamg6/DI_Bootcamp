@@ -23,6 +23,8 @@ const App = () => {
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
+  const [nameValue, setNameValue] = useState("");
+  const [selectValue, setSelectValue] = useState("");
   const [userBreed, setUserBreed] = useState("");
   const [userDogName, setUserDogName] = useState(null);
   const [aboutTextArea, setAboutTextArea] = useState("");
@@ -56,8 +58,12 @@ const App = () => {
         setUserBreed,
         userDogName,
         setUserDogName,
+        nameValue,
+        setNameValue,
         aboutTextArea,
         setAboutTextArea,
+        selectValue,
+        setSelectValue,
       }}
     >
       <div className="App">

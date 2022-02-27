@@ -1,7 +1,7 @@
 import { breedFavs } from "../models/UserModel.js";
 import { db } from "../config/Database.js";
 
-export const addToBreedFavs = async (req, res) => {
+export const AddToBreedFavs = async (req, res) => {
   try {
     const [results, metadata] = await db.query(
       `INSERT into breed_favs (username, breed_index) 
@@ -21,7 +21,7 @@ export const addToBreedFavs = async (req, res) => {
   }
 };
 
-export const getBreedFavs = async (req, res) => {
+export const GetBreedFavs = async (req, res) => {
   try {
     const myFavs = await breedFavs.findAll({
       attributes: ["breed_index"],
@@ -33,7 +33,7 @@ export const getBreedFavs = async (req, res) => {
   }
 };
 
-export const deleteFromBreedFavs = async (req, res) => {
+export const DeleteFromBreedFavs = async (req, res) => {
   try {
     const response = await breedFavs.destroy({
       where: {

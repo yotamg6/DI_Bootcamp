@@ -34,12 +34,9 @@ const SeeAllOtherDogs = () => {
 
   useEffect(async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/api/others-images",
-        {
-          userName,
-        }
-      );
+      const response = await axios.post("http://localhost:5000/others-images", {
+        userName,
+      });
       console.log("files from useEffect seeAllDogs:", response.data);
       setOthersFiles(response.data);
     } catch (e) {

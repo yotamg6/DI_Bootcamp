@@ -20,7 +20,7 @@ export const Register = async (req, res) => {
     });
     res.json({ msg: "Your registration has been successfully completed!" });
   } catch (err) {
-    res.status(404).json({ msg: "email already exists" }); //find how to defrentiate between email and username?
+    res.status(404).json({ msg: "email already exists" });
   }
 };
 
@@ -43,11 +43,11 @@ export const Login = async (req, res) => {
     const accessToken = jwt.sign(
       { userName, email },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "60s" }
+      { expiresIn: "240s" }
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      maxAge: 60 * 1000,
+      maxAge: 240 * 1000,
     });
     res.json({ accessToken });
   } catch (e) {
@@ -55,7 +55,7 @@ export const Login = async (req, res) => {
   }
 };
 
-export const getCurUser = async (req, res) => {
+export const GetCurUser = async (req, res) => {
   try {
     const myUploads = await Uploads.findAll({
       where: {
@@ -71,7 +71,21 @@ export const getCurUser = async (req, res) => {
   }
 };
 
-export const getAllOtherUsers = async (req, res) => {
+export const DeleteMyDog = async (req, res) => {
+  try {
+    const response = await Uploads.destroy({
+      where: {
+        username: req.body.username,
+      },
+    });
+    console.log("in destroy", response.data);
+    res.json({ msg: "Reset successfully" });
+  } catch (e) {
+    console.log("error from destroy", e);
+  }
+};
+
+export const GetAllOtherUsers = async (req, res) => {
   //   console.log("in get all");
   try {
     const othersImages = await Uploads.findAll({
@@ -90,7 +104,7 @@ export const getAllOtherUsers = async (req, res) => {
   }
 };
 
-export const addToFavs = async (req, res) => {
+export const AddToFavs = async (req, res) => {
   try {
     const [results, metadata] = await db.query(
       `INSERT into favs (username,selecteduser) 
@@ -112,7 +126,7 @@ export const addToFavs = async (req, res) => {
 };
 ///it works, but I'm not raising an error - use metadata, it returns 0 or 1
 
-export const getMyFavs = async (req, res) => {
+export const GetMyFavs = async (req, res) => {
   try {
     const [results, metadata] = await db.query(
       `select * from uploads u, favs f where f.selecteduser=u.username and f.username='${req.body.userName}'`
@@ -124,7 +138,7 @@ export const getMyFavs = async (req, res) => {
   }
 };
 
-export const deleteFromDogFavs = async (req, res) => {
+export const DeleteFromDogFavs = async (req, res) => {
   try {
     const [results, metadata] = await db.query(
       `delete from favs f using uploads u where f.selecteduser=u.username and f.username='${req.body.userName}' and u.dogname='${req.body.dogName}'`

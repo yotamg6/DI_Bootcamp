@@ -10,11 +10,13 @@ const AboutMyDog = () => {
     userBreed,
     setUserBreed,
     setUserDogName,
+    nameValue,
+    setNameValue,
     aboutTextArea,
     setAboutTextArea,
+    selectValue,
+    setSelectValue,
   } = useContext(AppContext);
-
-  const [value, setValue] = useState("");
 
   useEffect(async () => {
     setAboutTextArea("");
@@ -29,8 +31,13 @@ const AboutMyDog = () => {
   }, []);
 
   const handleChange = (e) => {
-    setValue(e.target.value);
+    setSelectValue(e.target.value);
     setUserBreed(e.target.value);
+  };
+
+  const handleDogName = (e) => {
+    setUserDogName(e.target.value);
+    setNameValue(e.target.value);
   };
 
   return (
@@ -59,16 +66,18 @@ const AboutMyDog = () => {
               label="enter dog name"
               maxRows={1}
               variant="outlined"
-              onChange={(e) => setUserDogName(e.target.value)}
+              value={nameValue}
+              onChange={handleDogName}
             ></TextField>
             <TextField
               id="outlined-select"
               select
               label="Select"
-              value={value}
-              onChange={handleChange} //set. also allow to choose "other"
+              value={selectValue}
+              onChange={handleChange}
               helperText="Please select your dog's breed"
             >
+              <MenuItem value="Other">Other</MenuItem>
               {breeds.map((breed, i) => {
                 return (
                   <MenuItem key={i} value={breed.name}>

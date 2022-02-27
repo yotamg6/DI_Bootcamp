@@ -7,17 +7,18 @@ import { Uploads } from "../models/UserModel.js";
 import {
   Register,
   Login,
-  getCurUser,
-  getAllOtherUsers,
-  addToFavs,
-  getMyFavs, //should I change their names to dogFav? or remove the Dog from 1 row down
-  deleteFromDogFavs,
+  GetCurUser,
+  DeleteMyDog,
+  GetAllOtherUsers,
+  AddToFavs,
+  GetMyFavs, //should I change their names to dogFav? or remove the Dog from 1 row down
+  DeleteFromDogFavs,
   Logout,
 } from "../controllers/Users.js";
 import {
-  addToBreedFavs,
-  getBreedFavs,
-  deleteFromBreedFavs,
+  AddToBreedFavs,
+  GetBreedFavs,
+  DeleteFromBreedFavs,
 } from "../controllers/Breeds.js";
 import { VerifyToken } from "../middleware/VerifyToken.js";
 
@@ -54,7 +55,7 @@ const fileFilter = (req, file, cb) => {
 
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
-router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
+router.post("/uploads", upload.single("dog_pic"), async (req, res) => {
   //   res.json(req.file.filename);
   // console.log("userName?:", req.body.userName);
   const breed = req.body.userBreed ? req.body.userBreed : null;
@@ -74,21 +75,23 @@ router.post("/api/uploads", upload.single("dog_pic"), async (req, res) => {
       filename: fileName,
       filetype: fileType,
     });
-    console.log(ret);
+    console.log("returnings", ret);
     res.json({ filedata: ret.dataValues });
   } catch (e) {
-    console.log(e);
-    res.json({ msg: "cannot upload file" });
+    console.log("from uploads", e);
+    res.status(403).json({
+      msg: "Your dog's deatils are already in the system. press reset if you wish to make changes",
+    });
   }
 });
-
-router.post("/api/my-images", getCurUser);
-router.post("/api/others-images", getAllOtherUsers);
-router.post("/dog-favs", addToFavs);
-router.post("/my-favs", getMyFavs);
-router.post("/breed-favs", addToBreedFavs);
-router.post("/mybreed-favs", getBreedFavs);
-router.post("/delete-dogfav", deleteFromDogFavs);
-router.post("/delete-breedfav", deleteFromBreedFavs);
+router.post("/delete-mydog", DeleteMyDog);
+router.post("/my-images", GetCurUser);
+router.post("/others-images", GetAllOtherUsers);
+router.post("/dog-favs", AddToFavs);
+router.post("/my-favs", GetMyFavs);
+router.post("/breed-favs", AddToBreedFavs);
+router.post("/mybreed-favs", GetBreedFavs);
+router.post("/delete-dogfav", DeleteFromDogFavs);
+router.post("/delete-breedfav", DeleteFromBreedFavs);
 router.get("logout", Logout);
 export default router;

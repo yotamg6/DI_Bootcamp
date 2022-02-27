@@ -50,7 +50,7 @@ const Nav = () => {
   };
   const logout = async () => {
     try {
-      let response = await axios.get("http://localhost:5001/logout", {
+      let response = await axios.get("http://localhost:5000/logout", {
         withCredentials: true,
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -58,11 +58,9 @@ const Nav = () => {
           "x-access-token": accessToken,
         },
       });
-      // console.log(response);
-      navigate("/login");
+      // navigate("/login");
     } catch (e) {
-      console.log(e);
-      setShowNav(false); //doesnt work
+      setAccessToken(null);
       navigate("/login");
     }
   };
