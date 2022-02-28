@@ -47,6 +47,7 @@ const TemperSearch = () => {
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },
+            backgroundColor: "#F5F5DC",
           }}
           noValidate
           autoComplete="off"

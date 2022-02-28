@@ -36,3 +36,11 @@
     transform: rotate(360deg);
   }
 }
+
+.subTitle {
+  font-family: "Caveat", cursive;
+  font-size: 30px;
+}
+.referToRegis {
+  font-size: 20px;
+}

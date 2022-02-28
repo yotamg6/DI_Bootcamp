@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Stack } from "@mui/material";
+
 import { AppContext } from "../App";
 import HeightSearch from "./HeightSearch";
 import WeightSearch from "./WeightSearch";
@@ -41,26 +42,32 @@ const SearchFields = () => {
   };
   return (
     <>
-      <h2>Findout what is the perfect breed for you and your dog</h2>
-      <Stack
-        spacing={2}
-        direction="row"
-        alignItems="center"
-        justifyContent="center"
+      <div
+      // style={{
+      //   backgroundImage: "url(/images/paws.jpeg )",
+      // }}
       >
-        <div>
-          <HeightSearch />
-        </div>
-        <div>
-          <WeightSearch />
-        </div>
-        <div>
-          <TemperSearch />
-        </div>
-        <Button variant="contained" onClick={calcFilters}>
-          Find your breed
-        </Button>{" "}
-      </Stack>
+        <h2>Findout what is the perfect breed for you and your dog</h2>
+        <Stack
+          spacing={2}
+          direction="row"
+          alignItems="center"
+          justifyContent="center"
+        >
+          <div>
+            <HeightSearch />
+          </div>
+          <div>
+            <WeightSearch />
+          </div>
+          <div>
+            <TemperSearch />
+          </div>
+          <Button variant="contained" onClick={calcFilters}>
+            Find your breed
+          </Button>
+        </Stack>
+      </div>
     </>
   );
 };

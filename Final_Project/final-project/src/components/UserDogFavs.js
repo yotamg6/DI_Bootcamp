@@ -45,47 +45,51 @@ const UserDogFavs = () => {
   return (
     <>
       <div>
-        <h3>My Favorite dogs</h3>
-        {myFavs.map((file, i) => {
-          return (
-            <div
-              style={{
-                display: "inline-block",
-                width: "340px",
-                height: "200px",
-                margin: "10px",
-              }}
-            >
-              <ImageList sx={{ width: 650, height: 450 }}>
-                <ImageListItem key={i}>
-                  <img
-                    src={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format`}
-                    srcSet={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                    alt={file.filename}
-                    loading="lazy"
-                  />
-                  <ImageListItemBar
-                    title={
-                      <span>
-                        Dog breed: {file.breed} <br />
-                        Dog name: {file.dogname} <br />
-                        Temperament: {file.about_dog}
-                      </span>
-                    }
-                    position="below"
-                  />
-                </ImageListItem>
-                ;
-              </ImageList>
-              <Button
-                variant="contained"
-                onClick={() => deleteFromFavs(file.username, file.dogname)}
-              >
-                Remove dog from favorites
-              </Button>
-            </div>
-          );
-        })}
+        {myFavs.length > 0 ? (
+          <div>
+            <h3>My Favorite dogs</h3>
+            {myFavs.map((file, i) => {
+              return (
+                <div
+                  style={{
+                    display: "inline-block",
+                    width: "340px",
+                    height: "200px",
+                    margin: "10px",
+                  }}
+                >
+                  <ImageList sx={{ width: 650, height: 450 }}>
+                    <ImageListItem key={i}>
+                      <img
+                        src={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format`}
+                        srcSet={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                        alt={file.filename}
+                        loading="lazy"
+                      />
+                      <ImageListItemBar
+                        title={
+                          <span>
+                            Dog breed: {file.breed} <br />
+                            Dog name: {file.dogname} <br />
+                            Temperament: {file.about_dog}
+                          </span>
+                        }
+                        position="below"
+                      />
+                    </ImageListItem>
+                    ;
+                  </ImageList>
+                  <Button
+                    variant="contained"
+                    onClick={() => deleteFromFavs(file.username, file.dogname)}
+                  >
+                    Remove dog from favorites
+                  </Button>
+                </div>
+              );
+            })}
+          </div>
+        ) : null}
       </div>
     </>
   );

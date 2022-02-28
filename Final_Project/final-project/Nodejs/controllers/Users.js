@@ -43,11 +43,11 @@ export const Login = async (req, res) => {
     const accessToken = jwt.sign(
       { userName, email },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "240s" }
+      { expiresIn: "600s" }
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      maxAge: 240 * 1000,
+      maxAge: 600 * 1000,
     });
     res.json({ accessToken });
   } catch (e) {

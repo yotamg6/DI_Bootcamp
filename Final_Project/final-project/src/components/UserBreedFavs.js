@@ -49,9 +49,11 @@ const UserBreedFavs = () => {
   return (
     <>
       <div>
-        <h3>My favorite breeds</h3>
-        {myBreedFavs.length > 0
-          ? myBreedFavs.map((indexObj) => {
+        {myBreedFavs.length > 0 ? (
+          <div>
+            <h3>My favorite breeds</h3>
+
+            {myBreedFavs.map((indexObj) => {
               const index = indexObj.breed_index;
               return (
                 // <div key={index} style={{ width: "80%" }}>
@@ -92,8 +94,9 @@ const UserBreedFavs = () => {
                 </div>
                 // </div>
               );
-            })
-          : null}
+            })}
+          </div>
+        ) : null}
       </div>
     </>
   );

@@ -26,11 +26,17 @@ const MyDogProfile = () => {
 
   return (
     <>
-      <div>
-        <h1>Welcome {userName}</h1>
-      </div>
-      <div>
-        <UploadFile />
+      <div
+        style={{
+          backgroundImage: "url(/images/paws.jpeg )",
+        }}
+      >
+        <div>
+          <h1>Welcome {userName}</h1>
+        </div>
+        <div>
+          <UploadFile />
+        </div>
       </div>
     </>
   );

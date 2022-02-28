@@ -595,4 +595,35 @@ from upload file - before and during change to mui component
               onChange={(e) => setImgValue(e.target.files[0])}
             /> */}
 
+////from SearchResults
+{
+  /* <div>
+        {myBreedFavs.length > 0
+          ? myBreedFavs.map((indexObj) => {
+              const index = indexObj.breed_index;
+
+              return (
+                <div key={index}>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      width: "300px",
+                      height: "200px",
+                      margin: "10px",
+                    }}
+                  >
+                    <h3>My favorite breeds</h3>
+                    <p>{breeds[index].name}</p>
+                    <img
+                      style={{ height: "auto", maxWidth: "100%" }}
+                      src={breeds[index].image.url}
+                    ></img>
+                    <p>
+                      <strong>Temperament: </strong>
+                      {breeds[index].temperament}
+                    </p>
+                  </div>
+                </div> */
+}
+
 

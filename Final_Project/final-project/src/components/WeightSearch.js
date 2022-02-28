@@ -98,6 +98,7 @@ const WeightSearch = () => {
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },
+            backgroundColor: "#FAEBD7",
           }}
           noValidate
           autoComplete="off"
@@ -110,6 +111,8 @@ const WeightSearch = () => {
               onChange={handleChange}
               label="Weight (m)"
               helperText="Please select a desired weight-span"
+              // inputProps={{ style: { backgroungColor: "#fff" } }}
+              // InputLabelProps={{ style: { fontSize: 40 } }}
             >
               {weightSpans.map((span, i) => {
                 return (

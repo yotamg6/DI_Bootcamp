@@ -66,7 +66,12 @@ const App = () => {
         setSelectValue,
       }}
     >
-      <div className="App">
+      <div
+        className="App"
+        style={{
+          backgroundImage: "url(/images/paws.jpeg )",
+        }}
+      >
         <Nav />
 
         <ToastContainer />

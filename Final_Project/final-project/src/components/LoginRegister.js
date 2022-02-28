@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { Button, Box, TextField } from "@mui/material";
+import { Button, Box, Grid, TextField } from "@mui/material";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -89,70 +89,92 @@ const LoginRegister = ({ title }) => {
   };
   return (
     <div>
-      <h1>Woof Cupid </h1>
-      <h3>The place to introduce your dog to their new love</h3>
-      <div>
-        {title === "Register" ? (
-          <div>
-            <p>Please register to start and meet new dogs</p>
-          </div>
-        ) : (
-          <div>
-            <div>Please login</div>
-          </div>
-        )}
-      </div>
+      <Grid
+        container
+        // spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: "100vh" }}
+      >
+        <Box
+          sx={{
+            width: 300,
+            height: 250,
+            backgroundColor: "#E0FFFF",
+          }}
+        >
+          <h1>Woof Cupid </h1>
+          <h3 className="subTitle">
+            The place to introduce your dog to their new love
+          </h3>
 
-      <div>
-        <div>{/* <h2> {title}</h2> */}</div>
-        <Box component="form" sx={{ m: 1 }} noValidate autoComplete="off">
-          <TextField
-            sx={{ m: 1 }}
-            id="username"
-            label="enter username"
-            variant="outlined"
-            // value={userNameTxt}
-            // onChange={(e) => setUserNameTxt(e.target.value)}
-            onChange={(e) => setUserName(e.target.value)}
-          />
-          <TextField
-            sx={{ m: 1 }}
-            id="email"
-            label="enter your email"
-            variant="outlined"
-            onChange={(e) => setEmail(e.target.value)}
-            // value={emailTxt}
-            // onChange={(e) => setEmailTxt(e.target.value)}
-          />
-          <TextField
-            sx={{ m: 1 }}
-            id="password"
-            label="enter password"
-            variant="outlined"
-            onChange={(e) => setPassword(e.target.value)}
-            // value={passTxt}
-            // onChange={(e) => setPassTxt(e.target.value)}
-          />
+          <div>
+            {title === "Register" ? (
+              <div>
+                <p>Please register to start and meet new dogs</p>
+              </div>
+            ) : (
+              <div>
+                <div>Please login to start</div>
+              </div>
+            )}
+          </div>
         </Box>
-        <Button variant="contained" onClick={() => handleAction(title)}>
-          {title}
-        </Button>
-      </div>
-      {/* <div>{msg}</div> */}
+        <div>
+          <Box component="form" sx={{ m: 1 }} noValidate autoComplete="off">
+            <TextField
+              sx={{ m: 1, backgroundColor: "#7FFFD4" }}
+              id="username"
+              label="enter username"
+              variant="outlined"
+              // value={userNameTxt}
+              // onChange={(e) => setUserNameTxt(e.target.value)}
+              onChange={(e) => setUserName(e.target.value)}
+            />
+            <TextField
+              sx={{ m: 1, backgroundColor: "#FFB6C1" }}
+              id="email"
+              label="enter your email"
+              variant="outlined"
+              onChange={(e) => setEmail(e.target.value)}
+              // value={emailTxt}
+              // onChange={(e) => setEmailTxt(e.target.value)}
+            />
+            <TextField
+              sx={{ m: 1, backgroundColor: "#FFFFE0" }}
+              id="password"
+              label="enter password"
+              variant="outlined"
+              onChange={(e) => setPassword(e.target.value)}
+              // value={passTxt}
+              // onChange={(e) => setPassTxt(e.target.value)}
+            />
+          </Box>
+          <Button variant="contained" onClick={() => handleAction(title)}>
+            {title}
+          </Button>
+        </div>
+        {/* <div>{msg}</div> */}
 
-      <div>
-        {title === "Register" ? (
-          <div>
-            <p>Allready registered? please login</p>
-            <Link to="/login">Login</Link>
-          </div>
-        ) : (
-          <div>
-            <p>Can't login? please make sure to be registered first </p>
-            <Link to="/register">Register</Link>
-          </div>
-        )}
-      </div>
+        <div>
+          {title === "Register" ? (
+            <div>
+              <p>Allready registered? please login</p>
+              <Link to="/login">Login</Link>
+            </div>
+          ) : (
+            <div>
+              <p className="referToRegis">
+                <strong>
+                  Can't login? please make sure to be registered first
+                </strong>
+              </p>
+              <Link to="/register">Register</Link>
+            </div>
+          )}
+        </div>
+      </Grid>
     </div>
   );
 };

@@ -89,6 +89,7 @@ const HeightSearch = () => {
           component="form"
           sx={{
             "& .MuiTextField-root": { m: 1, width: "25ch" },
+            backgroundColor: "#F0FFFF",
           }}
           noValidate
           autoComplete="off"
