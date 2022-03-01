@@ -8,6 +8,7 @@ import {
   ImageListItem,
   ImageListItemBar,
   Grid,
+  Box,
 } from "@mui/material";
 
 const SearchResults = () => {
@@ -20,7 +21,7 @@ const SearchResults = () => {
         userName,
         index,
       });
-      // console.log("data from add to favbreeds", response.data);
+
       if (response.data) {
         toast.info("breed added successfully to favorites");
       } else {
@@ -33,17 +34,16 @@ const SearchResults = () => {
 
   return (
     <>
-      {matchIndexes.length > 0 ? (
-        <Grid
-          alignItems="center"
-          justifyContent="center"
-          cols={2}
-          rowHeight={164}
-        >
-          <h1 className="matchTitles">My matching breeds</h1>
+      <Grid
+        alignItems="center"
+        justifyContent="center"
+        cols={2}
+        rowHeight={164}
+      >
+        <h1 className="matchTitles">My matching breeds</h1>
+        {matchIndexes.length > 0 ? (
           <ImageList sx={{ m: 1 }}>
             {matchIndexes.map((index) => {
-              // console.log(breeds[index].name);
               return (
                 <div>
                   <ImageListItem key={index} sx={{ m: 1 }}>
@@ -74,27 +74,22 @@ const SearchResults = () => {
               );
             })}
           </ImageList>
-        </Grid>
-      ) : (
-        <div>No breed matches your search. please try again</div> // add alink to my-favorites
-      )}
+        ) : (
+          <div
+            className="subTitle"
+            style={{ height: "60rem", fontSize: "50px" }}
+          >
+            <div>No breed matches your search</div>
+            <div>please try again</div>
+            <img
+              src="/images/sad-dog.jpeg"
+              style={{ height: "600px", width: "350px" }}
+            />
+          </div>
+        )}
+      </Grid>
     </>
   );
 };
 
 export default SearchResults;
-
-{
-  /* <ImageList
-          sx={{
-            width: 1900,
-            height: 860,
-          }}
-          cols={2}
-          rowHeight={400} */
-}
-
-// <ImageListItem
-//         key={index}
-//         sx={{ mt: 5, mb: 20, p: 10, pb: 20 }}
-//       ></ImageListItem>

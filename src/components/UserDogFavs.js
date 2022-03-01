@@ -36,7 +36,7 @@ const UserDogFavs = () => {
       const response = await axios.post("http://localhost:5000/my-favs", {
         userName,
       });
-      console.log("response in userDogFavs:", response.data);
+
       setMyFavs(response.data);
     } catch (e) {
       console.log("error from addtofavs:", e);

@@ -14,20 +14,17 @@ const SeeAllOtherDogs = () => {
   const { userName } = useContext(AppContext);
   const [othersFiles, setOthersFiles] = useState([]);
 
-  // const [selectedUser, setSelectedUser] = useState("test");
-
   const addToFavs = async (index) => {
     const selectedUser = othersFiles[index].username;
     const fileName = othersFiles[index].filename;
-    // const uploadId = othersFiles[index].id;
-    // console.log("uploadId:", uploadId);
+
     try {
       const response = await axios.post("http://localhost:5000/dog-favs", {
         userName,
         selectedUser,
         fileName,
       });
-      // console.log("response in add to favs:", response.data);
+
       if (response.data) {
         toast.info("dog added successfully to favorites");
       } else {
@@ -43,7 +40,7 @@ const SeeAllOtherDogs = () => {
       const response = await axios.post("http://localhost:5000/others-images", {
         userName,
       });
-      console.log("files from useEffect seeAllDogs:", response.data);
+
       setOthersFiles(response.data);
     } catch (e) {
       console.log(e);
@@ -62,7 +59,7 @@ const SeeAllOtherDogs = () => {
         <ImageList sx={{ m: 1 }}>
           {othersFiles.map((file, i) => {
             return (
-              <div>
+              <div key={i}>
                 <ImageListItem key={i} sx={{ m: 1 }}>
                   <img
                     src={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format`}

@@ -26,14 +26,12 @@ const SearchFields = () => {
       const weightnHeightMatches = heightMatchIndexes.filter((height) =>
         weightMatchIndexes.includes(height)
       );
-      console.log("weightnheight:", weightnHeightMatches);
 
       if (temperMatchIndexes.length > 0 && weightnHeightMatches.length > 0) {
         const allMatchIndexes = temperMatchIndexes.filter((tempInd) =>
           weightnHeightMatches.includes(tempInd)
         );
         if (allMatchIndexes.length > 0) {
-          console.log("all filters:", allMatchIndexes);
           setMatchIndexes(allMatchIndexes);
         }
       }
@@ -44,7 +42,6 @@ const SearchFields = () => {
     <>
       <Grid
         container
-        // spacing={0}
         direction="column"
         alignItems="center"
         justifyContent="center"

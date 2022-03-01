@@ -8,12 +8,7 @@ import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
 
-import { styled } from "@mui/material/styles";
-
 const UploadFile = () => {
-  // const Input = styled("input")({
-  //   display: "none",
-  // });
   const {
     userName,
     userBreed,
@@ -33,7 +28,6 @@ const UploadFile = () => {
       const images = await axios.post("http://localhost:5000/my-images", {
         userName,
       });
-      console.log(images.data);
       setMyUploads(images.data);
       if (images.data.length > 0) setShowInputFields(false);
       else setShowInputFields(true);
@@ -48,7 +42,6 @@ const UploadFile = () => {
       const response = await axios.post("http://localhost:5000/delete-mydog", {
         username,
       });
-      // console.log("deletemydog", response.data);
       toast.info(response.data.msg);
       setFileData({});
     } catch (e) {
@@ -69,11 +62,10 @@ const UploadFile = () => {
     formData.append("aboutTextArea", aboutTextArea);
     try {
       const data = await axios.post("http://localhost:5000/uploads", formData);
-      // console.log("username:", data.data.filedata.username);
+
       setFileData(data.data);
     } catch (e) {
-      // console.log(e.response.data.msg);
-      toast.error(e.response.data.msg); //don't need it if i dont show the inputfields. decide which of the two
+      toast.error(e.response.data.msg);
     }
   };
 
@@ -81,11 +73,10 @@ const UploadFile = () => {
     <>
       <Grid
         container
-        // spacing={0}
         direction="column"
         alignItems="center"
         justifyContent="center"
-        style={{ minHeight: "100vh" }}
+        style={{ minHeight: "75vh" }}
       >
         {myUploads.length > 0 ? (
           <Box
@@ -166,17 +157,3 @@ const UploadFile = () => {
 };
 
 export default UploadFile;
-
-{
-  /* <div style={{ width: "80%" }}>
-//   <div */
-}
-//     style={{
-//       display: "inline-block",
-//       width: "700px",
-//       height: "600px",
-//       margin: "10px",
-//       fontSize: "30px",
-//       fontWeight: "bold",
-//     }}
-//   >

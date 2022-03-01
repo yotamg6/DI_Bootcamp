@@ -13,7 +13,7 @@ import {
 const UserBreedFavs = () => {
   const { userName, breeds } = useContext(AppContext);
   const [myBreedFavs, setMyBreedFavs] = useState([]);
-  // const [msg, setMsg] = useState(null);
+  
   useEffect(async () => {
     getMyBreedFavs();
   }, []);
@@ -27,7 +27,7 @@ const UserBreedFavs = () => {
           breedIndex,
         }
       );
-      // console.log("response in deleteFromBreedFavs", response.data);
+   
       toast.success("favorite removed successfully");
       getMyBreedFavs();
     } catch (e) {
@@ -97,57 +97,3 @@ const UserBreedFavs = () => {
 };
 
 export default UserBreedFavs;
-
-{
-  /* <Grid alignItems="center" justifyContent="center" cols={2} rowHeight={164}>
-  <h1 className="myMatchBreeds">My matching breeds</h1>
-  {matchIndexes.length > 0 ? (
-    <ImageList>
-      {matchIndexes.map((index) => {
-        // console.log(breeds[index].name);
-        return (
-          <div>
-            <ImageListItem key={index} sx={{ m: 3 }}>
-              <img
-                src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
-                srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                alt={breeds[index].image}
-                loading="lazy"
-              />
-              <ImageListItemBar
-                sx={{ backgroundColor: "#F5FFFA" }}
-                title={
-                  <span>
-                    Breed: {breeds[index].name} <br />
-                    Temperament:{breeds[index].temperament}
-                  </span>
-                }
-                position="below"
-              />
-              <Button variant="contained" onClick={() => addToBreedFavs(index)}>
-                Add breed to my favorites
-              </Button>
-            </ImageListItem>
-          </div>
-        );
-      })}
-    </ImageList>
-  ) : (
-    <div>No breed matches your search. please try again</div>
-  )}
-</Grid>; */
-}
-
-{
-  /* <div
-style={{
-  display: "inline-block",
-  width: "720px",
-  height: "350px",
-  margin: "30px",
-}} */
-}
-
-{
-  /* <ImageList sx={{ width: 1300, height: 550 }}> */
-}

@@ -3,7 +3,6 @@ import "./App.css";
 import "react-toastify/dist/ReactToastify.css";
 import { Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Home from "./components/Home";
 import LoginRegister from "./components/LoginRegister";
 import MyDogProfile from "./components/MyDogProfile";
 import SearchFields from "./components/SearchFields";
@@ -18,8 +17,6 @@ const App = () => {
   const [temperMatchIndexes, setTemperMatchIndexes] = useState([]);
   const [heightMatchIndexes, setHeightMatchIndexes] = useState([]);
   const [weightMatchIndexes, setWeightMatchIndexes] = useState([]);
-  // const [height, setHeight] = useState("");
-  // const [weight, setWeight] = useState("");
   const [breeds, setBreeds] = useState([]);
   const [matchIndexes, setMatchIndexes] = useState([]);
   const [userName, setUserName] = useState("");
@@ -34,10 +31,6 @@ const App = () => {
   return (
     <AppContext.Provider
       value={{
-        // height,
-        // setHeight,
-        // weight,
-        // setWeight,
         breeds,
         setBreeds,
         temperMatchIndexes,
@@ -131,4 +124,4 @@ const App = () => {
 
 export default App;
 
-//I have downloaded few dependencies that I dont need. check that everything there is what I need and delete what I don't
+
