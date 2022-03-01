@@ -110,7 +110,7 @@ const WeightSearch = () => {
               value={value}
               onChange={handleChange}
               label="Weight (m)"
-              helperText="Please select a desired weight-span"
+              helperText="Select a desired weight-span"
               // inputProps={{ style: { backgroungColor: "#fff" } }}
               // InputLabelProps={{ style: { fontSize: 40 } }}
             >

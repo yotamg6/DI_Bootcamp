@@ -59,7 +59,7 @@ const TemperSearch = () => {
               label="Temperament"
               value={value}
               onChange={handleChange}
-              helperText="Please select a desired temperament"
+              helperText="Select a desired temperament"
             >
               {allUniqueTemps.map((temp, i) => {
                 return (

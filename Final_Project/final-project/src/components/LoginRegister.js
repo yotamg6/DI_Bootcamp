@@ -160,17 +160,35 @@ const LoginRegister = ({ title }) => {
         <div>
           {title === "Register" ? (
             <div>
-              <p>Allready registered? please login</p>
-              <Link to="/login">Login</Link>
+              <p className="referToLogReg">
+                <strong>Allready registered? please login</strong>
+              </p>
+              {/* <Link to="/login">Login</Link> */}
+              <Button
+                variant="outlined"
+                color="secondary"
+                component={Link}
+                to="/login"
+              >
+                Login
+              </Button>
             </div>
           ) : (
             <div>
-              <p className="referToRegis">
+              <p className="referToLogReg">
                 <strong>
                   Can't login? please make sure to be registered first
                 </strong>
               </p>
-              <Link to="/register">Register</Link>
+              {/* <Link to="/register">Register</Link> */}
+              <Button
+                variant="outlined"
+                color="secondary"
+                component={Link}
+                to="/register"
+              >
+                Register
+              </Button>
             </div>
           )}
         </div>

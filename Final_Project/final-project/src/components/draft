@@ -626,4 +626,250 @@ from upload file - before and during change to mui component
                 </div> */
 }
 
+from search results
+{
+  /* <div key={index}>
+  <div
+    style={{
+      display: "inline-block",
+      width: "300px",
+      height: "200px",
+      margin: "10px",
+    }}
+  >
+    <h3>{breeds[index].name}</h3>
+    <img
+      style={{ height: "auto", maxWidth: "100%" }}
+      src={breeds[index].image.url}
+    ></img>
+    <p>
+      <strong>Temperament: </strong>
+      {breeds[index].temperament}
+    </p>
+    <Button variant="contained" onClick={() => addToBreedFavs(index)}>
+      Add breed to my favorites
+    </Button>
+  </div>
+</div>
+
+from userBreedFav
+
+// {
+//   myFavs.map((file, i) => {
+//     return (
+//       <div
+//         style={{
+//           display: "inline-block",
+//           width: "300px",
+//           height: "200px",
+//           margin: "10px",
+//         }}
+//       >
+//         <ImageList sx={{ width: 650, height: 450 }}>
+//           <ImageListItem key={i}>
+//             <img
+//               src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
+//               srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+//               alt={file.filename}
+//               loading="lazy"
+//             />
+//             <ImageListItemBar
+//               title={<span>Temperament:{breeds[index].temperament}</span>}
+//               title={<span>Dog name: {breeds[index].name}</span>}
+//               position="below"
+//             />
+//           </ImageListItem>
+//           ;
+//         </ImageList>
+//         <Button
+//           variant="contained"
+//           onClick={() => deleteFromFavs(file.username, file.dogname)}
+//         >
+//           Remove dog from favorites
+//         </Button>
+//       </div>
+//     );
+//   });
+// }
+
+{
+  /* <p> {breeds[index].name} </p> */
+}
+{
+  /* <img
+                      style={{ height: "auto", maxWidth: "100%" }}
+                      src={breeds[index].image.url}
+                    ></img> */
+}
+{
+  /* <p>
+                      <strong>Temperament: </strong>
+                      {breeds[index].temperament}
+                    </p> */
+}
+
+//from uploadFile
+{
+  /* <ImageList sx={{ width: 500, height: 450 }}>
+{myUploads.map((data, i) => {
+        <ImageListItem key={i}>
+          <img
+            src={`http://localhost:5000/images/${data.filename}?w=248&fit=crop&auto=format`}
+            srcSet={`http://localhost:5000/images/${data.filename}?w=248&fit=crop&auto=format&dpr=2 2x`}
+            alt={data.filename}
+            loading="lazy"
+          />
+          <ImageListItemBar
+            title= {<span>Dog breed: {data.breed}</span>}
+            title= {<span>Dog name: {data.dogname}</span>}
+            subtitle={<span>About dog: {data.about_dog}</span>}
+            position="below"
+          />
+        </ImageListItem>
+    })}
+    </ImageList>
+  );
+} */
+}
+
+// {myUploads.map((data, i) => {
+//   return (
+//     <div key={i} style={{ width: "80%" }}>
+//       <div
+//         style={{
+//           display: "inline-block",
+//           width: "300px",
+//           height: "200px",
+//           margin: "10px",
+//         }}
+//       >
+//         <img
+//           style={{ height: "auto", maxWidth: "100%" }}
+//           src={`http://localhost:5000/images/${data.filename}`}
+//         />
+//         <p>Dog breed: {data.breed}</p>
+//         <p>Dog name: {data.dogname}</p>
+//         <p>About my dog: {data.about_dog}</p>
+//       </div>
+//     </div>
+//   );
+// })}
+
+{
+  /* {myUploads.map((data, i) => { */
+}
+{
+  /* return ( */
+}
+{
+  /* <div key={i} style={{ width: "80%" }}> */
+}
+{
+  /* <div style={{ width: "80%" }}>
+        <div
+          style={{
+            display: "inline-block",
+            width: "300px",
+            height: "200px",
+            margin: "10px",
+          }}
+        >
+          <img
+            style={{ height: "auto", maxWidth: "100%" }}
+            // src={`http://localhost:5000/images/${data.filename}`}
+            src={`http://localhost:5000/images/${myUploads[0].filename}`}
+          />
+          <p>Dog breed: {myUploads[myUploads.length].breed}</p>
+          <p>Dog name: {myUploads[0].dogname}</p>
+          <p>About my dog: {myUploads[0].about_dog}</p>
+          {/* <p>Dog breed: {data.breed}</p>
+              <p>Dog name: {data.dogname}</p>
+              <p>About my dog: {data.about_dog}</p> */
+}
+{
+  /* </div>
+      </div> */
+}
+{
+  /* ); */
+}
+{
+  /* })} */
+}
+
+{
+  /* <p>Dog breed: {data.breed}</p>
+              <p>Dog name: {data.dogname}</p>
+              <p>About my dog: {data.about_dog}</p> */
+}
+
+// src={`http://localhost:5000/images/${data.filename}`} 
+
+from SeeAllOthers
+{
+  /* <div key={i} style={{ width: "80%" }}> */
+}
+ {/* <div
+              style={{
+                display: "inline-block",
+                width: "300px",
+                height: "200px",
+                margin: "10px",
+              }}
+            > */}
+                {/* <img
+                style={{ height: "auto", maxWidth: "100%" }}
+                src={`http://localhost:5000/images/${file.filename}`}
+              /> */}
+                {/* <div>
+                <p>Dog name: {file.dogname}</p>
+                <p>Breed: {file.breed}</p>
+                <p>Temperament: {file.about_dog}</p>
+              </div> */}
+
+
+              //from userDogFavs
+              {
+  /* <div key={i} style={{ width: "80%" }}>
+<div
+  style={{
+    display: "inline-block",
+    width: "300px",
+    height: "200px",
+    margin: "10px",
+  }}
+>
+  <img
+    style={{ height: "auto", maxWidth: "100%" }}
+    src={`http://localhost:5000/images/${file.filename}`}
+  />
+  <p>dog breed:{file.breed}</p>
+  <p>dog name:{file.dogname}</p>
+  <p>Temperament: {file.about_dog}</p> */
+}
+
+from Nav.js
+{/* <Button variant="contained" component={Link} to="home">
+            Home
+          </Button> */}
+
+          from App.js
+           {/* <Route
+            path="/home"
+            element={
+              <Auth>
+                <Home />
+              </Auth>
+            }
+          /> */}
+
+
+           {/* <Route
+            path="/home"
+            element={
+              <Auth>
+                <Home />
+              </Auth>
+            }
+          /> */}
 

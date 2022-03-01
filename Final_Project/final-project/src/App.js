@@ -82,14 +82,7 @@ const App = () => {
             element={<LoginRegister title={"Register"} />}
           />
           <Route path="/" element={<LoginRegister title={"Register"} />} />
-          <Route
-            path="/home"
-            element={
-              <Auth>
-                <Home />
-              </Auth>
-            }
-          />
+
           <Route
             path="/my-dog"
             element={
@@ -99,7 +92,7 @@ const App = () => {
             }
           />
           <Route
-            path="/dog-search"
+            path="/breed-search"
             element={
               <Auth>
                 <SearchFields />
@@ -135,17 +128,6 @@ const App = () => {
     </AppContext.Provider>
   );
 };
-
-// const [heightText, setHeightText] = useState();
-//   const [weightText, setWeightText] = useState("");
-//   const [temperText, setTemperText] = useState("");
-
-//   heightText,
-//         setHeightText,
-//         weightText,
-//         setWeightText,
-//         temperText,
-//         setTemperText,
 
 export default App;
 

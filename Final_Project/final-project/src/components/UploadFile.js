@@ -3,7 +3,7 @@ import axios from "axios";
 import { AppContext } from "../App";
 import AboutMyDog from "./AboutMyDog";
 import { toast } from "react-toastify";
-import { Button, Stack } from "@mui/material";
+import { Button, Stack, Grid, Box } from "@mui/material";
 import PhotoCamera from "@mui/icons-material/PhotoCamera";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
@@ -79,23 +79,44 @@ const UploadFile = () => {
 
   return (
     <>
-      {myUploads.length > 0 ? (
-        <div style={{ width: "80%" }}>
-          <div
-            style={{
-              display: "inline-block",
-              width: "300px",
-              height: "200px",
-              margin: "10px",
+      <Grid
+        container
+        // spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: "100vh" }}
+      >
+        {myUploads.length > 0 ? (
+          <Box
+            sx={{
+              width: 500,
+              height: 500,
+              backgroundColor: "#E0FFFF",
             }}
           >
             <img
               style={{ height: "auto", maxWidth: "100%" }}
               src={`http://localhost:5000/images/${myUploads[0].filename}`}
             />
-            <p>Dog breed: {myUploads[0].breed}</p>
-            <p>Dog name: {myUploads[0].dogname}</p>
-            <p>About my dog: {myUploads[0].about_dog}</p>
+            <div
+              className="subTitle"
+              style={{ margin: "10px", padding: "10px" }}
+            >
+              <div>
+                <span style={{ color: "red" }}>Dog name: </span>
+                {myUploads[0].dogname}
+              </div>
+              <div>
+                <span style={{ color: "red" }}>Dog breed: </span>
+                {myUploads[0].breed}
+              </div>
+              <div>
+                <span style={{ color: "red" }}>About my dog: </span>
+                {myUploads[0].about_dog}
+              </div>
+            </div>
+
             <Button
               variant="contained"
               component="span"
@@ -104,42 +125,42 @@ const UploadFile = () => {
             >
               Reset details
             </Button>
-          </div>
-        </div>
-      ) : null}
-      {showInputFields ? (
-        <div>
-          <Stack direction="column" alignItems="center" spacing={2}>
-            <h3>Please add details about your dog</h3>
-            <label htmlFor="contained-button-file">
-              <input
-                type="file"
-                name="dog_pic"
-                id="contained-button-file"
-                multiple
-                accept="image/*"
-                onChange={(e) => setImgValue(e.target.files[0])}
-                hidden
-              />
+          </Box>
+        ) : null}
+        {showInputFields ? (
+          <div>
+            <Stack direction="column" alignItems="center" spacing={2}>
+              <h2>Please add details about your dog</h2>
+              <label htmlFor="contained-button-file">
+                <input
+                  type="file"
+                  name="dog_pic"
+                  id="contained-button-file"
+                  multiple
+                  accept="image/*"
+                  onChange={(e) => setImgValue(e.target.files[0])}
+                  hidden
+                />
+                <Button
+                  variant="contained"
+                  component="span"
+                  startIcon={<PhotoCamera />}
+                >
+                  Upload image
+                </Button>
+              </label>
+              <AboutMyDog />
               <Button
                 variant="contained"
-                component="span"
-                startIcon={<PhotoCamera />}
+                startIcon={<SendIcon />}
+                onClick={uploadFile}
               >
-                Upload image
+                Send
               </Button>
-            </label>
-            <AboutMyDog />
-            <Button
-              variant="contained"
-              startIcon={<SendIcon />}
-              onClick={uploadFile}
-            >
-              Send
-            </Button>
-          </Stack>
-        </div>
-      ) : null}
+            </Stack>
+          </div>
+        ) : null}
+      </Grid>
     </>
   );
 };
@@ -147,97 +168,15 @@ const UploadFile = () => {
 export default UploadFile;
 
 {
-  /* <ImageList sx={{ width: 500, height: 450 }}>
-{myUploads.map((data, i) => {
-        <ImageListItem key={i}>
-          <img
-            src={`http://localhost:5000/images/${data.filename}?w=248&fit=crop&auto=format`}
-            srcSet={`http://localhost:5000/images/${data.filename}?w=248&fit=crop&auto=format&dpr=2 2x`}
-            alt={data.filename}
-            loading="lazy"
-          />
-          <ImageListItemBar
-            title= {<span>Dog breed: {data.breed}</span>}
-            title= {<span>Dog name: {data.dogname}</span>}
-            subtitle={<span>About dog: {data.about_dog}</span>}
-            position="below"
-          />
-        </ImageListItem>
-    })}
-    </ImageList>
-  );
-} */
-}
-
-// {myUploads.map((data, i) => {
-//   return (
-//     <div key={i} style={{ width: "80%" }}>
-//       <div
-//         style={{
-//           display: "inline-block",
-//           width: "300px",
-//           height: "200px",
-//           margin: "10px",
-//         }}
-//       >
-//         <img
-//           style={{ height: "auto", maxWidth: "100%" }}
-//           src={`http://localhost:5000/images/${data.filename}`}
-//         />
-//         <p>Dog breed: {data.breed}</p>
-//         <p>Dog name: {data.dogname}</p>
-//         <p>About my dog: {data.about_dog}</p>
-//       </div>
-//     </div>
-//   );
-// })}
-
-{
-  /* {myUploads.map((data, i) => { */
-}
-{
-  /* return ( */
-}
-{
-  /* <div key={i} style={{ width: "80%" }}> */
-}
-{
   /* <div style={{ width: "80%" }}>
-        <div
-          style={{
-            display: "inline-block",
-            width: "300px",
-            height: "200px",
-            margin: "10px",
-          }}
-        >
-          <img
-            style={{ height: "auto", maxWidth: "100%" }}
-            // src={`http://localhost:5000/images/${data.filename}`}
-            src={`http://localhost:5000/images/${myUploads[0].filename}`}
-          />
-          <p>Dog breed: {myUploads[myUploads.length].breed}</p>
-          <p>Dog name: {myUploads[0].dogname}</p>
-          <p>About my dog: {myUploads[0].about_dog}</p>
-          {/* <p>Dog breed: {data.breed}</p>
-              <p>Dog name: {data.dogname}</p>
-              <p>About my dog: {data.about_dog}</p> */
+//   <div */
 }
-{
-  /* </div>
-      </div> */
-}
-{
-  /* ); */
-}
-{
-  /* })} */
-}
-
-{
-  /* <p>Dog breed: {data.breed}</p>
-              <p>Dog name: {data.dogname}</p>
-              <p>About my dog: {data.about_dog}</p> */
-}
-
-// src={`http://localhost:5000/images/${data.filename}`}
+//     style={{
+//       display: "inline-block",
+//       width: "700px",
+//       height: "600px",
+//       margin: "10px",
+//       fontSize: "30px",
+//       fontWeight: "bold",
+//     }}
+//   >

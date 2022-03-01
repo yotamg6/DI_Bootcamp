@@ -7,6 +7,7 @@ import {
   ImageList,
   ImageListItem,
   ImageListItemBar,
+  Grid,
 } from "@mui/material";
 
 const UserBreedFavs = () => {
@@ -48,112 +49,105 @@ const UserBreedFavs = () => {
 
   return (
     <>
-      <div>
-        {myBreedFavs.length > 0 ? (
-          <div>
-            <h3>My favorite breeds</h3>
-
+      {myBreedFavs.length > 0 ? (
+        <Grid
+          alignItems="center"
+          justifyContent="center"
+          cols={2}
+          rowHeight={164}
+        >
+          <h3 className="matchTitles">My favorite breeds</h3>
+          <ImageList sx={{ m: 1 }}>
             {myBreedFavs.map((indexObj) => {
               const index = indexObj.breed_index;
               return (
-                // <div key={index} style={{ width: "80%" }}>
-                <div
-                  style={{
-                    display: "inline-block",
-                    width: "720px",
-                    height: "350px",
-                    margin: "30px",
-                  }}
-                >
-                  <ImageList sx={{ width: 1300, height: 550 }}>
-                    <ImageListItem key={index}>
-                      <img
-                        src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
-                        srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-                        alt={breeds[index].image}
-                        loading="lazy"
-                      />
-                      <ImageListItemBar
-                        title={
-                          <span>
-                            Temperament:{breeds[index].temperament} <br />
-                            Breed: {breeds[index].name}
-                          </span>
-                        }
-                        position="below"
-                      />
-                    </ImageListItem>
-                  </ImageList>
-
-                  <Button
-                    variant="contained"
-                    onClick={() => deleteFromBreedFavs(index)}
-                  >
-                    Remove breed from favorites
-                  </Button>
+                <div>
+                  <ImageListItem sx={{ m: 1 }} key={index}>
+                    <img
+                      src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
+                      srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                      alt={breeds[index].image}
+                      loading="lazy"
+                    />
+                    <ImageListItemBar
+                      sx={{ backgroundColor: "#F5FFFA" }}
+                      title={
+                        <div className="bdDetails">
+                          Breed: {breeds[index].name} <br />
+                          Temperament:{breeds[index].temperament}
+                        </div>
+                      }
+                      position="below"
+                    />
+                    <Button
+                      variant="contained"
+                      onClick={() => deleteFromBreedFavs(index)}
+                    >
+                      Remove breed from favorites
+                    </Button>
+                  </ImageListItem>
                 </div>
-                // </div>
               );
             })}
-          </div>
-        ) : null}
-      </div>
+          </ImageList>
+        </Grid>
+      ) : null}
     </>
   );
 };
 
 export default UserBreedFavs;
 
-// {
-//   myFavs.map((file, i) => {
-//     return (
-//       <div
-//         style={{
-//           display: "inline-block",
-//           width: "300px",
-//           height: "200px",
-//           margin: "10px",
-//         }}
-//       >
-//         <ImageList sx={{ width: 650, height: 450 }}>
-//           <ImageListItem key={i}>
-//             <img
-//               src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
-//               srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
-//               alt={file.filename}
-//               loading="lazy"
-//             />
-//             <ImageListItemBar
-//               title={<span>Temperament:{breeds[index].temperament}</span>}
-//               title={<span>Dog name: {breeds[index].name}</span>}
-//               position="below"
-//             />
-//           </ImageListItem>
-//           ;
-//         </ImageList>
-//         <Button
-//           variant="contained"
-//           onClick={() => deleteFromFavs(file.username, file.dogname)}
-//         >
-//           Remove dog from favorites
-//         </Button>
-//       </div>
-//     );
-//   });
-// }
+{
+  /* <Grid alignItems="center" justifyContent="center" cols={2} rowHeight={164}>
+  <h1 className="myMatchBreeds">My matching breeds</h1>
+  {matchIndexes.length > 0 ? (
+    <ImageList>
+      {matchIndexes.map((index) => {
+        // console.log(breeds[index].name);
+        return (
+          <div>
+            <ImageListItem key={index} sx={{ m: 3 }}>
+              <img
+                src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
+                srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                alt={breeds[index].image}
+                loading="lazy"
+              />
+              <ImageListItemBar
+                sx={{ backgroundColor: "#F5FFFA" }}
+                title={
+                  <span>
+                    Breed: {breeds[index].name} <br />
+                    Temperament:{breeds[index].temperament}
+                  </span>
+                }
+                position="below"
+              />
+              <Button variant="contained" onClick={() => addToBreedFavs(index)}>
+                Add breed to my favorites
+              </Button>
+            </ImageListItem>
+          </div>
+        );
+      })}
+    </ImageList>
+  ) : (
+    <div>No breed matches your search. please try again</div>
+  )}
+</Grid>; */
+}
 
 {
-  /* <p> {breeds[index].name} </p> */
+  /* <div
+style={{
+  display: "inline-block",
+  width: "720px",
+  height: "350px",
+  margin: "30px",
+}} */
 }
+
 {
-  /* <img
-                      style={{ height: "auto", maxWidth: "100%" }}
-                      src={breeds[index].image.url}
-                    ></img> */
-}
-{
-  /* <p>
-                      <strong>Temperament: </strong>
-                      {breeds[index].temperament}
-                    </p> */
+  /* <ImageList sx={{ width: 1300, height: 550 }}> */
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { Button, Stack } from "@mui/material";
+import { Button, Stack, Grid } from "@mui/material";
 
 import { AppContext } from "../App";
 import HeightSearch from "./HeightSearch";
@@ -42,10 +42,13 @@ const SearchFields = () => {
   };
   return (
     <>
-      <div
-      // style={{
-      //   backgroundImage: "url(/images/paws.jpeg )",
-      // }}
+      <Grid
+        container
+        // spacing={0}
+        direction="column"
+        alignItems="center"
+        justifyContent="center"
+        style={{ minHeight: "100vh" }}
       >
         <h2>Findout what is the perfect breed for you and your dog</h2>
         <Stack
@@ -67,7 +70,7 @@ const SearchFields = () => {
             Find your breed
           </Button>
         </Stack>
-      </div>
+      </Grid>
     </>
   );
 };

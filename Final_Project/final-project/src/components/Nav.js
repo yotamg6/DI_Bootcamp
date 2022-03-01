@@ -73,28 +73,25 @@ const Nav = () => {
           justifyContent="center"
           alignItems="center"
         >
-          <Button variant="outlined" component={Link} to="home">
-            Home
-          </Button>
-          <Button variant="outlined" component={Link} to="register">
+          <Button variant="contained" component={Link} to="register">
             Register
           </Button>
-          <Button variant="outlined" component={Link} to="login">
+          <Button variant="contained" component={Link} to="login">
             Login
           </Button>
-          <Button variant="outlined" component={Link} to="my-dog">
+          <Button variant="contained" component={Link} to="my-dog">
             My Dog Profile
           </Button>
-          <Button variant="outlined" component={Link} to="dog-search">
+          <Button variant="contained" component={Link} to="breed-search">
             Breed search
           </Button>
-          <Button variant="outlined" component={Link} to="find-match">
+          <Button variant="contained" component={Link} to="find-match">
             Find a match
           </Button>
-          <Button variant="outlined" component={Link} to="favorites">
+          <Button variant="contained" component={Link} to="favorites">
             My-Favorites
           </Button>
-          <Button variant="outlined" onClick={logout}>
+          <Button variant="contained" onClick={logout}>
             Logout
           </Button>
         </Stack>

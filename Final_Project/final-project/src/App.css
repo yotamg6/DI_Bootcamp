@@ -41,6 +41,21 @@
   font-family: "Caveat", cursive;
   font-size: 30px;
 }
-.referToRegis {
+
+.matchTitles {
+  font-family: "Caveat", cursive;
+  font-size: 50px;
+}
+
+.referToLogReg {
   font-size: 20px;
+}
+
+.bdDetails {
+  white-space: pre-line;
+}
+
+.welcomeUser {
+  font-size: 50px;
+  background-color: #f9fb98;
 }

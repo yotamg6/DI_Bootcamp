@@ -2,7 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { AppContext } from "../App";
 import { toast } from "react-toastify";
-import { Button } from "@mui/material";
+import {
+  Button,
+  ImageList,
+  ImageListItem,
+  ImageListItemBar,
+  Grid,
+} from "@mui/material";
 
 const SeeAllOtherDogs = () => {
   const { userName } = useContext(AppContext);
@@ -46,38 +52,47 @@ const SeeAllOtherDogs = () => {
 
   return (
     <>
-      {othersFiles.map((file, i) => {
-        return (
-          <div key={i} style={{ width: "80%" }}>
-            <div
-              style={{
-                display: "inline-block",
-                width: "300px",
-                height: "200px",
-                margin: "10px",
-              }}
-            >
-              <img
-                style={{ height: "auto", maxWidth: "100%" }}
-                src={`http://localhost:5000/images/${file.filename}`}
-              />
+      <Grid
+        alignItems="center"
+        justifyContent="center"
+        cols={2}
+        rowHeight={164}
+      >
+        <h1 className="matchTitles">Pick your favorites</h1>
+        <ImageList sx={{ m: 1 }}>
+          {othersFiles.map((file, i) => {
+            return (
               <div>
-                <p>Dog name: {file.dogname}</p>
-                <p>Breed: {file.breed}</p>
-                <p>Temperament: {file.about_dog}</p>
-              </div>
+                <ImageListItem key={i} sx={{ m: 1 }}>
+                  <img
+                    src={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format`}
+                    srcSet={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format&dpr=2 2x`}
+                    alt={file.filename}
+                    loading="lazy"
+                  />
+                  <ImageListItemBar
+                    sx={{ backgroundColor: "#F5FFFA" }}
+                    title={
+                      <div className="bdDetails">
+                        Dog name: {file.dogname} <br />
+                        Breed: {file.breed} <br />
+                        Temperament: {file.about_dog}
+                      </div>
+                    }
+                    position="below"
+                  />
 
-              <Button variant="contained" onClick={() => addToFavs(i)}>
-                Add to favorites
-              </Button>
-            </div>
-          </div>
-        );
-      })}
+                  <Button variant="contained" onClick={() => addToFavs(i)}>
+                    Add to favorites
+                  </Button>
+                </ImageListItem>
+              </div>
+            );
+          })}
+        </ImageList>
+      </Grid>
     </>
   );
 };
 
 export default SeeAllOtherDogs;
-
-// didnt know how to use the values set in effect in the click (tried conditional displaying, didnt work)

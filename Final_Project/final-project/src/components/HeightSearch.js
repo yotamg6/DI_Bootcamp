@@ -101,7 +101,7 @@ const HeightSearch = () => {
               value={value}
               onChange={handleChange}
               label="Height (m)"
-              helperText="Please select a desired height-span"
+              helperText="Select a desired height-span"
             >
               {heightSpans.map((span, i) => {
                 return (

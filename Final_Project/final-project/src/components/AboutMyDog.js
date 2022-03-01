@@ -50,6 +50,7 @@ const AboutMyDog = () => {
           }}
           noValidate
           autoComplete="off"
+          // sx={{ m: 1, backgroundColor: "#FFFFE0" }}
         >
           <div>
             <TextField
@@ -60,6 +61,7 @@ const AboutMyDog = () => {
               value={aboutTextArea}
               onChange={(e) => setAboutTextArea(e.target.value)}
               helperText="Please describe your dog briefly"
+              sx={{ m: 1, backgroundColor: "#FFFFE0" }}
             />
           </div>
           <div>
@@ -69,6 +71,7 @@ const AboutMyDog = () => {
               variant="outlined"
               value={nameValue}
               onChange={handleDogName}
+              sx={{ m: 1, backgroundColor: "#FFE4E1" }}
             ></TextField>
             <TextField
               id="outlined-select"
@@ -77,6 +80,7 @@ const AboutMyDog = () => {
               value={selectValue}
               onChange={handleChange}
               helperText="Please select your dog's breed"
+              sx={{ m: 1, backgroundColor: "#DB7093" }}
             >
               <MenuItem value="Other">Other</MenuItem>
               {breeds.map((breed, i) => {
