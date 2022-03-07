@@ -11,7 +11,6 @@ export const Auth = (props) => {
   const { accessToken, userName, setTimerMsg } = useContext(AppContext);
 
   useEffect(async () => {
-    console.log("accesstoken", accessToken);
     if (accessToken) {
       const decoded = jwt_decode(accessToken.accessToken);
       try {
@@ -23,7 +22,7 @@ export const Auth = (props) => {
             "x-access-token": accessToken,
           },
         });
-        // console.log("auth response", response);
+
         setRedirect(1);
       } catch (e) {
         console.log(e);

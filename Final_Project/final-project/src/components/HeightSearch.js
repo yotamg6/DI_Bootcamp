@@ -20,7 +20,7 @@ const HeightSearch = () => {
   useEffect(() => {
     if (selectedHeights) {
       const splitted = selectedHeights.replaceAll(" ", "").split("-");
-      // console.log(splitted);
+
       const parsedSelectedF = parseInt(splitted[0], 10);
       const parsedSelectedS = parseInt(splitted[1], 10);
       const sequence = [];
@@ -50,7 +50,7 @@ const HeightSearch = () => {
       });
       const uniqueIndexesSet = new Set(arrOfHeightIndexes);
       const uniqueIndexes = [...uniqueIndexesSet];
-      console.log("uniqueI", uniqueIndexes);
+
       setHeightMatchIndexes(uniqueIndexes);
     }
   }, [selectedHeights]);
@@ -65,7 +65,6 @@ const HeightSearch = () => {
       }
     }
     setHeightSpans(arrOfHeightSpans);
-    // console.log("heightSpans", arrOfHeightSpans);
   }, [breedHeights]);
 
   useEffect(() => {
@@ -78,7 +77,7 @@ const HeightSearch = () => {
     const sortedAllHeights = arrOfBreedHeights.flat().sort((a, b) => a - b);
     const uniqueHeightsSet = new Set(sortedAllHeights);
     const uniqueHeights = [...uniqueHeightsSet];
-    // console.log("uniqueheights", uniqueHeights);
+
     setBreedHeights(uniqueHeights);
   }, []);
 

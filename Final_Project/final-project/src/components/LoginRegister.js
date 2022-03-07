@@ -11,11 +11,6 @@ const LoginRegister = ({ title }) => {
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  // const [msg, setMsg] = useState("");
-  // const [value, setValue] = useState("");
-  // const [userNameTxt, setUserNameTxt] = useState("");
-  // const [emailTxt, setEmailTxt] = useState("");
-  // const [passTxt, setPassTxt] = useState("");
 
   useEffect(() => {
     if (timerMsg) {
@@ -25,13 +20,6 @@ const LoginRegister = ({ title }) => {
   }, []);
 
   const handleAction = async (id) => {
-    // setUserName(userNameTxt);
-    // setUserNameTxt("");
-    // setEmail(emailTxt);
-    // setEmailTxt("");
-    // setPassword(passTxt);
-    // setPassTxt("");
-
     if (id === "Register") {
       try {
         let response = await axios.post(
@@ -49,16 +37,13 @@ const LoginRegister = ({ title }) => {
             },
           }
         );
-        console.log("register:", response.data);
+
         toast.success(response.data.msg);
         navigate("/login");
       } catch (e) {
-        console.log("register:", e.response.data);
-        // setMsg(e.response.data.msg);
         toast.error(e.response.data.msg);
       }
     } else if (id === "Login") {
-      console.log(userName);
       try {
         let response = await axios.post(
           "http://localhost:5000/login",
@@ -75,14 +60,11 @@ const LoginRegister = ({ title }) => {
             },
           }
         );
-        // console.log("login:", response);
+
         toast.success("Login successful!");
         await setAccessToken(response.data);
         navigate("/my-dog");
       } catch (e) {
-        console.log("error from login:", e.response); //what is response?every e in catch has response?
-
-        // setMsg(e.response.data.msg);
         toast.error(e.response.data.msg);
       }
     }
@@ -91,7 +73,6 @@ const LoginRegister = ({ title }) => {
     <div>
       <Grid
         container
-        // spacing={0}
         direction="column"
         alignItems="center"
         justifyContent="center"
@@ -128,8 +109,6 @@ const LoginRegister = ({ title }) => {
               id="username"
               label="enter username"
               variant="outlined"
-              // value={userNameTxt}
-              // onChange={(e) => setUserNameTxt(e.target.value)}
               onChange={(e) => setUserName(e.target.value)}
             />
             <TextField
@@ -138,8 +117,6 @@ const LoginRegister = ({ title }) => {
               label="enter your email"
               variant="outlined"
               onChange={(e) => setEmail(e.target.value)}
-              // value={emailTxt}
-              // onChange={(e) => setEmailTxt(e.target.value)}
             />
             <TextField
               sx={{ m: 1, backgroundColor: "#FFFFE0" }}
@@ -147,15 +124,12 @@ const LoginRegister = ({ title }) => {
               label="enter password"
               variant="outlined"
               onChange={(e) => setPassword(e.target.value)}
-              // value={passTxt}
-              // onChange={(e) => setPassTxt(e.target.value)}
             />
           </Box>
           <Button variant="contained" onClick={() => handleAction(title)}>
             {title}
           </Button>
         </div>
-        {/* <div>{msg}</div> */}
 
         <div>
           {title === "Register" ? (
@@ -163,7 +137,7 @@ const LoginRegister = ({ title }) => {
               <p className="referToLogReg">
                 <strong>Allready registered? please login</strong>
               </p>
-              {/* <Link to="/login">Login</Link> */}
+
               <Button
                 variant="outlined"
                 color="secondary"
@@ -180,7 +154,7 @@ const LoginRegister = ({ title }) => {
                   Can't login? please make sure to be registered first
                 </strong>
               </p>
-              {/* <Link to="/register">Register</Link> */}
+
               <Button
                 variant="outlined"
                 color="secondary"
@@ -198,5 +172,3 @@ const LoginRegister = ({ title }) => {
 };
 
 export default LoginRegister;
-
-// don't know how to clear the search fields

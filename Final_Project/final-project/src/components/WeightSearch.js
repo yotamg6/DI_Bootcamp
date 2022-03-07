@@ -20,7 +20,7 @@ const WeightSearch = () => {
   useEffect(() => {
     if (selectedWeights) {
       const splitted = selectedWeights.replaceAll(" ", "").split("-");
-      // console.log(splitted);
+
       const parsedSelectedF = parseInt(splitted[0], 10);
       const parsedSelectedS = parseInt(splitted[1], 10);
       const sequence = [];
@@ -49,7 +49,7 @@ const WeightSearch = () => {
       });
       const uniqueIndexesSet = new Set(arrOfWeightIndexes);
       const uniqueIndexes = [...uniqueIndexesSet];
-      console.log("uniqueI", uniqueIndexes);
+
       setWeightMatchIndexes(uniqueIndexes);
     }
   }, [selectedWeights]);
@@ -70,7 +70,6 @@ const WeightSearch = () => {
       }
     }
     setWeightSpans(arrOfWeightSpans);
-    // console.log("WeightSpans", arrOfWeightSpans);
   }, [breedWeights]);
 
   useEffect(() => {
@@ -87,7 +86,7 @@ const WeightSearch = () => {
     const sortedWeights = onlyNumbers.sort((a, b) => a - b);
     const uniqueWeightsSet = new Set(sortedWeights);
     const uniqueWeights = [...uniqueWeightsSet];
-    // console.log("uniqueWeights", uniqueWeights);
+
     setBreedWeights(uniqueWeights);
   }, []);
 
@@ -111,8 +110,6 @@ const WeightSearch = () => {
               onChange={handleChange}
               label="Weight (m)"
               helperText="Select a desired weight-span"
-              // inputProps={{ style: { backgroungColor: "#fff" } }}
-              // InputLabelProps={{ style: { fontSize: 40 } }}
             >
               {weightSpans.map((span, i) => {
                 return (

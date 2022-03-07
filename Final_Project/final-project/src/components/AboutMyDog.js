@@ -23,7 +23,6 @@ const AboutMyDog = () => {
     try {
       const response = await axios.get("http://localhost:5000/api/breeds");
 
-      // console.log("data in useffect aboutmydog:", response.data);
       await setBreeds(response.data);
     } catch (e) {
       throw new Error(e);

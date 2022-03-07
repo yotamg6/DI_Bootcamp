@@ -31,7 +31,7 @@ const TemperSearch = () => {
         }
       }
     });
-    console.log("arr of indexes", arrOfTemperIndexes);
+
     setTemperMatchIndexes(arrOfTemperIndexes);
   }, [selectedTemper]);
 
