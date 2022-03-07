@@ -96,4 +96,4 @@ export const breedFavs = db.define(
   {
     freezeTableName: true,
   }
-); // I MIGHT NOT USE IT
+);

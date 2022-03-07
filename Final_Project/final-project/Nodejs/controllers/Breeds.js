@@ -14,7 +14,7 @@ export const AddToBreedFavs = async (req, res) => {
                   );`,
       { type: db.QueryTypes.INSERT }
     );
-    // console.log("meta", metadata);
+    
     res.json(metadata);
   } catch (e) {
     console.log("error from backend addtobreedfavs", e);

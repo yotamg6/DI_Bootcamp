@@ -11,8 +11,8 @@ import {
   DeleteMyDog,
   GetAllOtherUsers,
   AddToFavs,
-  GetMyFavs, //should I change their names to dogFav? or remove the Dog from 1 row down
-  DeleteFromDogFavs,
+  GetMyFavs,
+  DeleteFromFavs,
   Logout,
 } from "../controllers/Users.js";
 import {
@@ -56,8 +56,6 @@ const fileFilter = (req, file, cb) => {
 const upload = multer({ storage: storage, fileFilter: fileFilter });
 
 router.post("/uploads", upload.single("dog_pic"), async (req, res) => {
-  //   res.json(req.file.filename);
-  // console.log("userName?:", req.body.userName);
   const breed = req.body.userBreed ? req.body.userBreed : null;
   const dogName = req.body.userDogName ? req.body.userDogName : null;
   const aboutDog = req.body.aboutTextArea ? req.body.aboutTextArea : null;
@@ -75,7 +73,7 @@ router.post("/uploads", upload.single("dog_pic"), async (req, res) => {
       filename: fileName,
       filetype: fileType,
     });
-    console.log("returnings", ret);
+
     res.json({ filedata: ret.dataValues });
   } catch (e) {
     console.log("from uploads", e);
@@ -91,7 +89,7 @@ router.post("/dog-favs", AddToFavs);
 router.post("/my-favs", GetMyFavs);
 router.post("/breed-favs", AddToBreedFavs);
 router.post("/mybreed-favs", GetBreedFavs);
-router.post("/delete-dogfav", DeleteFromDogFavs);
+router.post("/delete-dogfav", DeleteFromFavs);
 router.post("/delete-breedfav", DeleteFromBreedFavs);
 router.get("logout", Logout);
 export default router;

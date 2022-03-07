@@ -25,7 +25,6 @@ export const Register = async (req, res) => {
 };
 
 export const Login = async (req, res) => {
-  // console.log("username from Login in BE control", req.body.userName);
   try {
     const user = await Users.findAll({
       where: {
@@ -37,17 +36,17 @@ export const Login = async (req, res) => {
 
     if (!match)
       return res.status(404).json({ msg: "Wrong password, please try again" });
-    // console.log("accestokenSECERET", process.env.ACCESS_TOKEN_SECRET);
+
     const userName = user[0].username;
     const email = user[0].email;
     const accessToken = jwt.sign(
       { userName, email },
       process.env.ACCESS_TOKEN_SECRET,
-      { expiresIn: "600s" }
+      { expiresIn: "60s" }
     );
     res.cookie("accessToken", accessToken, {
       httpOnly: true,
-      maxAge: 600 * 1000,
+      maxAge: 60 * 1000,
     });
     res.json({ accessToken });
   } catch (e) {
@@ -78,7 +77,7 @@ export const DeleteMyDog = async (req, res) => {
         username: req.body.username,
       },
     });
-    console.log("in destroy", response.data);
+
     res.json({ msg: "Reset successfully" });
   } catch (e) {
     console.log("error from destroy", e);
@@ -86,7 +85,6 @@ export const DeleteMyDog = async (req, res) => {
 };
 
 export const GetAllOtherUsers = async (req, res) => {
-  //   console.log("in get all");
   try {
     const othersImages = await Uploads.findAll({
       where: {
@@ -118,27 +116,25 @@ export const AddToFavs = async (req, res) => {
       { type: db.QueryTypes.INSERT }
     );
 
-    // console.log("meta", metadata);
     res.json(metadata);
   } catch (e) {
     console.log("error from add to favs", e);
   }
 };
-///it works, but I'm not raising an error - use metadata, it returns 0 or 1
 
 export const GetMyFavs = async (req, res) => {
   try {
     const [results, metadata] = await db.query(
       `select * from uploads u, favs f where f.selecteduser=u.username and f.username='${req.body.userName}'`
     );
-    // console.log(results);
+
     res.json(results);
   } catch (e) {
     console.log("cannot get favs");
   }
 };
 
-export const DeleteFromDogFavs = async (req, res) => {
+export const DeleteFromFavs = async (req, res) => {
   try {
     const [results, metadata] = await db.query(
       `delete from favs f using uploads u where f.selecteduser=u.username and f.username='${req.body.userName}' and u.dogname='${req.body.dogName}'`

@@ -10,5 +10,6 @@ export const db = new Sequelize(
     host: "localhost",
     dialect: "postgres",
     logging: true,
+    // ssl: { rejectUnauthorized: false },
   }
 );
