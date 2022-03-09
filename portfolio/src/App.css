@@ -1,0 +1,169 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  background: url("old_machine.png") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.title {
+  color: tomato;
+}
+
+.subtitle {
+  color: tan;
+  text-transform: uppercase;
+}
+
+.typedContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  text-align: center;
+  z-index: 1;
+}
+
+.heading {
+  color: tomato;
+  padding: 3rem 0;
+  text-transform: uppercase;
+}
+.subHeading {
+  color: #fff;
+  padding: 0;
+  text-transform: uppercase;
+}
+.body1 {
+  color: tomato;
+}
+.subtitle1 {
+  color: tan;
+}
+
+.contactContainer {
+  background: #233;
+  height: 100vh;
+}
+
+.contactHeading {
+  color: tomato;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  border: 1px solid tan;
+}
+
+.particlesCanvas {
+  position: fixed;
+  opacity: 0.6;
+}
+
+.mainContainerFolio {
+  background: #233;
+  height: 100%;
+  /* align-items: center;
+  justify-content: space-around;  */
+}
+.cardContainerFolio {
+  /* max-width: 345;
+  max-height: 300; */
+  background-color: tan;
+  justify-content: center;
+  padding: 0;
+  margin: 10px;
+  /* margin: 3rem auto; */
+}
+
+.appbar {
+  background: #222;
+  margin: 0;
+}
+.arrow {
+  color: tomato;
+}
+.navTitle {
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.menuSliderContainer {
+  color: tan;
+  width: 250;
+  background: #511;
+  height: 100%;
+}
+
+.contactContainer {
+  background: #233;
+  height: 100vh;
+}
+.formHeading {
+  color: tomato;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+.form {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: absolute;
+  min-width: 100vh;
+}
+
+/* .submitButton {
+  margin-top: 1rem;
+  color: tomato;
+  border-color: tan;
+} */
+.field {
+  margin: 1rem 0rem;
+}
+
+.email {
+  color: tomato;
+  text-align: center;
+  background-color: rgb(141, 69, 69);
+  border: 1px solid tan;
+}
