@@ -26,7 +26,7 @@ const projects = [
   },
   {
     name: "Movie-App",
-    description: `Search any movie and get full details, including posters and links to IMDB. React, Redux.`,
+    description: `Search any movie and get full details, including posters and links to IMDB. React, Redux`,
     url: "http://localhost:3000/project_screenshots/movie-app.png",
     gitHub:
       "https://github.com/yotamg6/DI_Bootcamp/tree/master/Week9/Day5/DailyChallenge/movie-app",
