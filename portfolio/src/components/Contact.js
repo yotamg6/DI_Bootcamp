@@ -1,36 +1,3 @@
-// import React from "react";
-
-// import { Box, Grid, Typography } from "@mui/material";
-// import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
-// import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
-
-// const Contact = () => {
-//   return (
-//     <Grid
-//       container
-//       justify="center"
-//       alignItems="center"
-//       justifyContent="center"
-//       className="contactContainer"
-//     >
-//       <Box component="div">
-//         <Typography variant="h5" className="contactHeading">
-//           I would love to hear from you
-//         </Typography>
-
-//         <Typography variant="h5" className="contactHeading">
-//           <AlternateEmailIcon style={{ color: "#800000" }} /> yotamg6@gmail.com
-//         </Typography>
-//         <Typography variant="h5" className="contactHeading">
-//           <ContactPhoneIcon /> 00972-(0)542315522
-//         </Typography>
-//       </Box>
-//     </Grid>
-//   );
-// };
-
-// export default Contact;
-
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";

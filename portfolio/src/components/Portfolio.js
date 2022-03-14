@@ -2,11 +2,8 @@ import React from "react";
 
 import {
   Box,
-  Button,
   ImageList,
   Grid,
-  Card,
-  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -37,14 +34,14 @@ const projects = [
     img: "/project_screenshots/tic-tac-toe.png",
     gitHub:
       "https://github.com/yotamg6/DI_Bootcamp/tree/master/Week10/Day1/exp2/tic-tac-toe",
-    video: "",
+    video: "https://loom.com/share/2f6136ea6d92448488686b68e5547ed5",
   },
   {
     name: "Guess Who I Am",
     description: `Try and guess who is the mysterious celebrity. Ask the program questions and you will be answered! Pure HTML, CSS, Javascript`,
     img: "/project_screenshots/guess-who.png",
     gitHub: "https://github.com/yotamg6/guess-who-I-am",
-    video: "",
+    video: "https://loom.com/share/f4bacf7855164c3d8ed0b036dff2ba40",
   },
 ];
 

@@ -2,13 +2,9 @@ import React from "react";
 import Particles from "react-tsparticles";
 
 const Partic = () => {
-  const particlesInit = (main) => {
-    // console.log(main);
-  };
+  const particlesInit = (main) => {};
 
-  const particlesLoaded = (container) => {
-    // console.log(container);
-  };
+  const particlesLoaded = (container) => {};
 
   return (
     <Particles
