@@ -1,5 +1,5 @@
 import React from "react";
-import Square from "./Square";
+
 
 let patterns = [
   [0, 1, 2],
@@ -26,7 +26,7 @@ class Board extends React.Component {
       xPlayed: false,
       gameOver: false,
       modeAi: false,
-      // modeTwoP: true,
+     
     };
   }
 
