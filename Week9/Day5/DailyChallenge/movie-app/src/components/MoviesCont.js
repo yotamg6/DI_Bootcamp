@@ -5,10 +5,10 @@ import "./landStyle.css";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
-import Card from "react-bootstrap/Card";
+
 
 const MoviesCont = (props) => {
-  const { text, movies } = props;
+  const { movies } = props;
   const { Search } = movies;
   if (Search) {
     if (props.loading) {
@@ -32,7 +32,7 @@ const MoviesCont = (props) => {
                       style={{ color: "blue" }}
                       to={`movie/${movie.imdbID}`}
                     >
-                      Movie Details{" "}
+                      More Details{" "}
                     </Link>
                   </div>
                 </div>

@@ -46,34 +46,3 @@ const mapStateToProps = (state) => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);
-
-{
-  /* <Card
-className="container"
-style={{ width: "80rem", height: "20rem", backgroundColor: "grey" }}
->
-  <Card.Body>
-    <Card.Title>Search for a Movie/TV Series</Card.Title>
-    <input type="text" onChange={props.handleChange}></input>
-    <button
-      className="btnSearch"
-      onClick={() => props.handleClick(props.text.toLowerCase())}
-    >
-      Search
-    </button>
-  </Card.Body>
-</Card> */
-}
-
-{
-  /* <div className="searchContainer">
-        <h1>Search for a Movie/TV Series</h1>
-        <input type="text" onChange={props.handleChange}></input>
-        <button
-          className="btnSearch"
-          onClick={() => props.handleClick(props.text.toLowerCase())}
-        >
-          Search
-        </button>
-      </div> */
-}

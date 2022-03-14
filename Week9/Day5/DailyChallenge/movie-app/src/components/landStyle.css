@@ -1,6 +1,4 @@
 body {
-  /* display: flex;
-  flex-direction: column; */
 }
 
 .containerMovie {
@@ -10,8 +8,6 @@ body {
   align-items: center;
   width: 300px;
   height: 450px;
-  /* margin-top: 5px;
-  margin-bottom: 5px; */
 }
 .searchContainer {
   align-self: center;
@@ -21,7 +17,7 @@ body {
 }
 .elem {
   display: inline-block;
-  /* padding: 5px; */
+
   margin: 5px;
 }
 
@@ -32,7 +28,7 @@ body {
 .detailsCont {
   display: inline-block;
   width: 70%;
-  /* flex-wrap: wrap; */
+
   margin-right: -15px;
   margin-left: -15px;
 }
