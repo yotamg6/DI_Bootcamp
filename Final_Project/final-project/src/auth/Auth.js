@@ -8,7 +8,7 @@ export const Auth = (props) => {
   const [redirect, setRedirect] = useState(null);
   let navigate = useNavigate();
 
-  const { accessToken, userName, setTimerMsg } = useContext(AppContext);
+  const { accessToken } = useContext(AppContext);
 
   useEffect(async () => {
     if (accessToken) {

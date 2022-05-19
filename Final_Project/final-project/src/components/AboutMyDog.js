@@ -7,7 +7,6 @@ const AboutMyDog = () => {
   const {
     breeds,
     setBreeds,
-    userBreed,
     setUserBreed,
     setUserDogName,
     nameValue,

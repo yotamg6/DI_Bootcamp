@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { AppContext } from "../App";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -8,7 +8,6 @@ import {
   ImageListItem,
   ImageListItemBar,
   Grid,
-  Box,
 } from "@mui/material";
 
 const SearchResults = () => {

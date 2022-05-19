@@ -1,13 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import jwt_decode from "jwt-decode";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+
 import UploadFile from "./UploadFile";
 import { AppContext } from "../App";
-import axios from "axios";
+
 import { Button, Stack, Grid } from "@mui/material";
 
 const MyDogProfile = () => {
-  const { accessToken, userName, setTimerMsg } = useContext(AppContext);
+  const { userName } = useContext(AppContext);
 
   return (
     <>
