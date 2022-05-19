@@ -49,7 +49,6 @@ const AboutMyDog = () => {
           }}
           noValidate
           autoComplete="off"
-          // sx={{ m: 1, backgroundColor: "#FFFFE0" }}
         >
           <div>
             <TextField
@@ -98,21 +97,3 @@ const AboutMyDog = () => {
 };
 
 export default AboutMyDog;
-
-{
-  // const handleChange = (e) => {
-  //   if (e.target.value > -1) setUserBreed(breeds[e.target.value].name);
-  //   else if ((e.target.value = -1)) setUserBreed("Other");
-  // };
-  /* <select onChange={handleChange}>
-          <option value="-2">Choose your breed</option>
-          <option value="-1">Other</option>
-          {breeds.map((breed, i) => {
-            return (
-              <option key={i} value={i}>
-                {breed.name}
-              </option>
-            );
-          })}
-        </select> */
-}

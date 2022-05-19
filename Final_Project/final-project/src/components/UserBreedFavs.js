@@ -13,7 +13,7 @@ import {
 const UserBreedFavs = () => {
   const { userName, breeds } = useContext(AppContext);
   const [myBreedFavs, setMyBreedFavs] = useState([]);
-  
+
   useEffect(async () => {
     getMyBreedFavs();
   }, []);
@@ -27,7 +27,7 @@ const UserBreedFavs = () => {
           breedIndex,
         }
       );
-   
+
       toast.success("favorite removed successfully");
       getMyBreedFavs();
     } catch (e) {
@@ -40,7 +40,6 @@ const UserBreedFavs = () => {
       const response = await axios.post("http://localhost:5000/mybreed-favs", {
         userName,
       });
-      console.log("response in getMyBreedFavs:", response.data);
       setMyBreedFavs(response.data);
     } catch (e) {
       console.log("error getMyBreedFavs:", e);
@@ -54,15 +53,15 @@ const UserBreedFavs = () => {
           alignItems="center"
           justifyContent="center"
           cols={2}
-          rowHeight={164}
+          rowheight={164}
         >
           <h3 className="matchTitles">My favorite breeds</h3>
           <ImageList sx={{ m: 1 }}>
             {myBreedFavs.map((indexObj) => {
               const index = indexObj.breed_index;
               return (
-                <div>
-                  <ImageListItem sx={{ m: 1 }} key={index}>
+                <div key={index}>
+                  <ImageListItem sx={{ m: 1 }}>
                     <img
                       src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
                       srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}

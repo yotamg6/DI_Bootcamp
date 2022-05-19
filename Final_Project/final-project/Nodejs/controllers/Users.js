@@ -8,7 +8,6 @@ import { Sequelize } from "sequelize";
 const { Op } = Sequelize;
 
 export const Register = async (req, res) => {
-  console.log("Register:", req.body);
   const { userName, email, password } = req.body;
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(password, salt);
@@ -32,6 +31,7 @@ export const Login = async (req, res) => {
         username: req.body.userName,
       },
     });
+
     const match = await bcrypt.compare(req.body.password, user[0].password);
 
     if (!match)
@@ -59,7 +59,7 @@ export const GetCurUser = async (req, res) => {
     const myUploads = await Uploads.findAll({
       where: {
         filetype: {
-          [Op.or]: ["image/jpeg", "image/png"], //maybe I should take this off?
+          [Op.or]: ["image/jpeg", "image/png"],
         },
         username: req.body.userName,
       },

@@ -91,5 +91,5 @@ router.post("/breed-favs", AddToBreedFavs);
 router.post("/mybreed-favs", GetBreedFavs);
 router.post("/delete-dogfav", DeleteFromFavs);
 router.post("/delete-breedfav", DeleteFromBreedFavs);
-router.get("logout", Logout);
+router.get("/logout", Logout);
 export default router;

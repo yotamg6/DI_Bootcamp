@@ -53,7 +53,7 @@ const SeeAllOtherDogs = () => {
         alignItems="center"
         justifyContent="center"
         cols={2}
-        rowHeight={164}
+        rowheight={164}
       >
         <h1 className="matchTitles">Pick your favorites</h1>
         <ImageList sx={{ m: 1 }}>

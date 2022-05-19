@@ -50,14 +50,14 @@ const UserDogFavs = () => {
           alignItems="center"
           justifyContent="center"
           cols={2}
-          rowHeight={164}
+          rowheight={164}
         >
           <h3 className="matchTitles">My favorite dogs</h3>
           <ImageList sx={{ m: 1 }}>
             {myFavs.map((file, i) => {
               return (
-                <div>
-                  <ImageListItem key={i} sx={{ m: 1 }}>
+                <div key={i}>
+                  <ImageListItem sx={{ m: 1 }}>
                     <img
                       src={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format`}
                       srcSet={`http://localhost:5000/images/${file.filename}?w=248&fit=crop&auto=format&dpr=2 2x`}
