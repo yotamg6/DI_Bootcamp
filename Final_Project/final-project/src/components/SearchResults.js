@@ -37,15 +37,15 @@ const SearchResults = () => {
         alignItems="center"
         justifyContent="center"
         cols={2}
-        rowHeight={164}
+        rowheight={164}
       >
         <h1 className="matchTitles">My matching breeds</h1>
         {matchIndexes.length > 0 ? (
           <ImageList sx={{ m: 1 }}>
             {matchIndexes.map((index) => {
               return (
-                <div>
-                  <ImageListItem key={index} sx={{ m: 1 }}>
+                <div key={index}>
+                  <ImageListItem sx={{ m: 1 }}>
                     <img
                       src={`${breeds[index].image.url}?w=248&fit=crop&auto=format`}
                       srcSet={`${breeds[index].image.url}?w=248&fit=crop&auto=format&dpr=2 2x`}

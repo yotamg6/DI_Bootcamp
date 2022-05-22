@@ -1,10 +1,8 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-
 import UploadFile from "./UploadFile";
 import { AppContext } from "../App";
-
-import { Button, Stack, Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 
 const MyDogProfile = () => {
   const { userName } = useContext(AppContext);
